@@ -1,0 +1,35 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential --><xsd:schema targetNamespace="http://group.vodafone.com/schema/extension/vbo/payment/payment/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/extension/vbo/payment/payment/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Schema Definition for Payment Extension</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   <xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../../../CoreComponentType_2p0.xsd"/>
+   <xsd:complexType name="ExtendedPaymentVBOType"/>
+   <xsd:complexType name="ExtendedPaymentDetailsType"/>
+   <xsd:complexType name="ExtendedRelatedPaymentType"/>
+   <xsd:complexType name="ExtendedRelatedPartyType"/>
+   <xsd:complexType name="ExtendedPaymentPartsType"/>
+   <xsd:complexType name="ExtendedChannelType"/>
+   <xsd:complexType name="ExtendedPaymentMethodType"/>
+   <xsd:complexType name="ExtendedAuthorisationType"/>
+   <xsd:complexType name="ExtendedChargeType"/>
+   <xsd:complexType name="ExtendedBankPaymentType"/>
+   <xsd:complexType name="ExtendedCardPaymentType"/>
+   <xsd:complexType name="ExtendedChequePaymentType"/>
+   <xsd:complexType name="ExtendedOtherPaymentType"/>
+   <xsd:complexType name="ExtendedDigitalWalletPaymentType"/>
+   <xsd:complexType name="ExtendedThirdPartyPaymentType"/>
+   <xsd:complexType name="ExtendedLineItemsType"/>
+   <xsd:complexType name="ExtendedLineItemType"/>
+   <xsd:complexType name="ExtendedPaymentSpecificationType"/>
+   <xsd:complexType name="ExtendedRequestorType"/>
+   <xsd:complexType name="ExtendedNoteType"/>
+</xsd:schema>

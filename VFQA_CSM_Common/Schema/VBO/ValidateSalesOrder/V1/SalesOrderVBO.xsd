@@ -1,0 +1,173 @@
+<!--© Vodafone Group Services Limited. All rights reserved.This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited.Other than as permitted by law, 
+	no part of this document may be reproduced, adapted, or distributed, in any 
+	form or by any means, without the prior written consent of Vodafone Group 
+	Services Limited.The information in this document is subject to change without 
+	notice.All trademarks acknowledged. Vodafone Group Services Limited - Confidential--><!--======================================================================--><!--===== Vodafone VBO ValidateSalesOrder Schema Module =====--><!--======================================================================--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbo/order/validate-sales-order/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbo/order/validate-sales-order/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/order/validate-sales-order/v1">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Schema Definition for ValidateSalesOrder</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   <!--======================= Imports =============================-->
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CommonComponents.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../Meta.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/extension/vbo/order/validate-sales-order/v1" schemaLocation="Extension/ExtendedSalesOrderVBO.xsd"/>
+   <xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../CoreComponentType_2p0.xsd"/>
+
+   <xsd:complexType name="SalesOrderVBOType">
+      <xsd:annotation>
+         <xsd:documentation>The Sales Order service is a Task Service which provides the capabilities to validate if the channel can perform order action for a subscription</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:ExtendedBaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Roles" type="tns:SalesOrderRoleType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The set of involvement roles</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Parts" type="tns:SalesOrderPartType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The set of components that define an sales order</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedSalesOrderVBOType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The Extension of the validate sales order VBO</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   
+   <xsd:complexType name="SalesOrderSubscriptionType">
+      <xsd:sequence>
+         <xsd:element name="SubscriptionNumber" type="tns:SalesOrderSubscriptionType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A Subscription represents the existing customer/subscriber/user who wants to purchase a product. This is the current subscription of a customer.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+   <xsd:complexType name="SalesOrderRoleType">
+      <xsd:sequence>
+         <xsd:element name="Customer" type="tns:CustomerRoleType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A component describing the Individual Party (Customer) that is undertaking the role.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Agent" type="tns:AgentRoleType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A component describing the Individual Party (Agent) that is undertaking the role.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedSalesOrderRoleType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The Extension of the validate sales order Involvement role.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+   <xsd:complexType name="SalesOrderPartType">
+      <xsd:sequence>
+         <xsd:element name="Channel" type="tns:ChannelType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The Channel on which the Line item is available. For instance Portal, UFE.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Subscription" type="tns:SubscriptionType" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>A subscription represents existing customer/subscriber/user who wants to validate the sales order</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="LineItems" minOccurs="0">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="LineItem" type="tns:LineItemType" maxOccurs="unbounded">
+                     <xsd:annotation>
+                        <xsd:documentation>Line items part of the validate sales order request structure. Each line item is associated to an assigned product.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedSalesOrderPartType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+   <xsd:complexType name="CustomerRoleType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedCustomerRoleType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The Extension of the validate sales order Involvement role (Customer Party)</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   
+   <xsd:complexType name="AgentRoleType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedAgentRoleType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The Extension of the validate sales order Involvment role (Agent Party)</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   
+   <xsd:complexType name="LineItemType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="ActionType" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>A Sales order Action which needs to be validated for a customer party via a channel.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedLineItemType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   
+   <xsd:complexType name="SubscriptionType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedSubscriptionType" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>The Extension of the Subscription.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   
+   <xsd:complexType name="ChannelType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedChannelType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The Extension of the Channel.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+</xsd:schema>

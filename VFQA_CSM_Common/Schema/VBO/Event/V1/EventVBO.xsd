@@ -1,0 +1,120 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://group.vodafone.com/schema/vbo/technical/event/v1" version="1.0" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:tns="http://group.vodafone.com/schema/vbo/technical/event/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/technical/event/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:import schemaLocation="../../../CommonComponents.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+   <xsd:import schemaLocation="Extension/ExtendedEventVBO.xsd" namespace="http://group.vodafone.com/schema/extension/vbo/technical/event/v1"/>
+   <xsd:import schemaLocation="../../../CoreComponentType_2p0.xsd" namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2"/>
+   <xsd:import schemaLocation="../../../Meta.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+   <xsd:annotation>
+      <xsd:documentation>Schema definition for Event API.</xsd:documentation>
+   </xsd:annotation>
+      <xsd:complexType name="EventVBOType">
+      <xsd:annotation>
+         <xsd:documentation>A Utility Service providing capabilities to retrieve list of technical events for the CSR agents from the back-end system.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:ExtendedBaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Details" type="tns:EventDetailsType" minOccurs="0"/>
+               <xsd:element name="RelatedEvents" minOccurs="0">
+                <xsd:annotation>
+                     <xsd:documentation>Related Events associated with event</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="RelatedEvent" type="tns:RelatedEventType" maxOccurs="unbounded"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="RelatedParties" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The set of involvement roles associated with the Event</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="RelatedParty" type="cmn:RelatedPartyType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>The involvement role associated with the Event.</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="Extension" type="extvbo:ExtendedRelatedPartyType" minOccurs="0"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="Parts" type="tns:EventPartsType" minOccurs="0"/>
+               <xsd:element name="Extension" type="extvbo:ExtendedEventVBOType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+      <xsd:complexType name="EventDetailsType">
+      <xsd:annotation>
+         <xsd:documentation>A type definition for Event Details</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+ 
+         <xsd:element name="Extension" type="extvbo:ExtendedEventDetailsType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+      <xsd:complexType name="RelatedEventType">
+      <xsd:annotation>
+         <xsd:documentation>A type definition for Related Event Type</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedRelatedEventType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+    <xsd:complexType name="EventPartsType">
+      <xsd:sequence>
+         <xsd:element name="RelatedObjects" minOccurs="0">
+         <xsd:annotation>
+               <xsd:documentation>Related Object is any Entity like Subscription, Customer Account with which an Event is associated..</xsd:documentation>
+            </xsd:annotation>
+          <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="RelatedObject" type="tns:RelatedObjectType" maxOccurs="unbounded"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+         <xsd:element name="Specification" type="tns:EventSpecificationType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A specification of the characteristics associated with an Event. This class as a component of the IT system entity should be used to capture details about the event being requested or within the response.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+ 
+         <xsd:element name="Extension" type="extvbo:ExtendedEventPartsType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+         <xsd:complexType name="RelatedObjectType">
+      <xsd:annotation>
+         <xsd:documentation>A type definition for Related Object Type</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedRelatedObjectType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+      <xsd:complexType name="EventSpecificationType">
+      <xsd:annotation>
+         <xsd:documentation>A type definition for Event Specification Type</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:SpecificationType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedEventSpecificationType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   </xsd:schema>

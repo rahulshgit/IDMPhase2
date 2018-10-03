@@ -1,0 +1,14 @@
+<adapter-config name="GetIDDetails" adapter="Database Adapter" wsdlLocation="../WSDL/GetIDDetails.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/ods" UIConnectionName="ODS Test" adapterRef=""/>
+  <endpoint-interaction portType="GetIDDetails_ptt" operation="GetIDDetails">
+    <interaction-spec className="oracle.tip.adapter.db.DBStoredProcedureInteractionSpec">
+      <property name="SchemaName" value="DBAREP"/>
+      <property name="ProcedureName" value="PROC_API3"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+      <property name="QueryTimeout" value="10"/>
+    </interaction-spec>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

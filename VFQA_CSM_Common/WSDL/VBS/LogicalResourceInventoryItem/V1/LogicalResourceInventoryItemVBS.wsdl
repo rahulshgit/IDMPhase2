@@ -1,0 +1,150 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><wsdl:definitions name="LogicalResourceInventoryItem" targetNamespace="http://group.vodafone.com/contract/vbs/resource/logical-resource-inventory-item/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wssem="http://lsdis.cs.uga.edu/projects/meteor-s/wsdl-s/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vbm="http://group.vodafone.com/schema/vbm/resource/logical-resource-inventory-item/v1" xmlns:vbs="http://group.vodafone.com/contract/vbs/resource/logical-resource-inventory-item/v1" xmlns:vfo="http://group.vodafone.com/contract/vfo/fault/v1" xmlns:vho="http://group.vodafone.com/contract/vho/header/v1">
+	<wsdl:documentation>
+	    A Logical Resource, usually provided by an external party such as a National Regulator that is held by Vodafone as a managed inventory item before and after it is assigned to a Customer through one or more products.  Examples include, but are not limited to MSISDN, Fixed Line, IPv4, IPV6, IMSI, IMEI etc.
+		Version V1.0
+	</wsdl:documentation>
+	<!-- Show support for WS-Policy and the attachment of policy assertions -->
+	<wsp:UsingPolicy wsdl:Required="true"/>
+	<!-- The categorisation of the service as defined by the service architecture -->
+	<wssem:category name="EntityService" taxonomyURI="http://group.vodafone.com/iCoE/Taxonomy.owl#"/>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://group.vodafone.com/contract/vbs/resource/logical-resource-inventory-item/v1" elementFormDefault="qualified">
+			<xsd:import namespace="http://group.vodafone.com/schema/vbm/resource/logical-resource-inventory-item/v1" schemaLocation="../../../../Schema/VBO/LogicalResourceInventoryItem/V1/LogicalResourceInventoryItemVBM.xsd"/>
+			<xsd:import namespace="http://group.vodafone.com/contract/vfo/fault/v1" schemaLocation="../../../../Schema/Fault.xsd"/>
+			<xsd:import namespace="http://group.vodafone.com/contract/vho/header/v1" schemaLocation="../../../../Schema/Header.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<!--Service Operations Message Structures -->
+		<wsdl:message name="UpdateLogicalResourceInventoryItemListReqMessage">
+		<wsdl:documentation>
+			This message is used as the request payload to the UpdateLogicalResourceInventoryItemList operation
+		</wsdl:documentation>
+		<wsdl:part name="LogicalResourceInventoryItemDetails" element="vbm:UpdateLogicalResourceInventoryItemListVBMRequest"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateLogicalResourceInventoryItemListRespMessage">
+		<wsdl:documentation>
+			This message is used as the response payload to the UpdateLogicalResourceInventoryItemList operation
+		</wsdl:documentation>
+		<wsdl:part name="LogicalResourceInventoryItemDetails" element="vbm:UpdateLogicalResourceInventoryItemListVBMResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetLogicalResourceInventoryItemListReqMessage">
+		<wsdl:documentation>
+			This message is used as the request payload to the GetLogicalResourceInventoryItemList operation
+		</wsdl:documentation>
+		<wsdl:part name="LogicalResourceInventoryItemCriteria" element="vbm:GetLogicalResourceInventoryItemListVBMRequest"/>
+	</wsdl:message>
+	<wsdl:message name="GetLogicalResourceInventoryItemListRespMessage">
+		<wsdl:documentation>
+			This message is used as the response payload to the GetLogicalResourceInventoryItemList operation
+		</wsdl:documentation>
+		<wsdl:part name="LogicalResourceInventoryItemList" element="vbm:GetLogicalResourceInventoryItemListVBMResponse"/>
+	</wsdl:message>
+
+	<!--Supporting Messages-->
+	<wsdl:message name="VodafoneFault">
+		<wsdl:documentation>
+		This message is used for propagating Error Context and Error Message
+    </wsdl:documentation>
+		<wsdl:part name="VodafoneFault" element="vfo:Fault"/>
+	</wsdl:message>
+	<wsdl:message name="MessageHeaders">
+		<wsdl:documentation>
+			This message is used as the header for SOAP request			
+		</wsdl:documentation>
+		<wsdl:part name="Source" element="vho:Source"/>
+		<wsdl:part name="Correlation" element="vho:Correlation"/>
+		<wsdl:part name="Cache" element="vho:Cache"/>
+		<wsdl:part name="ServiceDocumentation" element="vho:ServiceDocumentation"/>
+		<wsdl:part name="ResultStatus" element="vho:ResultStatus"/>
+	</wsdl:message>
+
+	<wsdl:portType name="LogicalResourceInventoryItemInterface">
+	<wsdl:documentation>
+		This interface contains operations for the LogicalResourceInventoryItem API
+	</wsdl:documentation>
+	<wsdl:operation name="UpdateLogicalResourceInventoryItemList">
+		<wsdl:documentation>
+			This operation is used to UpdateLogicalResourceInventoryItemList 
+		</wsdl:documentation> 
+			<wsdl:input name="UpdateLogicalResourceInventoryItemListRequest" message="vbs:UpdateLogicalResourceInventoryItemListReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/resource/logical-resource-inventory-item/v1/update-list"/>
+			<wsdl:output name="UpdateLogicalResourceInventoryItemListResponse" message="vbs:UpdateLogicalResourceInventoryItemListRespMessage"/>
+			<wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+		</wsdl:operation>
+	<wsdl:operation name="GetLogicalResourceInventoryItemList">
+		<wsdl:documentation>
+			This operation is used to GetLogicalResourceInventoryItemList 
+		</wsdl:documentation> 
+			<wsdl:input name="GetLogicalResourceInventoryItemListRequest" message="vbs:GetLogicalResourceInventoryItemListReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/resource/logical-resource-inventory-item/v1/get-list"/>
+			<wsdl:output name="GetLogicalResourceInventoryItemListResponse" message="vbs:GetLogicalResourceInventoryItemListRespMessage"/>
+			<wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+
+		<wsdl:binding name="LogicalResourceInventoryItemInterface-SOAP11-HTTPBinding" type="vbs:LogicalResourceInventoryItemInterface">
+	<wsdl:documentation>
+		This binding supports a SOAP 1.1 message over an HTTP/1.1 protocol 
+	</wsdl:documentation> 
+	<soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/> 
+	<!-- Use WS-Addressing v1.0 --> 
+	<wsaw:UsingAddressing wsdl:required="true"/>
+	<wsdl:operation name="UpdateLogicalResourceInventoryItemList">
+			<soap11:operation soapAction="http://group.vodafone.com/contract/vbs/resource/logical-resource-inventory-item/v1/update-list" style="document"/>
+			<wsdl:input name="UpdateLogicalResourceInventoryItemListRequest">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+				-->
+				<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="UpdateLogicalResourceInventoryItemListResponse">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+				-->
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="VodafoneFault">
+				<soap11:fault name="VodafoneFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	<wsdl:operation name="GetLogicalResourceInventoryItemList">
+			<soap11:operation soapAction="http://group.vodafone.com/contract/vbs/resource/logical-resource-inventory-item/v1/get-list" style="document"/>
+			<wsdl:input name="GetLogicalResourceInventoryItemListRequest">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+				-->
+				<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="GetLogicalResourceInventoryItemListResponse">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+				-->
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="VodafoneFault">
+				<soap11:fault name="VodafoneFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	
+</wsdl:definitions>

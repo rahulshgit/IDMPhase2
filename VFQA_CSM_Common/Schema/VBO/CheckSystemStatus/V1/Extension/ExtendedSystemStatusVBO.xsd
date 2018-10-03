@@ -1,0 +1,32 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential --><xsd:schema targetNamespace="http://group.vodafone.com/schema/extension/vbo/technical/check-system-status/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/extension/vbo/technical/check-system-status/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+	<xsd:annotation>
+		<xsd:documentation>
+			<p>Schema Definition for Subscription Extension</p>
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../CommonComponents.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../../CoreComponentType_2p0.xsd"/>
+	<xsd:complexType name="ExtendedOwnerType"/>	
+	<xsd:complexType name="ExtendedRequestorType"/>
+	<xsd:complexType name="ExtendedServiceReferenceType"/>
+	<xsd:complexType name="ExtendedResourceType"/>
+	<xsd:complexType name="ExtendedCustomerAccountReferenceType"/>
+	<xsd:complexType name="ExtendedSystemStatusDetailsType"/>
+	<xsd:complexType name="ExtendedSystemStatusVBOType"/>
+	<xsd:complexType name="ExtendedRelatedSystemStatusType"/>
+	<xsd:complexType name="ExtendedSystemStatusRoleType"/>
+	<xsd:complexType name="ExtendedSystemStatusPartsType"/>
+	<xsd:complexType name="ExtendedSystemStatusNoteType"/>
+	<xsd:complexType name="ExtendedSystemStatusType"/>
+	<xsd:complexType name="ExtendedSystemStatusSpecificationType"/>
+	<xsd:complexType name="ExtendedRequesterType"/>
+	 <xsd:complexType name="ExtendedContactNameType"/>
+	 <xsd:complexType name="ExtendedSystemStatusSupportGroupType"/>
+</xsd:schema>

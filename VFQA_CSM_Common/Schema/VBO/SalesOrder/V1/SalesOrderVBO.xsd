@@ -1,0 +1,785 @@
+<!--Created with Liquid XML 2016 Designer Edition 14.1.5.6733 (https://www.liquid-technologies.com)--><!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://group.vodafone.com/schema/vbo/order/sales-order/v2" version="2.0" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:tns="http://group.vodafone.com/schema/vbo/order/sales-order/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/order/sales-order/v2" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import schemaLocation="../../../CommonComponents.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+    <xsd:import schemaLocation="Extension/ExtendedSalesOrderVBO.xsd" namespace="http://group.vodafone.com/schema/extension/vbo/order/sales-order/v2"/>
+    <xsd:import schemaLocation="../../../CoreComponentType_2p0.xsd" namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2"/>
+    <xsd:import schemaLocation="../../../Meta.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+    <xsd:annotation>
+        <xsd:documentation>Schema definition for SalesOrder.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType name="SalesOrderVBOType">
+        <xsd:annotation>
+            <xsd:documentation>
+				A Sales Order is the mechanism allowing a customer to order products / services.  These products and services are made available to the customer as Product Offerings.  A Sales Order can also contain an order to stop a Subscription to an existing product or instructions to modify it in some way.  Additionally, things like SIM swap, and service configuration changes may be included on a Sales Order.  A Sales Order line item therefore will have a Create action for Product Offerings and a Delete or Modify action for Products, Resources and Services
+			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:ExtendedBaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Details" type="tns:SalesOrderDetailsType" minOccurs="0"/>
+                    <xsd:element name="RelatedSalesOrders" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="RelatedSalesOrder" type="tns:RelatedSalesOrderType" maxOccurs="unbounded"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Roles" type="tns:SalesOrderRolesType" minOccurs="0"/>
+                    <xsd:element name="Parts" type="tns:SalesOrderPartsType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="extvbo:ExtendedSalesOrderVBOType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SalesOrderDetailsType">
+        <xsd:annotation>
+            <xsd:documentation> A type definition for SalesOrder Details</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:SalesOrderCommonDetailsType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedSalesOrderDetailsType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SalesOrderCommonDetailsType">
+        <xsd:sequence>
+            <xsd:element name="Priority" type="cct:NumericType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The priority that should be given to the Sales Order. 
+					For example procurement of a mobile phone may be given high priority so 
+					that it can be fulfilled in near-real-time</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ApprovalDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Approval date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ActivationDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Activation date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="DeletionDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Deletion date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ExpiryDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Expiry date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CompletedDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Completed date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="OrderDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Order date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="PricingDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Pricing date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ScheduledDeliveryDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Scheduled delivery date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="RequestedDeliveryDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Requested delivery date for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="PromisedDeliveryDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Promised delivery date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="RequestedShipDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Requested ship date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ServiceRequiredDateTime" type="cct:DateTimeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Requested ship date time for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="SavedIndicator" type="cct:IndicatorType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>If value is TRUE then the order should be persisted so that it can be retrieved for future reference. Typically requested by the Customer</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CustomerAgreedToPayDepositIndicator" type="cct:IndicatorType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Indicator whether the customer has agreed to pay a deposit up front</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ShipmentInstruction" type="cct:TextType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>These instructions are for external shipping personnel. For example,  you might wish to warn your carriers of a fragile shipment or your customer's receiving hours</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="StatusReason" type="tns:StatusReasonType"/>            
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="RelatedSalesOrderType">
+        <xsd:annotation>
+            <xsd:documentation>A type definition for Related SalesOrder Type</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedRelatedSalesOrderType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SalesOrderPartsType">
+        <xsd:sequence>
+            <xsd:element name="BillToContactPoint" type="tns:SalesOrderContactPointType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Bill to contact points</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CustomerAccount" type="tns:CustomerAccountType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>A representation of an arrangement that a Customer has with an enterprise that provides Products to the Customer</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CustomerAgreement" type="tns:CustomerAgreementType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>An Agreement entered into by a single Customer with Vodafone defining the Terms and Conditions under which the account will be run</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Channel" type="tns:ChannelType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>A route of communication and access enabling a customer or third party to obtain goods or information. These are different business channels for between the CSP and relevant parties. This is distinct from InteractionChannel which represents the physical media by which the CSP communicates with the parties (phone, email, fax, etc.)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FulfilmentOrders" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="FulfilmentOrder" type="tns:FulfilmentOrderType" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>A Collection of Fulfilment Order associated with the sales order</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="SalesQuote" type="tns:SalesQuoteType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>A Sales Quote is a price estimate (quote) or a presentation for sale (offer) of product offerings to a party playing the role of prospect or customer</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ShipToContactPoint" type="tns:SalesOrderContactPointType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Ship to contact points</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="TotalPrice" type="tns:SalesOrderPriceType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The total price of the Sales Order charged to the customer</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="LineItems" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="LineItem" type="tns:LineItemType" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>A single item on a Sales Order relating to one Product Offering, Product, Service or Resource. Each Order Line can have a ShipTo and BillTo party reference. Each Order Line can have its own shipping and billing address which might be different from the actual Sales Order shipping and billing address. The price of individual Sales Order Line is captured at the Product Offering entity level.</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Extension" type="extvbo:ExtendedSalesOrderPartsType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SalesOrderContactPointType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:ContactPointType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedSalesOrderContactPointType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ChannelType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedChannelType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SalesOrderRolesType">
+        <xsd:sequence>
+            <xsd:element name="Agents" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Agent" type="tns:AgentType" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>Agent for the sales order</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Requestor" type="tns:RequestorType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Requestor for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Customer" type="tns:CustomerType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Owner for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="BillToParty" type="tns:CommonPartyType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Bill to party for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ShipToParty" type="tns:CommonPartyType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Ship To party for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            
+            <xsd:element name="Subscriber" type="tns:SubscriberRoleType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The Subscriber of the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Extension" type="extvbo:ExtendedSalesOrderRolesType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AgentType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedAgentType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CommonPartyType">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="Individual" type="tns:IndividualType" minOccurs="0"/>
+                <xsd:element name="Organisation" type="tns:OrganisationType" minOccurs="0"/>
+            </xsd:choice>
+            <xsd:element name="Extension" type="extvbo:ExtendedCommonPartyType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedCustomerType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="RequestorType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedRequestorType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerAccountType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedCustomerAccountType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerAgreementType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="AcceptedByCustomer" type="cct:IndicatorType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="extvbo:ExtendedCustomerAgreementType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SalesQuoteType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedSalesQuoteType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SalesOrderPriceType">
+        <xsd:sequence>
+            <xsd:element name="Type" type="cct:CodeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The type of charge. For example a one time charge, a recurring charge or a charge based on usage.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Text" type="cct:TextType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Texts that describe the price for different purposes</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FrequencyCode" type="cct:CodeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The frequency of the ProdOfferPriceCharge - relevant only for recurring charges. Example monthly,yearly,quarterly</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="OriginalPrice" type="cct:AmountType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The original price of the ProdOfferPriceCharge - before any adjustments or discounts.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="FinalPrice" type="cct:AmountType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The final price calculated after any adjustments or discounts for the sales order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Extension" type="extvbo:ExtendedPriceType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SalesQuoteLineItemType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedSalesQuoteLineItemType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="LineItemType">
+        <xsd:complexContent>
+            <xsd:extension base="tns:LineItemDetailsType">
+                <xsd:sequence>
+                    <!-- 					<xsd:element name="Details" type="tns:LineItemDetailsType" minOccurs="0"/>	 -->
+                    <xsd:element name="RelatedLineItems" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="RelatedLineItem" type="tns:RelatedLineItemType" minOccurs="1" maxOccurs="unbounded"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ProductOfferings" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="ProductOffering" type="tns:ProductOfferingType" maxOccurs="unbounded">
+                                    <xsd:annotation>
+                                        <xsd:documentation>
+								The presentation of one or more Product Specifications to the marketplace for sale, rental, or lease for a Product Offering Price. A Product Offering may target one or more Market Segments, be included in one or more Product Catalogue, presented in support of one or more Product Strategies, and made available in one or more Places. Product Offering may represent a simple offering of a single Product Specification or could represent a bundling of one or more other Product Offering
+							</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Subscription" type="tns:SubscriptionType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+								A Subscription represents the registration of a customer/subscriber/user to an instance of a product or service. All Subscriptions are grouped through a Service Account Subscriptions for a unique CTN or MSISDN are grouped through the Subscription Group Class, Subtype CTN Group
+							</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="BillToParty" type="tns:CommonPartyType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+								Bill To Party reference
+							</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="BillToContactPoint" type="tns:SalesOrderContactPointType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Bill to contact point</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ShipToParty" type="tns:CommonPartyType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+								Ship To Party reference
+							</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ShipToContactPoints" type="tns:SalesOrderContactPointType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Ship to contact point</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="CustomerAccount" type="tns:CustomerAccountType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+								A representation of an arrangement that a Customer has with an enterprise that provides Products to the Customer
+							</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="FulfilmentOrder" type="tns:FulfilmentOrderType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+								Individual lines related to individual fulfilment Order
+							</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="SalesQuoteLineItem" type="tns:SalesQuoteLineItemType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+								Individual lines relate to individual product Offerings or to components of a Solution Offering
+							</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="OneOffPrices" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="OneOffPrice" type="tns:OneOffPriceType" maxOccurs="unbounded">
+                                    <xsd:annotation>
+                                        <xsd:documentation>
+								One-off price for this sales order line
+							</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="RecurringPrices" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="RecurringPrice" type="tns:RecurringPriceType" maxOccurs="unbounded">
+                                    <xsd:annotation>
+                                        <xsd:documentation>
+								Recurring price for this sales order line
+							</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Agent" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="IDs">
+                                    <xsd:annotation>
+                                        <xsd:documentation>The set of Identifiers for the VBO or component. These should be used to uniquely identifier instances of the business object or component.</xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="ID" type="cct:IDType" maxOccurs="unbounded">
+                                                <xsd:annotation>
+                                                    <xsd:documentation>The identifier of the business object or component. This should be used to identify instances of a business object or component. Where the component is being used to reference another business object then this is the primary key of the target object. Use the attributes @schemeName and @schemeAgencyName to identify type of Identifier.</xsd:documentation>
+                                                </xsd:annotation>
+                                            </xsd:element>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Payment" type="tns:PaymentType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="extvbo:ExtendedLineItemType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OneOffPriceType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:OneOffPriceType">
+                <xsd:sequence>
+                    <xsd:element name="Characteristics" type="tns:CharacteristicsType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="extvbo:ExtendedOneOffPriceType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="RecurringPriceType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:RecurringPriceType">
+                <xsd:sequence>
+                    <xsd:element name="Characteristics" type="tns:CharacteristicsType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="extvbo:ExtendedRecurringPriceType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="RelatedLineItemType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedRelatedLineItemType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="LineItemDetailsType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Priority" type="cct:NumericType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>The priority that should be given to the Sales Order. 
+					For example procurement of a mobile phone may be given high priority so 
+					that it can be fulfilled in near-real-time</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ApprovalDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Approval date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ActivationDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Activation date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="DeletionDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Deletion date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ExpiryDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Expiry date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="CompletedDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Completed date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="OrderDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Order date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="PricingDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Pricing date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ScheduledDeliveryDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Scheduled delivery date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="RequestedDeliveryDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Requested delivery date for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="PromisedDeliveryDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Promised delivery date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="RequestedShipDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Requested ship date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ServiceRequiredDateTime" type="cct:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Requested ship date time for the sales order</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="SavedIndicator" type="cct:IndicatorType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>If value is TRUE then the order should be persisted so that it can be retrieved for future reference. Typically requested by the Customer</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="CustomerAgreedToPayDepositIndicator" type="cct:IndicatorType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Indicator whether the customer has agreed to pay a deposit up front</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ShipmentInstruction" type="cct:TextType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>These instructions are for external shipping personnel. For example,  you might wish to warn your carriers of a fragile shipment or your customer's receiving hours</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="SubstitutionAllowedIndicator" type="cct:IndicatorType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+								Indicates whether customer allows substitutes for this order line
+							</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="Quantity" type="cct:QuantityType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>The quantity used for calculating the price</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductOfferingType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedProductOfferingType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SubscriptionType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedSubscriptionType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="FulfilmentOrderType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedFulfilmentOrderType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="IndividualType">
+        <xsd:annotation>
+            <xsd:documentation>Individual Role Type definition</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:IndividualRoleType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedIndividualType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OrganisationType">
+        <xsd:annotation>
+            <xsd:documentation>Organisation Role Type definition</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:OrganisationPartyType">
+                <xsd:sequence>
+                    <xsd:element name="Preferences" type="tns:PreferencesType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="extvbo:ExtendedOrganisationType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PreferencesType">
+        <xsd:annotation>
+            <xsd:documentation>Preferences of the customer</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Preference" type="cmn:PreferenceType" maxOccurs="unbounded"/>
+            <xsd:element name="Extension" type="extvbo:ExtendedPreferencesType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CharacteristicsType">
+        <xsd:sequence>
+            <xsd:element name="CharacteristicsValue" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>The set of characteristics for the specification.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="cmn:CharactersticsValueType">
+                            <xsd:attribute name="characteristicName" type="xsd:string" use="optional">
+                                <xsd:annotation>
+                                    <xsd:documentation>The name of the characteristic</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:attribute>
+                            <xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+                                <xsd:annotation>
+                                    <xsd:documentation>The @actionCode attribute is used within a modification operation to indicate the action (add, update, delete) intended on a component.</xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:attribute>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PaymentType">
+        <xsd:annotation>
+            <xsd:documentation>Payment details associated with a line item</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="IDs" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The set of Identifiers for the VBO or component. These should be used to uniquely identifier instances of the business object or component.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ID" type="cct:IDType" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>The identifier of the business object or component. This should be used to identify instances of a business object or component. Where the component is being used to reference another business object then this is the primary key of the target object. Use the attributes @schemeName and @schemeAgencyName to identify type of Identifier.</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Amount" type="cct:AmountType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">The payment amount for the line item (applicable for one-off)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="TaxAmount" type="cct:AmountType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">The tax amount for the line item</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="BillingAccountID" type="cct:IDType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">The ID of the Billing Account</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Extension" type="extvbo:ExtendedPaymentType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>    
+    <xsd:complexType name="SubscriberRoleType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                 	<xsd:element name="Extension" type="extvbo:ExtendedSubscriberRoleType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="StatusReasonType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="ReasonCode" type="cct:CodeType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The code describing why the transition occurred.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="ReasonText" type="cct:TextType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The reason code describing why the transition occurred.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

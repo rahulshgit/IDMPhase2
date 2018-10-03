@@ -1,0 +1,34 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/product/product-offering/v1" version="1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbm/product/product-offering/v1" xmlns:vbo="http://group.vodafone.com/schema/vbo/product/product-offering/v1" xmlns:ns0="http://group.vodafone.com/schema/common/v1">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Vodafone Business Message Schema Definition for ProductOffering</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   <!--===================== Imports ============================-->
+   <xsd:import namespace="http://group.vodafone.com/schema/vbo/product/product-offering/v1" schemaLocation="ProductOfferingVBO.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../CommonComponents.xsd"/>
+   <xsd:complexType name="GetProductOfferingListVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetProductOfferingList request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ns0:QueryType"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:element name="GetProductOfferingListVBMRequest" type="tns:GetProductOfferingListVBMRequestType"/>
+   <xsd:complexType name="GetProductOfferingListVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetProductOfferingList response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ProductOfferingVBO" type="vbo:ProductOfferingVBOType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="GetProductOfferingListVBMResponse" type="tns:GetProductOfferingListVBMResponseType"/>
+</xsd:schema>

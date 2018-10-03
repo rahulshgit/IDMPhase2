@@ -1,0 +1,519 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://group.vodafone.com/schema/vbo/service/balance-topup-request/v1" version="1.0" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/service/balance-topup-request/v1" xmlns:tns="http://group.vodafone.com/schema/vbo/service/balance-topup-request/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:import schemaLocation="../../../CommonComponents.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+   <xsd:import schemaLocation="Extension/ExtendedBalanceTopupRequestVBO.xsd" namespace="http://group.vodafone.com/schema/extension/vbo/service/balance-topup-request/v1"/>
+   <xsd:import schemaLocation="../../../CoreComponentType_2p0.xsd" namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2"/>
+   <xsd:import schemaLocation="../../../Meta.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+   <xsd:annotation>
+      <xsd:documentation>Schema definition for Balance Topup Request.</xsd:documentation>
+   </xsd:annotation>
+   <xsd:complexType name="BalanceTopupRequestVBOType">
+      <xsd:annotation>
+         <xsd:documentation>Balance Topup Request is an Entity Service, which
+				provides the capabilities to perform credit on customer’s account
+				balance.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:ExtendedBaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Details" type="tns:BalanceTopupRequestDetailsType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The core set of attributes for a Balance Topup
+								Request</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="RelatedParties" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The set of involvement roles associated with
+								the Balance Topup Request</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="RelatedParty" type="cmn:RelatedPartyWithContactPersonType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>The involvement role associated with the
+											Balance Topup Request.</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="Extension" type="extvbo:ExtendedRelatedPartyType" minOccurs="0"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="Parts" type="tns:BalanceTopupRequestPartsType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The set of components that define a Balance
+								Topup Request</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedBalanceTopupRequestVBOType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="BalanceTopupRequestDetailsType">
+      <xsd:annotation>
+         <xsd:documentation>A type definition for Balance Topup Request
+				Details</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="Amount" type="cct:AmountType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>An amount, usually of money, that represents the
+						actual price paid by a Customer for a Topup. This may differ from
+						a one Topup to other due to promotions, discretionary actions etc.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedBalanceTopupRequestDetailsType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="BalanceTopupRequestPartsType">
+      <xsd:sequence>
+         <xsd:element name="Channel" type="tns:ChannelType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation xml:lang="EN">The details regarding
+						the channel from where the Payment is taking place.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="PaymentMethod" type="tns:PaymentMethodType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation xml:lang="EN">The method by which
+						party provides payment, for example cash, credit, transfer etc.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="CustomerAccount" type="tns:CustomerAccountType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation xml:lang="EN">An arrangement that a
+						customer has with an enterprise that provides products to the
+						customer and collects Applied CustomerBillingCustomer Billing Rate
+						that are used to produce CustomerBillCustomer Bill.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ServiceBalance" type="tns:ServiceBalanceType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation xml:lang="EN">The balance available
+						on Customers Account. For a Balance Topup Request service this
+						would be the amount of credit available.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Product" type="tns:ProductType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation xml:lang="EN">A Product represents
+						the registration of a consumer/subscriber/user to an instance of a
+						service.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedBalanceTopupRequestPartsType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ChannelType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedChannelType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="PaymentMethodType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:SpecificationType">
+            <xsd:sequence>
+               <xsd:element name="BankPayments" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>Defines the set of bank details for the
+								Payment.</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="BankPayment" type="tns:BankPaymentType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>Details of how the customer wishes to make
+											Bank Payments</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="CardPayments" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>Defines the set of card details for the
+								Payment.</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="CardPayment" type="tns:CardPaymentType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>Details of how the customer wishes to make
+											Card Paymentss</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="ChequePayments" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>Defines the set of checque payment details.</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="ChequePayment" type="tns:ChequePaymentType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>Details of how the customer wishes to make
+											Cheque Payments</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="ThirdPartyPayments" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>Defines the set of third party payment
+								details.</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="ThirdPartyPayment" type="tns:ThirdPartyPaymentType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>Details of how the customer wishes to make
+											Third Party Payments</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="DigitalWalletPayments" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>Defines the set of digital wallet payment
+								details.</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="DigitalWalletPayment" type="tns:DigitalWalletPaymentType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>Details of how the customer wishes to make
+											Digital Wallet Payments</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="OtherPayments" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>Defines the set of other payment details.</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="OtherPayment" type="tns:OtherPaymentType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>Details of how the customer wishes to make
+											Digital Wallet Payments</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedPaymentMethodType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="BankPaymentType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Requestor" type="tns:RequestorType" maxOccurs="1" minOccurs="0"/>
+               <xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The period through which the bank account
+								payment is valid.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="AccountNumber" type="cct:NumericType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The bank account number</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="SortCode" type="cct:NumericType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The bank account sort code</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="DirectDebitVerified" type="cct:IndicatorType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>Indicates whether the Direct Debit mandate was
+								already verified</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="IBAN" type="cct:NumericType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The bank account IBAN</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="BIC" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The bank account BIC code (SWIFT code)</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="BankName" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation xml:lang="EN">The name of the
+								organisation/bank where the account is registered.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedBankPaymentType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="RequestorType">
+      <xsd:sequence>
+         <xsd:element name="FirstName" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The primary chosen name. Also known as given
+						name.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="MiddleName" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The person middle name.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="LastName" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The person Last name.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedRequestorType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="CardPaymentType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Requestor" type="tns:RequestorType" maxOccurs="1" minOccurs="0"/>
+               <xsd:element name="CardNumber" type="cct:NumericType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The number on the face of the card.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="HolderName" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The name of the individual or organisation on
+								the card.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="CardType" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The type of card, e.g. credit, debit, etc.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="ExpiryMonth" type="cct:NumericType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The month in which the card expires.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="ExpiryYear" type="cct:NumericType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The year in which the card expires.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="CVV2" type="cct:NumericType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The CVV2 number of the card.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The period through which the card payment is
+								valid.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Brand" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The brand of the card, e.g. Visa, Mastercard,
+								etc.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Secure3DVerified" type="cct:IndicatorType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>Whether the 3D Secure verification was done
+								for this card</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Token" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation xml:lang="EN">Security token
+								generated by a Payment Gateway</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedCardPaymentType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="ChequePaymentType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Requestor" type="tns:RequestorType" maxOccurs="1" minOccurs="0"/>
+               <xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The period through which the cheque payment
+								method is valid.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="OwnerName" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The name of the individual or organisation
+								responsible for the cheque payment.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Number" type="cct:NumericType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The number of the cheque.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="BankName" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation xml:lang="EN">The name of the
+								organisation/bank where the account is registered.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedChequePaymentType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="ThirdPartyPaymentType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Requestor" type="tns:RequestorType" maxOccurs="1" minOccurs="0"/>
+               <xsd:element name="PartyType" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation xml:lang="EN">A classification of
+								the third party which collects the money for service provider,
+								such as bank transfer, payment tool.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="AccountName" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The account, which is used in the third party,
+								used to pay. If bank transfer is used here,
+								paymentAccountinThirdParty is BankAccount. If paymet tool (such
+								as PayPal) is used here, paymentAccountInThirdPart is the
+								payment tool (such as PayPal) account.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The valid period for the PaymentMethod.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedThirdPartyPaymentType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="DigitalWalletPaymentType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Requestor" type="tns:RequestorType" maxOccurs="1" minOccurs="0"/>
+               <xsd:element name="PartyType" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation xml:lang="EN">A classification of
+								the third party which collects the money for service provider,
+								such as bank transfer, payment tool.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="AccountName" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The account, which is used in the third party,
+								used to pay. If bank transfer is used here,
+								paymentAccountinThirdParty is BankAccount. If paymet tool (such
+								as PayPal) is used here, paymentAccountInThirdPart is the
+								payment tool (such as PayPal) account.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The valid period for the PaymentMethod.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedDigitalWalletPaymentType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="OtherPaymentType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Requestor" type="tns:RequestorType" maxOccurs="1" minOccurs="0"/>
+               <xsd:element name="Specification" type="tns:PaymentSpecificationType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation xml:lang="en">A Specification for
+								a Payment</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedOtherPaymentType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="PaymentSpecificationType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:SpecificationType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedPaymentSpecificationType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerAccountType">
+      <xsd:annotation>
+         <xsd:documentation>Indicates the account for which the balance was
+				queried</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedCustomerAccountType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="ServiceBalanceType">
+      <xsd:annotation>
+         <xsd:documentation>Indicates the account for which the balance was
+				queried</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedServiceBalanceType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="ProductType">
+      <xsd:annotation>
+         <xsd:documentation>Indicates the account for which the balance was
+				queried</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedProductType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+</xsd:schema>

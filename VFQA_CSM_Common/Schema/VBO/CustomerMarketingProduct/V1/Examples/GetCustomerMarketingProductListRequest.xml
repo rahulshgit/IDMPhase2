@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<vbm:GetCustomerMarketingProductListVBMRequest xmlns:vbm="http://group.vodafone.com/schema/vbm/customer/customer-marketing-product/v1" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+   <cmn:StartIndex>0</cmn:StartIndex>
+   <cmn:IndexPerPage>10</cmn:IndexPerPage>
+   <cmn:Criteria>
+      <cmn:QueryExpression>
+         <cmn:QueryExpression LogicalOperatorCode="OR">
+            <cmn:ValueExpression QueryOperatorCode="CONTAINS" Path="/CustomerMarketingProductVBO/Type">
+               <cmn:Value>Proactive</cmn:Value>
+            </cmn:ValueExpression>
+            <cmn:ValueExpression QueryOperatorCode="LIKE" Path="/CustomerMarketingProductVBO/Type">
+               <cmn:Value>Dynamic</cmn:Value>
+            </cmn:ValueExpression>
+         </cmn:QueryExpression>
+      </cmn:QueryExpression>
+   </cmn:Criteria>
+</vbm:GetCustomerMarketingProductListVBMRequest>

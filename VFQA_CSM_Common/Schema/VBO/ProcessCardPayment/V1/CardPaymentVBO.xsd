@@ -1,0 +1,270 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://group.vodafone.com/schema/vbo/payment/process-card-payment/v2" version="1.0" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:tns="http://group.vodafone.com/schema/vbo/payment/process-card-payment/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/payment/process-card-payment/v2" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+    <xsd:import schemaLocation="../../../CommonComponents.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+    <xsd:import schemaLocation="Extension/ExtendedCardPaymentVBO.xsd" namespace="http://group.vodafone.com/schema/extension/vbo/payment/process-card-payment/v2"/>
+    <xsd:import schemaLocation="../../../CoreComponentType_2p0.xsd" namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2"/>
+    <xsd:import schemaLocation="../../../Meta.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+    <xsd:annotation>
+        <xsd:documentation>Schema definition for CardPayment.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType name="CardPaymentVBOType">
+        <xsd:annotation>
+            <xsd:documentation>The Card Payment service is an "Entity" service that provides capabilities to handle a range of card payment types for Vodafone Customers. As an "Entity" service it provides operations to authorise, settle, refund, reserve and accept  payments made with a set of different card types.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:ExtendedBaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Details" type="tns:CardPaymentDetailsType" minOccurs="0"/>
+                    <xsd:element name="RelatedCardPayments" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="CardPayment" type="tns:RelatedCardPaymentType" maxOccurs="unbounded"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Roles" type="tns:CardPaymentRolesType" minOccurs="0"/>
+                    <xsd:element name="Parts" type="tns:CardPaymentPartsType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="extvbo:ExtendedCardPaymentVBOType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CardPaymentDetailsType">
+        <xsd:annotation>
+            <xsd:documentation>A type definition for CardPayment Details</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ActionTypeCode" type="cct:CodeType" minOccurs="0"/>
+            <xsd:element name="ResponseCode" type="cct:CodeType" minOccurs="0"/>
+            <xsd:element name="AddressVerifiedCode" type="cct:CodeType" minOccurs="0"/>
+            <xsd:element name="PaymentSystemCode" type="cct:CodeType" minOccurs="0"/>
+            <xsd:element name="SecurityCheckResponseCode" type="cct:CodeType" minOccurs="0"/>
+            <xsd:element name="ExclusiveIndicator" type="cct:IndicatorType" minOccurs="0"/>
+            <xsd:element name="DeclarationRequiredIndicator" type="cct:IndicatorType" minOccurs="0"/>
+            <xsd:element name="FinalIndicator" type="cct:IndicatorType" minOccurs="0"/>
+            <xsd:element name="RequestDateTime" type="cct:DateTimeType" minOccurs="0"/>
+            <xsd:element name="ProcessingDateTime" type="cct:DateTimeType" minOccurs="0"/>
+            <xsd:element name="ConfirmationNumber" type="cct:IDType" minOccurs="0"/>
+            <xsd:element name="TraceNumber" type="cct:IDType" minOccurs="0"/>
+            <xsd:element name="AllocationAmount" type="cct:AmountType" minOccurs="0"/>
+            <xsd:element name="DueDateTime" type="cct:DateTimeType" minOccurs="0"/>
+            <xsd:element name="ImmediateTransferIndicator" type="cct:IndicatorType" minOccurs="0"/>
+            <xsd:element name="HighValueIndicator" type="cct:IndicatorType" minOccurs="0"/>
+            <xsd:element name="RedirectionURL" type="cct:URIType" minOccurs="0"/>
+            <xsd:element name="Token" type="cct:TextType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">Security token generated by a Payment Gateway</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="TokenType" type="cct:CodeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">The type of the security token generated by the Payment Gateway (e.g. Permanent/Temporary)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CardSaveIndicator" type="cct:IndicatorType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">The card save indicator to highlight if the customer wanted to save the card details</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="MerchantData" type="cct:TextType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">Any additional data which are returned in the redirect from the payment gateway to the merchant’s page. Such data may be used to keep continuity of the process in the e-shop, they must be BASE64 encoded. Maximum length for encoding is 255 characters</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Extension" type="extvbo:ExtendedCardPaymentDetailsType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="RelatedCardPaymentType">
+        <xsd:annotation>
+            <xsd:documentation>A type definition for Related CardPayment Type</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="TraceNumber" type="cct:IDType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="extvbo:ExtendedRelatedCardPaymentType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CardPaymentRolesType">
+        <xsd:sequence>
+            <xsd:element name="Payer" type="tns:PayerType" minOccurs="0"/>
+            <xsd:element name="Receiver" type="tns:ReceiverType" minOccurs="0"/>
+            <xsd:element name="ThirdPartyAgency" type="tns:ThirdPartyAgencyType" minOccurs="0"/>
+            <xsd:element name="WorkforceAgent" type="tns:WorkforceAgentType" minOccurs="0"/>
+            <xsd:element name="Merchant" type="tns:MerchantType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">A reference to the merchant in the transaction, who can be e-shop operator, the receiver of payments from payers.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Extension" type="extvbo:ExtendedCardPaymentRolesType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CardPaymentPartsType">
+        <xsd:sequence>
+            <xsd:element name="Channel" type="tns:ChannelType" minOccurs="0"/>
+            <xsd:element name="PaymentCard" type="tns:PaymentCardType" minOccurs="0"/>
+            <xsd:element name="Request" type="tns:RequestType" minOccurs="0"/>
+            <xsd:element name="Authorisation" type="tns:AuthorisationType" minOccurs="0"/>
+            <xsd:element name="Charge" type="tns:ChargeType" minOccurs="0"/>
+            <xsd:element name="LineItems" type="tns:LineItemsType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">A set of items for a payment. This structure is to capture either SalesOrder Items or Basket items with the intention that the items will be displayed on the 3rd Party gateway.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Extension" type="extvbo:ExtendedCardPaymentPartsType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="LineItemsType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="EN">A set of items for a payment. This structure is to capture either SalesOrder Items or Basket items with the intention that the items will be displayed on the 3rd Party gateway.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="LineItem" type="tns:LineItemType" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">A single item for a payment. This structure is to capture either SalesOrder Item or Basket item with the intention that the item will be displayed on the 3rd Party gateway.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="Extension" type="extvbo:ExtendedLineItemsType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="LineItemType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="EN">A single item for a payment. This structure is to capture either SalesOrder Item or Basket item with the intention that the item will be displayed on the 3rd Party gateway.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Quantity" type="cct:QuantityType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">Quantity of the line item, which specify the number of line item per sales order or bucket.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="Amount" type="cct:AmountType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">Total price for the quantity of the line items in hundredths of the currency. The item currency of all the requests will be automatically used as the price.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="Extension" type="extvbo:ExtendedLineItemType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PayerType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedPayerType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ReceiverType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedReceiverType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ThirdPartyAgencyType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedThirdPartyAgencyType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WorkforceAgentType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedWorkforceAgentType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="MerchantType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="EN">A reference to the merchant in the transaction, which can be e-shop operator, the receiver of payments from payers.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedMerchantType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ChannelType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedChannelType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PaymentCardType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Brand" type="cct:TextType" minOccurs="0"/>
+                    <xsd:element name="CVV2" type="cct:TextType" minOccurs="0"/>
+                    <xsd:element name="ExpiryMonth" type="cct:DateType" minOccurs="0"/>
+                    <xsd:element name="ExpiryYear" type="cct:DateType" minOccurs="0"/>
+                    <xsd:element name="HolderName" type="cct:TextType" minOccurs="0"/>
+                    <xsd:element name="HolderFirstName" type="cct:TextType" minOccurs="0"/>
+                    <xsd:element name="HolderLastName" type="cct:TextType" minOccurs="0"/>
+                    <xsd:element name="Address" type="cmn:PostalAddressType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="extvbo:ExtendedPaymentCardType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="RequestType">
+        <xsd:sequence>
+            <xsd:element name="Amount" type="cct:AmountType" minOccurs="0"/>
+            <xsd:element name="ConvertedAmount" type="cct:AmountType" minOccurs="0"/>
+            <xsd:element name="PostDateTime" type="cct:DateTimeType" minOccurs="0"/>
+            <xsd:element name="Currency" type="tns:CurrencyType" minOccurs="0"/>
+            <xsd:element name="Extension" type="extvbo:ExtendedRequestType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CurrencyType">
+        <xsd:sequence>
+            <xsd:element name="Code" type="cct:CodeType" minOccurs="0"/>
+            <xsd:element name="ExchangeRate" type="cct:NumericType" minOccurs="0"/>
+            <xsd:element name="Extension" type="extvbo:ExtendedCurrencyType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AuthorisationType">
+        <xsd:sequence>
+            <xsd:element name="Amount" type="cct:AmountType" minOccurs="0"/>
+            <xsd:element name="DateTime" type="cct:DateTimeType" minOccurs="0"/>
+            <xsd:element name="VoiceIndicator" type="cct:IndicatorType" minOccurs="0"/>
+            <xsd:element name="RecurringIndicator" type="cct:IndicatorType" minOccurs="0"/>
+            <xsd:element name="Extension" type="extvbo:ExtendedAuthorisationType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ChargeType">
+        <xsd:sequence>
+            <xsd:element name="Amount" type="cct:AmountType" minOccurs="0"/>
+            <xsd:element name="DateTime" type="cct:DateTimeType" minOccurs="0"/>
+            <xsd:element name="Extension" type="extvbo:ExtendedChargeType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,222 @@
+<!--
+	(c) Vodafone Group Services Limited. All rights reserved.
+	This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+	Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+	the prior written consent of Vodafone Group Services Limited.
+	The information in this document is subject to change without notice.
+	All trademarks acknowledged.
+	Vodafone Group Services Limited - Confidential
+--><wsdl:definitions name="BalanceTopupRequest" targetNamespace="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wssem="http://lsdis.cs.uga.edu/projects/meteor-s/wsdl-s/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vbm="http://group.vodafone.com/schema/vbm/service/balance-topup-request/v1" xmlns:vbs="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1" xmlns:vfo="http://group.vodafone.com/contract/vfo/fault/v1" xmlns:vho="http://group.vodafone.com/contract/vho/header/v1">
+   <wsdl:documentation>version:1.0.0</wsdl:documentation>
+   
+   <!--Show support for WS-Policy and the attachment of policy assertions-->
+   <wsp:UsingPolicy wsdl:Required="true"/>
+   
+   <!--The categorisation of the service as defined by the service architecture-->
+   <wssem:category name="EntityService" taxonomyURI="http://group.vodafone.com/iCoE/Taxonomy.owl#"/>
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1" elementFormDefault="qualified">
+         <xsd:import namespace="http://group.vodafone.com/schema/vbm/service/balance-topup-request/v1" schemaLocation="../../../../Schema/VBO/BalanceTopupRequest/V1/BalanceTopupRequestVBM.xsd"/>
+         <xsd:import namespace="http://group.vodafone.com/contract/vfo/fault/v1" schemaLocation="../../../../Schema/Fault.xsd"/>
+         <xsd:import namespace="http://group.vodafone.com/contract/vho/header/v1" schemaLocation="../../../../Schema/Header.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   
+   <!--Service Operations Message Structures-->
+   
+   <wsdl:message name="CreateBalanceTopupRequestReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the CreateBalanceTopupRequest operation</wsdl:documentation>
+      <wsdl:part name="BalanceTopupRequestDetails" element="vbm:CreateBalanceTopupRequestVBMRequest"/>
+   </wsdl:message>
+   
+   <wsdl:message name="CreateBalanceTopupRequestRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the CreateBalanceTopupRequest operation</wsdl:documentation>
+      <wsdl:part name="BalanceTopupRequestDetails" element="vbm:CreateBalanceTopupRequestVBMResponse"/>
+   </wsdl:message>
+   
+      <wsdl:message name="GetBalanceTopupRequestListReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the GetMarketingCampaignList operation</wsdl:documentation>
+      <wsdl:part name="BalanceTopupRequestCriteria" element="vbm:GetBalanceTopupRequestListVBMRequest"/>
+   </wsdl:message>
+   
+   <wsdl:message name="GetBalanceTopupRequestListRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the GetBalanceTopupRequestList operation</wsdl:documentation>
+      <wsdl:part name="BalanceTopupRequestList" element="vbm:GetBalanceTopupRequestListVBMResponse"/>
+   </wsdl:message>
+   
+    <wsdl:message name="SyncBalanceTopupRequestReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the SyncBalanceTopupRequest operation</wsdl:documentation>
+      <wsdl:part name="BalanceTopupRequestDetails" element="vbm:SyncBalanceTopupRequestVBMRequest"/>
+   </wsdl:message>
+   
+   <wsdl:message name="SyncBalanceTopupRequestRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the SyncBalanceTopupRequest operation</wsdl:documentation>
+      <wsdl:part name="BalanceTopupRequestDetails" element="vbm:SyncBalanceTopupRequestVBMResponse"/>
+   </wsdl:message>
+   
+   <wsdl:message name="NotifyBalanceTopupRequestReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the NotifyBalanceTopupRequest operation</wsdl:documentation>
+      <wsdl:part name="BalanceTopupRequestCriteria" element="vbm:NotifyBalanceTopupRequestVBMRequest"/>
+   </wsdl:message>
+   
+   <!--Supporting Messages-->
+   
+  
+   
+    <wsdl:message name="VodafoneFault">
+      <wsdl:documentation>This message is used for propagating Error Context and Error Message</wsdl:documentation>
+      <wsdl:part name="VodafoneFault" element="vfo:Fault"/>
+   </wsdl:message>
+   
+     <wsdl:message name="MessageHeaders">
+      <wsdl:documentation>This message is used as the header for SOAP request</wsdl:documentation>
+      <wsdl:part name="Source" element="vho:Source"/>
+      <wsdl:part name="Correlation" element="vho:Correlation"/>
+      <wsdl:part name="Cache" element="vho:Cache"/>
+      <wsdl:part name="ServiceDocumentation" element="vho:ServiceDocumentation"/>
+      <wsdl:part name="ResultStatus" element="vho:ResultStatus"/>
+      <wsdl:part name="Destination" element="vho:Destination"/>
+      <wsdl:part name="RouteInfo" element="vho:RouteInfo"/>
+      <wsdl:part name="QueryResult" element="vho:QueryResult"/>
+   </wsdl:message>
+   
+   <wsdl:portType name="BalanceTopupRequestInterface">
+      <wsdl:documentation>This interface contains operations for the BalanceTopupRequest API</wsdl:documentation>
+      <wsdl:operation name="CreateBalanceTopupRequest">
+         <wsdl:documentation>This operation is used to CreateBalanceTopupRequest</wsdl:documentation>
+         <wsdl:input name="CreateBalanceTopupRequestRequest" message="vbs:CreateBalanceTopupRequestReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1/create"/>
+         <wsdl:output name="CreateBalanceTopupRequestResponse" message="vbs:CreateBalanceTopupRequestRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>
+      
+       <wsdl:operation name="GetBalanceTopupRequestList">
+         <wsdl:documentation>This operation is used to GetBalanceTopupRequestList</wsdl:documentation>
+         <wsdl:input name="GetBalanceTopupRequestListRequest" message="vbs:GetBalanceTopupRequestListReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1/get-list"/>
+         <wsdl:output name="GeBalanceTopupRequestListResponse" message="vbs:GetBalanceTopupRequestListRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>
+      
+       <wsdl:operation name="SyncBalanceTopupRequest">
+         <wsdl:documentation>This operation is used to SyncBalanceTopupRequest</wsdl:documentation>
+         <wsdl:input name="SyncBalanceTopupRequestRequest" message="vbs:SyncBalanceTopupRequestReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1/sync"/>
+         <wsdl:output name="SyncBalanceTopupRequestResponse" message="vbs:SyncBalanceTopupRequestRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>   
+   </wsdl:portType>
+   
+   <wsdl:portType name="BalanceTopupRequestEventInterface">
+      <wsdl:documentation>This interface contains operations for the BalanceTopupRequest Event API</wsdl:documentation>
+      <wsdl:operation name="NotifyBalanceTopupRequest">
+         <wsdl:documentation>This operation is used to NotifyBalanceTopupRequest</wsdl:documentation>
+         <wsdl:input name="NotifyBalanceTopupRequestRequest" message="vbs:NotifyBalanceTopupRequestReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1/notify"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   
+   <wsdl:binding name="BalanceTopupRequestInterface-SOAP11-HTTPBinding" type="vbs:BalanceTopupRequestInterface">
+      <wsdl:documentation>This binding supports a SOAP 1.1 message over an HTTP/1.1 protocol</wsdl:documentation>
+      <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <!--Use WS-Addressing v1.0-->
+      <wsaw:UsingAddressing wsdl:required="true"/>
+      
+      <wsdl:operation name="CreateBalanceTopupRequest">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1/create" style="document"/>
+         <wsdl:input name="CreateBalanceTopupRequestRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="CreateBalanceTopupRequestResponse">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      
+      
+    <wsdl:operation name="GetBalanceTopupRequestList">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1/get-list" style="document"/>
+         <wsdl:input name="GetBalanceTopupRequestListRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="GeBalanceTopupRequestListResponse">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="QueryResult" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+     
+       <wsdl:operation name="SyncBalanceTopupRequest">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1/sync" style="document"/>
+         <wsdl:input name="SyncBalanceTopupRequestRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="SyncBalanceTopupRequestResponse">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      
+   </wsdl:binding>
+   
+   <wsdl:binding name="BalanceTopupRequestEventInterface-SOAP11-HTTPBinding" type="vbs:BalanceTopupRequestEventInterface">
+      <wsdl:documentation>This binding supports a SOAP 1.1 message over an HTTP/1.1 protocol</wsdl:documentation>
+      <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <!--Use WS-Addressing v1.0-->
+      <wsaw:UsingAddressing wsdl:required="true"/>
+      
+      <wsdl:operation name="NotifyBalanceTopupRequest">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/service/balance-topup-request/v1/notify" style="document"/>
+         <wsdl:input name="NotifyBalanceTopupRequestRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+      </wsdl:operation>
+   </wsdl:binding>
+</wsdl:definitions>

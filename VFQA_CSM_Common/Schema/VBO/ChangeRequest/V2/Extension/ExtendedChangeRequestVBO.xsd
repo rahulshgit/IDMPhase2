@@ -1,0 +1,64 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential --><xsd:schema targetNamespace="http://group.vodafone.com/schema/extension/vbo/service/changerequest/v2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:tns="http://group.vodafone.com/schema/extension/vbo/service/changerequest/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Schema Definition for ChangeRequest Extension</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   
+   <xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../../CoreComponentType_2p0.xsd"/>
+   
+   <xsd:complexType name="ExtendedChangeRequestVBOType"/>
+   <xsd:complexType name="ExtendedChangeRequestDetailsType"/>
+   <xsd:complexType name="ExtendedRelatedChangeRequestType"/>
+   <xsd:complexType name="ExtendedChangeRequestRolesType"/>
+   <xsd:complexType name="ExtendedChangeRequestPartsType"/>
+   <xsd:complexType name="ExtendedApprovalType"/>
+   <xsd:complexType name="ExtendedAttachmentsType">
+      <xsd:sequence>
+         <xsd:element name="Created" type="cct:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The date and time the business object or component was created. A date and time formatted in compliance with the ISO8601 standard must be used.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="CreatedBy" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The unique ID of the User that created the instance of the business object or component. This should be used as a reference to the IDM system and the details about that User.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ExtendedChannelType"/>
+   <xsd:complexType name="ExtendedIncidentType"/>
+   <xsd:complexType name="ExtendedNotesType"/>
+   <xsd:complexType name="ExtendedResolutionType"/>
+   <xsd:complexType name="ExtendedSpecificationType"/>
+   <xsd:complexType name="ExtendedStatusHistoryType"/>
+   <xsd:complexType name="ExtendedTaskType"/>
+   <xsd:complexType name="ExtendedRequesterType"/>
+   <xsd:complexType name="ExtendedInitiatorType"/>
+   <xsd:complexType name="ExtendedAssigneeType"/>
+   <xsd:complexType name="ExtendedApproverType"/>
+   <xsd:complexType name="ExtendedOwnerType"/>
+   <xsd:complexType name="ExtendedAffecteeType"/>
+   <xsd:complexType name="ExtendedContactNameType"/>
+   <xsd:complexType name="ExtendedChangeRequestProductType"/>
+   <xsd:complexType name="ExtendedChangeRequestServiceType"/>
+   <xsd:complexType name="ExtendedChangeRequestResourceType"/>
+   <xsd:complexType name="ExtendedChangeRequestSupportGroupType"/>
+   <xsd:complexType name="ExtendedChangeRequestImpactType"/>
+   <xsd:complexType name="ExtendedChangeRequestSiteType"/>
+   <xsd:complexType name="ExtendedChangeRequestServiceProviderType"/>
+   <xsd:complexType name="ExtendedChangeRequestServiceLevelType"/>
+   <xsd:complexType name="ExtendedWorkLogInfoType"/>
+   <xsd:complexType name="ExtendedChangeRequestSupportPersonType"/>
+   <xsd:complexType name="ExtendedRelatedObjectType"/>
+   <xsd:complexType name="ExtendedExternalReferenceType"/>
+   <xsd:complexType name="ExtendedServiceProblemType"/>
+</xsd:schema>

@@ -1,0 +1,87 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><wsdl:definitions name="ProductOffering" targetNamespace="http://group.vodafone.com/contract/vbs/product/product-offering/v1" xmlns:vho="http://group.vodafone.com/contract/vho/header/v1" xmlns:vbs="http://group.vodafone.com/contract/vbs/product/product-offering/v1" xmlns:wssem="http://lsdis.cs.uga.edu/projects/meteor-s/wsdl-s/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:vfo="http://group.vodafone.com/contract/vfo/fault/v1" xmlns:vbm="http://group.vodafone.com/schema/vbm/product/product-offering/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <wsdl:documentation>The Product Offering service is an Entity service that provides capabilities to retrieve the set of records held by an Organisation that it sells or enables Customers to subscribe to.
+		Version V1.0</wsdl:documentation>
+   <!--Show support for WS-Policy and the attachment of policy assertions-->
+   <wsp:UsingPolicy wsdl:Required="true"/>
+   <!--The categorisation of the service as defined by the service architecture-->
+   <wssem:category name="EntityService" taxonomyURI="http://group.vodafone.com/iCoE/Taxonomy.owl#"/>
+   <wsdl:types>
+      <xsd:schema elementFormDefault="qualified" targetNamespace="http://group.vodafone.com/contract/vbs/product/product-offering/v1">
+         <xsd:import namespace="http://group.vodafone.com/schema/vbm/product/product-offering/v1" schemaLocation="../../../../../Schema/VBO/Product/ProductOffering/V1/ProductOfferingVBM.xsd"/>
+         <xsd:import namespace="http://group.vodafone.com/contract/vfo/fault/v1" schemaLocation="../../../../../Schema/Fault.xsd"/>
+         <xsd:import namespace="http://group.vodafone.com/contract/vho/header/v1" schemaLocation="../../../../../Schema/Header.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <!--Service Operations Message Structures-->
+   <wsdl:message name="GetProductOfferingListReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the GetProductOfferingList operation</wsdl:documentation>
+      <wsdl:part element="vbm:GetProductOfferingListVBMRequest" name="ProductOfferingCriteria"/>
+   </wsdl:message>
+   <wsdl:message name="GetProductOfferingListRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the GetProductOfferingList operation</wsdl:documentation>
+      <wsdl:part element="vbm:GetProductOfferingListVBMResponse" name="ProductOfferingList"/>
+   </wsdl:message>
+   <!--Supporting Messages-->
+   <wsdl:message name="VodafoneFault">
+      <wsdl:documentation>This message is used for propagating Error Context and Error Message</wsdl:documentation>
+      <wsdl:part element="vfo:Fault" name="VodafoneFault"/>
+   </wsdl:message>
+   <wsdl:message name="MessageHeaders">
+      <wsdl:documentation>This message is used as the header for SOAP request</wsdl:documentation>
+      <wsdl:part element="vho:Source" name="Source"/>
+      <wsdl:part element="vho:Correlation" name="Correlation"/>
+      <wsdl:part element="vho:Cache" name="Cache"/>
+      <wsdl:part element="vho:ServiceDocumentation" name="ServiceDocumentation"/>
+      <wsdl:part element="vho:ResultStatus" name="ResultStatus"/>
+      <wsdl:part element="vho:Destination" name="Destination"/>
+      <wsdl:part element="vho:RouteInfo" name="RouteInfo"/>
+      <wsdl:part element="vho:QueryResult" name="QueryResult"/>
+   </wsdl:message>
+   <wsdl:portType name="ProductOfferingInterface">
+      <wsdl:documentation>This interface contains operations for the ProductOffering API</wsdl:documentation>
+      <wsdl:operation name="GetProductOfferingList">
+         <wsdl:documentation>This operation is used to GetProductOfferingList</wsdl:documentation>
+         <wsdl:input message="vbs:GetProductOfferingListReqMessage" name="GetProductOfferingListRequest" wsaw:Action="http://group.vodafone.com/contract/vbs/product/product-offering/v1/get-list"/>
+         <wsdl:output message="vbs:GetProductOfferingListRespMessage" name="GetProductOfferingListResponse"/>
+         <wsdl:fault message="vbs:VodafoneFault" name="VodafoneFault"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="ProductOfferingInterface-SOAP11-HTTPBinding" type="vbs:ProductOfferingInterface">
+      <wsdl:documentation>This binding supports a SOAP 1.1 message over an HTTP/1.1 protocol</wsdl:documentation>
+      <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <!--Use WS-Addressing v1.0-->
+      <wsaw:UsingAddressing wsdl:required="true"/>
+      <wsdl:operation name="GetProductOfferingList">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/product/product-offering/v1/get-list" style="document"/>
+         <wsdl:input name="GetProductOfferingListRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="GetProductOfferingListResponse">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="QueryResult" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+</wsdl:definitions>

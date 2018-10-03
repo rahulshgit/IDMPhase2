@@ -1,0 +1,58 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/customer/customer-service-usage/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbm/customer/customer-service-usage/v1" xmlns:vbo="http://group.vodafone.com/schema/vbo/customer/customer-service-usage/v1" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+	<xsd:annotation>
+		<xsd:documentation>
+			<p>Vodafone Business Message Schema Definition for CustomerServiceUsage version 1.1</p>
+		</xsd:documentation>
+	</xsd:annotation>
+	<!-- ===================== Imports ============================ -->
+	<xsd:import namespace="http://group.vodafone.com/schema/vbo/customer/customer-service-usage/v1" schemaLocation="CustomerServiceUsageVBO.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CodeLists.xsd"/>
+	
+	<xsd:complexType name="GetCustomerServiceUsageListVBMRequestType">
+	
+		<xsd:annotation>
+		
+			<xsd:documentation> Type definition for the GetCustomerServiceUsageList request payload.</xsd:documentation>
+	
+		</xsd:annotation>
+	
+		<xsd:complexContent>
+		
+		<xsd:extension base="cmn:QueryType"/>
+	
+	</xsd:complexContent>
+	
+	
+</xsd:complexType>
+
+<xsd:element name="GetCustomerServiceUsageListVBMRequest" type="tns:GetCustomerServiceUsageListVBMRequestType"/>
+	
+	
+<xsd:complexType name="GetCustomerServiceUsageListVBMResponseType">
+	
+		<xsd:annotation>
+		
+			<xsd:documentation> Type definition for the GetCustomerServiceUsageList response payload.</xsd:documentation>
+	
+		</xsd:annotation>
+	
+		<xsd:sequence>
+		
+			<xsd:element name="CustomerServiceUsageVBO" type="vbo:CustomerServiceUsageVBOType" minOccurs="0" maxOccurs="unbounded"/>
+
+		</xsd:sequence>
+	
+</xsd:complexType>
+	
+	
+
+<xsd:element name="GetCustomerServiceUsageListVBMResponse" type="tns:GetCustomerServiceUsageListVBMResponseType"/>
+
+
+</xsd:schema>

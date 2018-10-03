@@ -1,0 +1,28 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://group.vodafone.com/schema/extension/vbo/technical/event/v1" version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:tns="http://group.vodafone.com/schema/extension/vbo/technical/event/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   
+   <xsd:import schemaLocation="../../../../Meta.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+   <xsd:import schemaLocation="../../../../CommonComponents.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+   <xsd:import schemaLocation="../../../../CoreComponentType_2p0.xsd" namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2"/>
+   
+   <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+         <p>Schema Definition for Event Extension</p>
+      </xsd:documentation>
+   </xsd:annotation>
+    <xsd:complexType name="ExtendedEventVBOType"/>
+   <xsd:complexType name="ExtendedEventDetailsType"/>
+   <xsd:complexType name="ExtendedEventPartsType"/>
+   <xsd:complexType name="ExtendedRelatedPartyType"/>
+   <xsd:complexType name="ExtendedEventSpecificationType"/>
+    <xsd:complexType name="ExtendedRelatedEventType"/>
+        <xsd:complexType name="ExtendedRelatedObjectType"/>
+
+
+</xsd:schema>

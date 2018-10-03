@@ -1,0 +1,101 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/payment/process-card-payment/v2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbm/payment/process-card-payment/v2" xmlns:vbo="http://group.vodafone.com/schema/vbo/payment/process-card-payment/v2" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+	<xsd:annotation>
+		<xsd:documentation>
+			<p>Vodafone Business Message Schema Definition for ProcessCardPayment</p>
+		</xsd:documentation>
+	</xsd:annotation>
+	<!-- ===================== Imports ============================ -->
+	<xsd:import namespace="http://group.vodafone.com/schema/vbo/payment/process-card-payment/v2" schemaLocation="CardPaymentVBO.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CodeLists.xsd"/>
+	<xsd:complexType name="AuthoriseCardPaymentVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the AuthoriseCardPayment request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardPaymentVBO" type="vbo:CardPaymentVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AuthoriseCardPaymentVBMRequest" type="tns:AuthoriseCardPaymentVBMRequestType"/>
+	<xsd:complexType name="AuthoriseCardPaymentVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the AuthoriseCardPayment response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardPaymentVBO" type="vbo:CardPaymentVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AuthoriseCardPaymentVBMResponse" type="tns:AuthoriseCardPaymentVBMResponseType"/>
+	
+	<xsd:complexType name="CancelCardPaymentVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the CancelCardPayment request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardPaymentVBO" type="vbo:CardPaymentVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="CancelCardPaymentVBMRequest" type="tns:CancelCardPaymentVBMRequestType"/>
+	<xsd:complexType name="CancelCardPaymentVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the CancelCardPayment response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardPaymentVBO" type="vbo:CardPaymentVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="CancelCardPaymentVBMResponse" type="tns:CancelCardPaymentVBMResponseType"/>
+	
+	
+	<xsd:complexType name="SettleCardPaymentVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the SettleCardPayment request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardPaymentVBO" type="vbo:CardPaymentVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="SettleCardPaymentVBMRequest" type="tns:SettleCardPaymentVBMRequestType"/>
+	<xsd:complexType name="SettleCardPaymentVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the SettleCardPayment response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardPaymentVBO" type="vbo:CardPaymentVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="SettleCardPaymentVBMResponse" type="tns:SettleCardPaymentVBMResponseType"/>
+	<xsd:complexType name="EstablishCardPaymentVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the EstablishCardPayment request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardPaymentVBO" type="vbo:CardPaymentVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="EstablishCardPaymentVBMRequest" type="tns:EstablishCardPaymentVBMRequestType"/>
+	<xsd:complexType name="EstablishCardPaymentVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the EstablishCardPayment response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardPaymentVBO" type="vbo:CardPaymentVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="EstablishCardPaymentVBMResponse" type="tns:EstablishCardPaymentVBMResponseType"/>
+	<xsd:complexType name="NotifyCardPaymentVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the NotifyCardPayment request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CardPaymentVBO" type="vbo:CardPaymentVBOType"/>
+		</xsd:sequence>
+		<xsd:attribute name="eventCode" type="cmn:EventCodeType"/>
+	</xsd:complexType>
+	<xsd:element name="NotifyCardPaymentVBMRequest" type="tns:NotifyCardPaymentVBMRequestType"/>
+</xsd:schema>

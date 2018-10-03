@@ -1,0 +1,1214 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential --><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbo/payment/customer-bill/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbo/payment/customer-bill/v1" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/payment/customer-bill/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+
+	<xsd:annotation>
+		<xsd:documentation>Schema definition for Customer Bill.
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CommonComponents.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/extension/vbo/payment/customer-bill/v1" schemaLocation="Extension/ExtendedCustomerBillVBO.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../CoreComponentType_2p0.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../Meta.xsd"/>
+
+	<!-- To be Removed -->
+	<xsd:element name="CustomerBillVBO" type="tns:CustomerBillVBOType"/>
+	<xsd:element name="CustomerBillSummaryVBO" type="tns:CustomerBillSummaryVBOType"/>
+	<xsd:element name="CustomerBillLineItemVBO" type="tns:CustomerBillLineItemVBOType"/>
+
+	<xsd:complexType name="CustomerBillVBOType">
+		<xsd:annotation>
+			<xsd:documentation>The Customer Bill Enterprise Service provides
+				access, by the target consumers (section 4.2 of the BSS), to a
+				customer’s billing data. This is generated within the billing
+				backend system on a particular date within a
+				customer’s billing
+				cycle. Once generated the Bill must be considered read-only, i.e. it
+				cannot be modified.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ExtendedBaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Details" type="tns:CustomerBillDetailsType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The list of fields (data items) directly
+								associated with a Customer Bill.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="RelatedCustomerBills" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="RelatedCustomerBill" type="tns:RelatedCustomerBillReferenceType" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>A reference from this Customer Bill to
+											another.</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Roles" type="tns:CustomerBillRolesType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The set of Party Involvement Roles associated
+								with the Customer Bill. Contains the set of Party references to
+								Individuals, Organisations or both that have a defined role with
+								a Bill.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Parts" type="tns:CustomerBillPartsType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The set of components that make up the bulk of
+								the definition of a Customer Bill. Includes both inherent
+								components and references to other VBOs.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillSummaryVBOType">
+		<xsd:annotation>
+			<xsd:documentation>The Customer Bill Summary provides a summarised
+				version of the Customer Bill, this provides the capability to get
+				the Bill Header information without the Billed Usage.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ExtendedBaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Details" type="tns:CustomerBillDetailsType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The list of fields (data items) directly
+								associated with a Customer Bill.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="RelatedCustomerBills" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="RelatedCustomerBill" type="tns:RelatedCustomerBillReferenceType" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>A reference from this Customer Bill to
+											another.</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Roles" type="tns:CustomerBillRolesType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The set of Party Involvement Roles associated
+								with the Customer Bill. Contains the set of Party references to
+								Individuals, Organisations or both that have a defined role with
+								a Bill.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Parts" type="tns:CustomerBillSummaryPartsType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The set of components that make up the bulk of
+								the definition of a Customer Bill Summary. Includes both
+								inherent components and references to the Customer and Billing
+								accounts.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="CustomerBillLineItemVBOType">
+		<xsd:annotation>
+			<xsd:documentation>The Customer Bill LineItem provides a Customer
+				Bill Billed Usage information without the Summary or reference
+				information.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ExtendedBaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Parts" type="tns:CustomerBillLineItemPartsType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The set of components that make up the bulk of
+								the definition of a Customer Bill Line Item. Includes only the
+								details and the LineItems.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillDetailsType">
+		<xsd:annotation>
+			<xsd:documentation>The list of fields (data items) directly
+				associated with a Customer Bill.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="DueDateTime" type="cct:DateTimeType">
+				<xsd:annotation>
+					<xsd:documentation>The final date a payment may be received and
+						processed to meet customer obligations for timely payment of the
+						CustomerInvoice.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChargeDateTime" type="cct:DateTimeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A date through which charges previously received
+						by the billing system appear on the bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CreditDateTime" type="cct:DateTimeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A date through which credits previously received
+						by the billing system appear on the bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MailingDateTime" type="cct:DateTimeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A customer bill mailing date.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AdjustedIndicator" type="cct:IndicatorType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>An indication of whether this Customer Bill has
+						been adjusted.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WrittenOffIndicator" type="cct:IndicatorType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>An indication of whether an amount on this
+						Customer Bill has been written off by the Issuer.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProductionTypeCode" type="cct:CodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The production type of the CustomerBill, such as
+						regular bill, first bill, final bill, or revised final bill.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProductionFrequencyQuantity" type="cct:QuantityType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The frequency of the bill production in the
+						units of the frequency attribute in
+						CustomerBillingCycleSpecification.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProduceDocumentCode" type="cct:CodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Whether a document should be produced or
+						extracted or both for the CustomerBillSpec.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TaxPresentmentIndicator" type="cct:IndicatorType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>If value is TRUE tax will be calculated tax on
+						each charge separately.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZeroBalanceIndicator" type="cct:IndicatorType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates whether to zero the balance of the
+						CustomerBillSpec at the billing run, for example in the case of
+						internal employees.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MultiplierNumber" type="cct:NumericType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The frequency multiplier used for defining the
+						cycle periods.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LastBilledAmount" type="cct:AmountType">
+				<xsd:annotation>
+					<xsd:documentation>The total amount billed to the customer in the
+						last bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LastOverdueAmount" type="cct:AmountType">
+				<xsd:annotation>
+					<xsd:documentation>The overdue amount from the last bill.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentType" type="cct:CodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The payment type of the bill</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillDetailsType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The @actionCode attribute is used within a
+					modification operation to indicate the action (add, update, delete)
+					intended on a component.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillRolesType">
+		<xsd:annotation>
+			<xsd:documentation>The set of Party Involvement Roles associated with
+				the Customer Bill. Contains the set of Party references to
+				Individuals, Organisations or both that have a defined role with a
+				Bill.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Payer" type="tns:CustomerBillPayerRoleReferenceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A reference to the Party in the role of expected
+						and actual payer of the Customer Bill. A reference to an
+						Individual or and Organisation.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Issuer" type="tns:CustomerBillIssuerRoleReferenceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A reference to the Party in the role of issuer
+						of the Customer Bill. For Customer Bill this is expected to be a
+						business unit, local market, within Vodafone.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillRolesType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillPartsType">
+		<xsd:annotation>
+			<xsd:documentation>The set of components that make up the bulk of the
+				definition of a Customer Bill. Includes both inherent components and
+				references to other VBOs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+
+			<xsd:element name="AmountsDue" type="tns:CustomerBillAmountsDueType">
+				<xsd:annotation>
+					<xsd:documentation>A component holding the amounts required of the
+						Customer by the Issuer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="AppliedBillingRates" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A sum of one or more other
+						AppliedCustomerBillingRates formed by aggregating other
+						AppliedCustomerBillingRates, which may be either Composite or
+						Atomic AppliedCustomerBillingRates.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AppliedBillingRate" type="tns:CustomerBillAppliedBillingRateType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>The Applied Customer Billing Rate (ACBR) of
+									this Customer Bill. These are the charges applied against the
+									Billing Account for the Subscriptions and Service Usage
+									generated by the Customer.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+
+			<xsd:element name="BillingAccount" type="tns:CustomerBillingAccountReferenceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A reference to the Customer's Billing Account
+						from which this Customer Bill was generated.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="CustomerAccount" type="tns:CustomerAccountReferenceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A reference to the Customer Account from which
+						this Customer Bill was generated.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="BillingCycle" type="tns:CustomerBillBillingCycleType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The Billing Cycle, the time period for which
+						this Customer Bill was generated.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="BillFormat" type="tns:CustomerBillBillFormatType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The format of the bill to be presented to the
+						customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="Documents" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Document" type="tns:CustomerBillDocumentType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A reference too or the actual binary object
+									of an associated document to this Customer Bill.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="DueDateShiftPeriod" type="cmn:TimePeriodType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The offset used for calculating the billing due
+						date.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="FinancialCharges" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The set of one-off charges assigned to the bill
+						and included in the total amount.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="FinancialCharge" type="tns:CustomerBillFinancialChargeType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A one-off charge assigned to the bill and
+									included in the total amount.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="LineItems" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="LineItem" type="tns:CustomerBillLineItemType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A Line Item of the Customer Bill representing
+									the Billed Usage for which the payment of the recurring charges
+									(applied billing rate) and the financial charges are being
+									asked.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="Notes" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Note" type="tns:CustomerBillNoteType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A comment or note about the generated
+									Customer Bill.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="SalesOrder" type="tns:SalesOrderReferenceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A reference to the Sales Order that generated
+						this Customer Bill. Normally this relationship generates a number
+						of one-off Financial Charges.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="Specification" type="tns:CustomerBillSpecificationType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A component used to store characteristics of the
+						Customer Bill. Relates to the Bill Spec in the Information Model,
+						which also contains relationships to the Bill Format and the Bill
+						Cycle Spec.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="StatusHistory" type="tns:CustomerBillStatusHistoryType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The state lifecycle history of the Customer
+						Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="Subscriptions" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Subscription" type="tns:SubscriptionReferenceType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A reference to a Subscription (Product) for
+									which this Customer Bill has been generated.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="TaxesDue" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="TaxDue" type="tns:CustomerBillTaxDueType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A single tax item of the Customer Bill.
+									Customer Bill may include 0 or more Customer Bill Taxes.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillPartsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillSummaryPartsType">
+		<xsd:annotation>
+			<xsd:documentation>The set of components that make up the bulk of the
+				definition of a Customer Bill Summary. Includes only inherent
+				components and references to the Customer and Billing Accounts.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+
+			<xsd:element name="AmountsDue" type="tns:CustomerBillAmountsDueType">
+				<xsd:annotation>
+					<xsd:documentation>A component holding the amounts required of the
+						Customer by the Issuer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="AppliedBillingRates" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A sum of one or more other
+						AppliedCustomerBillingRates formed by aggregating other
+						AppliedCustomerBillingRates, which may be either Composite or
+						Atomic AppliedCustomerBillingRates.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AppliedBillingRate" type="tns:CustomerBillAppliedBillingRateType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>The Applied Customer Billing Rate (ACBR) of
+									this Customer Bill. These are the charges applied against the
+									Billing Account for the Subscriptions and Service Usage
+									generated by the Customer.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="BillingAccount" type="tns:CustomerBillingAccountReferenceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A reference to the Customer's Billing Account
+						from which this Customer Bill was generated.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="CustomerAccount" type="tns:CustomerAccountReferenceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A reference to the Customer Account from which
+						this Customer Bill was generated.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="BillingCycle" type="tns:CustomerBillBillingCycleType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The Billing Cycle, the time period for which
+						this Customer Bill was generated.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="BillFormat" type="tns:CustomerBillBillFormatType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The format of the bill to be presented to the
+						customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="Documents" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Document" type="tns:CustomerBillDocumentType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A reference too or the actual binary object
+									of an associated document to this Customer Bill.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="DueDateShiftPeriod" type="cmn:TimePeriodType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The offset used for calculating the billing due
+						date.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="FinancialCharges" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The set of one-off charges assigned to the bill
+						and included in the total amount.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="FinancialCharge" type="tns:CustomerBillFinancialChargeType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A one-off charge assigned to the bill and
+									included in the total amount.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="Notes" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Note" type="tns:CustomerBillNoteType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A comment or note about the generated
+									Customer Bill.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="Specification" type="tns:CustomerBillSpecificationType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A component used to store characteristics of the
+						Customer Bill. Relates to the Bill Spec in the Information Model,
+						which also contains relationships to the Bill Format and the Bill
+						Cycle Spec.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="StatusHistory" type="tns:CustomerBillStatusHistoryType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The state lifecycle history of the Customer
+						Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="TaxesDue" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="TaxDue" type="tns:CustomerBillTaxDueType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A single tax item of the Customer Bill.
+									Customer Bill may include 0 or more Customer Bill Taxes.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillPartsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillLineItemPartsType">
+		<xsd:annotation>
+			<xsd:documentation>The set of components that make up the bulk of the
+				definition of a Customer Bill Line Item. Includes only the details
+				and the LineItems.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+
+			<xsd:element name="LineItems" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="LineItem" type="tns:CustomerBillLineItemType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>A Line Item of the Customer Bill representing
+									the Billed Usage for which the payment of the recurring charges
+									(applied billing rate) and the financial charges are being
+									asked.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillPartsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RelatedCustomerBillReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference from this Customer Bill to another.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedRelatedCustomerBillReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:attribute name="relationshipTypeCode" type="xsd:token" use="optional">
+					<xsd:annotation>
+						<xsd:documentation>An attribute to hold the type of relationship
+							between this Customer Bill and the referenced target.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillPayerRoleReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference to the Party in the role of expected
+				and actual payer of the Customer Bill. A reference to an Individual
+				or and Organisation.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:IndividualOrOrganisationPartyRoleReferenceType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillPayerRoleReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillIssuerRoleReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference to the Party in the role of expected
+				and actual payer of the Customer Bill. A reference to an Individual
+				or and Organisation.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:OrganisationPartyType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillIssuerRoleReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="CustomerBillingAccountReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference to the Customer's Billing Account from
+				which this Customer Bill was generated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillingAccountReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerAccountReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference to the Customer Account from which
+				this Customer Bill was generated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="BalanceAmount" type="cct:AmountType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The total amount, including tax, of financial
+								activities performed for the CustomerAccount since the last
+								produced CustomerBill.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="PreviousBalanceAmount" type="cct:AmountType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The total amount due from the previously
+								produced CustomerBill.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerAccountReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillBillingCycleType">
+		<xsd:annotation>
+			<xsd:documentation>The Billing Cycle, the time period for which this Customer Bill was generated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			 <xsd:element name="IDs" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The set of Identifiers for the VBO or component. These should be used to uniquely identifier instances of the business object or component.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ID" type="cct:IDType" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>The identifier of the Billing Cycle</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>					
+			<xsd:element name="BillingDateTime" type="cct:DateTimeType">
+				<xsd:annotation>
+					<xsd:documentation>A calendar date that designates when the bill
+						was produced.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BillingPeriod" type="cmn:TimePeriodType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The Billing Period Start and End dates for the
+						Billing Cycle of this Customer Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChargeDateTime" type="cct:DateTimeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A date through which charges previously received
+						by the billing system appear on the bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CreditDateTime" type="cct:DateTimeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A date through which credits previously received
+						by the billing system appear on the bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MailingDateTime" type="cct:DateTimeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A customer bill mailing date.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CycleCloseDateTime" type="cct:DateTimeType">
+				<xsd:annotation>
+					<xsd:documentation>A calendar date that specifies the cut off date
+						for charges and credits to be included within this cycle run.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Instance" type="cct:NumericType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The serial occurrence of the cycle instance in a
+						calendar year.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillBillingCycleType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The @actionCode attribute is used within a
+					modification operation to indicate the action (add, update, delete)
+					intended on a component.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillAppliedBillingRateType">
+		<xsd:annotation>
+			<xsd:documentation>The Applied Customer Billing Rate (ACBR) of this
+				Customer Bill. These are the charges applied against the Billing
+				Account for the Subscriptions and Service Usage generated by the
+				Customer.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Amount" type="cct:AmountType">
+				<xsd:annotation>
+					<xsd:documentation>A charge or a credit assigned to the customer's
+						account in the course or for the purpose of the billing process.
+						The net amount of the AppliedCustomerBillingRate in the Billing
+						offer currency.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TaxAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The total tax amount of the
+						AppliedCustomerBillingRate in the Billing offer currency.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChargeCode" type="cct:CodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A code associated with the
+						AppliedCustomerBillingRate that defines several characteristics of
+						the AppliedCustomerBillingRate, such as the description.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The start and end dates for the Billing Rate in
+						which it is effective.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MessageText" type="cct:TextType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The message to be displayed on the CustomerBill
+						for the AppliedCustomerBillingRate.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillBillingRateType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The @actionCode attribute is used within a
+					modification operation to indicate the action (add, update, delete)
+					intended on a component.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillDocumentType">
+		<xsd:annotation>
+			<xsd:documentation>A reference too or the actual binary object of an
+				associated document to this Customer Bill.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:AttachmentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillDocumentType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillLineItemType">
+		<xsd:annotation>
+			<xsd:documentation>A Line Item of the Customer Bill representing the
+				Billed Usage for which the payment of the recurring charges (applied
+				billing rate) and the financial charges are being asked.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="ChargeDate" type="cct:DateType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The date of when the charge is applied
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FinancialCharge" type="tns:CustomerBillFinancialChargeType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>A normalised aggregation of atomic Applied
+								Customer Billing Rates to create a single Financial Charge
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+
+					<xsd:element name="ServiceUsage" type="tns:CustomerBillServiceUsageReferenceType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>A reference to the Customer's Service Usage
+								(Billed Usage) from which the Customer Bill is generated.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillLineItemType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillNoteType">
+		<xsd:annotation>
+			<xsd:documentation>A comment or note about the generated Customer
+				Bill.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:NoteType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillNoteType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="SalesOrderReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference to the Sales Order that generated this
+				Customer Bill. Normally this relationship generates a number of
+				one-off Financial Charges.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedSalesOrderReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillSpecificationType">
+		<xsd:annotation>
+			<xsd:documentation>A component used to store characteristics of the
+				Customer Bill. Relates to the Bill Spec in the Information Model,
+				which also contains relationships to the Bill Format and the Bill
+				Cycle Spec.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:SpecificationType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillSpecificationType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillStatusHistoryType">
+		<xsd:annotation>
+			<xsd:documentation>The state lifecycle history of the Customer Bill.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:StatusHistoryType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillStatusHistoryType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="SubscriptionReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference to a Subscription (Product) for which
+				this Customer Bill has been generated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillAmountsDueType">
+		<xsd:annotation>
+			<xsd:documentation>A component holding the amounts required of the
+				Customer by the Issuer.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Amount" type="cct:AmountType">
+				<xsd:annotation>
+					<xsd:documentation>The total amount to be paid by the customer to
+						the service provider as a result if this CustomerBill.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AmountHandlingCode" type="cct:CodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Specifies the specific handling performed on the
+						total amount due of the (@LABEL CustomerBill}. The way the amount
+						due of the CustomerBill is to be handled. For example zero the
+						balance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NetAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The net amount to be paid by the customer to the
+						service provider as a result if this CustomerBill.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CreditedAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The total net amount of credits that have been
+						given for this Customer Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CreditedTaxAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The total tax amount of credits that have been
+						given for this Customer Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DisputeAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The total net amount of disputes that are open
+						for this Customer Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DisputeTaxAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The total tax amount of disputes that are open
+						for this Customer Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OverPaymentAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The amount in overpayment, relevant for invoice
+						receiver only.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WrittenOffAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The amount that has been written off from this
+						Customer Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillAmountDueType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The @actionCode attribute is used within a
+					modification operation to indicate the action (add, update, delete)
+					intended on a component.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillTaxDueType">
+		<xsd:annotation>
+			<xsd:documentation>A component holding the tax amounts and the
+				taxation details of the Customer Bill.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TaxAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The tax amount.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TaxableAmount" type="cct:AmountType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The amount on which the tax was calculated.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TaxAuthorityCode" type="cct:CodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The type of a taxing authority, for example
+						City, State, Federal. Valid values are retrieved from reference
+						table.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TaxRateQuantity" type="cct:QuantityType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The rate of the tax. The ratio (usually
+						expressed as a percentage) at which a business or person is taxed.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TaxRatePercentage" type="cct:PercentType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The rate of the tax. The ratio (usually
+						expressed as a percentage) at which a business or person is taxed.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TaxType" type="cct:CodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The type of tax. For example VAT.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillTaxDueType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The @actionCode attribute is used within a
+					modification operation to indicate the action (add, update, delete)
+					intended on a component.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillServiceUsageReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>A reference to the Customer's Service Usage
+				(Billed Usage) from which the Customer Bill is generated.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Amount" type="cct:AmountType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The Usage amount (money).</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Quantity" type="cct:QuantityType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The Usage quantity</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="TimePeriod" type="cmn:TimePeriodType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The Period of Time in which the Usage was
+								generated by the Subscription.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillServiceUsageReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillBillFormatType">
+		<xsd:annotation>
+			<xsd:documentation>The format of the bill to be presented to the
+				customer.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Name" type="cct:TextType">
+				<xsd:annotation>
+					<xsd:documentation>The name of the Bill Format to use for the
+						Customer Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Description" type="cct:TextType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The description of the Bill Format to use for
+						the Customer Bill.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillBillFormatType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The @actionCode attribute is used within a
+					modification operation to indicate the action (add, update, delete)
+					intended on a component.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerBillFinancialChargeType">
+		<xsd:annotation>
+			<xsd:documentation>A one-off charge assigned to the bill and included
+				in the total amount.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Amount" type="cct:AmountType">
+				<xsd:annotation>
+					<xsd:documentation>The amount of the financial charge.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Type" type="cct:CodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The type of the financial charge.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerBillFinancialChargeType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The @actionCode attribute is used within a
+					modification operation to indicate the action (add, update, delete)
+					intended on a component.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+
+</xsd:schema>

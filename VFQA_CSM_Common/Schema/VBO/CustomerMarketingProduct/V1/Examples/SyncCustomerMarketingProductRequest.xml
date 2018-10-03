@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<vbm:SyncCustomerMarketingProductVBMRequest xmlns:vbm="http://group.vodafone.com/schema/vbm/customer/customer-marketing-product/v1" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:urn="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:tns="http://group.vodafone.com/schema/vbo/customer/customer-marketing-product/v1" xmlns:ext="http://group.vodafone.com/schema/extension/vbo/customer/customer-marketing-product/v1">
+   <vbm:CustomerMarketingProductVBO actionCode="UPDATE">
+      <cmn:IDs>
+         <cmn:ID schemeAgencyName="Vodafone" schemeName="Customer Marketing Product ID">123456</cmn:ID>
+      </cmn:IDs>
+      <cmn:Name>Pay as you go extras</cmn:Name>
+      <cmn:Desc>Pay as you go extras for existing customer</cmn:Desc>
+      <cmn:Type>Generic</cmn:Type>
+      <cmn:Status>Offered</cmn:Status>
+      <cmn:Version>1.0</cmn:Version>
+      <cmn:Created>25-12-2016</cmn:Created>
+      <cmn:CreatedBy>user12345</cmn:CreatedBy>
+      <cmn:LastModified>25-12-2016</cmn:LastModified>
+      <cmn:LastModifiedBy>user12345</cmn:LastModifiedBy>
+      <cmn:ValidityPeriod>
+         <cmn:FromDate>
+            <urn:Date>2016-12-25</urn:Date>
+         </cmn:FromDate>
+         <cmn:ToDate>
+            <urn:Date>2017-12-25</urn:Date>
+         </cmn:ToDate>
+      </cmn:ValidityPeriod>
+      <cmn:LastActivityDate>2016-12-25</cmn:LastActivityDate>
+      <tns:Details>
+         <tns:PriorityCode>2</tns:PriorityCode>
+         <tns:DisplayName>Pay As You Go Extras</tns:DisplayName>
+         <tns:ServiceIdentifier>0099876</tns:ServiceIdentifier>
+         <tns:TreatmentCode>T123</tns:TreatmentCode>
+         <tns:ValidityPeriodMeasure unitCode="Days">3</tns:ValidityPeriodMeasure>
+         <tns:Quantity unitCode="SMS">100</tns:Quantity>
+         <tns:ShortName>Free SMS</tns:ShortName>
+         <tns:ShortDescription>Description</tns:ShortDescription>
+         <tns:Extension/>
+      </tns:Details>
+      <tns:RelatedMarketingProducts>
+         <tns:MarketingProduct actionCode="UPDATE">
+            <cmn:IDs>
+               <cmn:ID schemeAgencyName="Vodafone" schemeName="Customer Marketing Product ID">887654</cmn:ID>
+            </cmn:IDs>
+         </tns:MarketingProduct>
+      </tns:RelatedMarketingProducts>
+      <tns:Roles>
+         <tns:Party>
+            <cmn:IDs>
+               <cmn:ID schemeAgencyName="Vodafone" schemeName="Party ID">89562</cmn:ID>
+            </cmn:IDs>
+            <cmn:Name>Claire Slane</cmn:Name>
+         </tns:Party>
+         <tns:Subscriber>
+            <cmn:IDs>
+               <cmn:ID schemeAgencyName="Vodafone" schemeName="Subscriber ID">741256</cmn:ID>
+            </cmn:IDs>
+            <cmn:Name>John Phillips</cmn:Name>
+         </tns:Subscriber>
+         <tns:WorkforceAgents>
+            <tns:WorkforceAgent actionCode="UPDATE">
+               <cmn:IDs>
+                  <cmn:ID schemeAgencyName="Vodafone" schemeName="Workflow ID">698347</cmn:ID>
+               </cmn:IDs>
+               <cmn:Name>John Hopkins</cmn:Name>
+            </tns:WorkforceAgent>
+         </tns:WorkforceAgents>
+         <tns:Extension/>
+      </tns:Roles>
+      <tns:Parts>
+         <tns:Channel actionCode="ADD">
+            <cmn:IDs>
+               <cmn:ID schemeAgencyName="Vodafone" schemeName="Channel ID">698347</cmn:ID>
+            </cmn:IDs>
+            <cmn:Name>Email</cmn:Name>
+         </tns:Channel>
+         <tns:Channel actionCode="ADD">
+            <cmn:IDs>
+               <cmn:ID schemeAgencyName="Vodafone" schemeName="Channel ID">123347</cmn:ID>
+            </cmn:IDs>
+            <cmn:Name>Telephone</cmn:Name>
+         </tns:Channel>
+         <tns:Channel actionCode="ADD">
+            <cmn:IDs>
+               <cmn:ID schemeAgencyName="Vodafone" schemeName="Channel ID">1237</cmn:ID>
+            </cmn:IDs>
+            <cmn:Name>Fax</cmn:Name>
+         </tns:Channel>
+         <tns:CustomerAccounts>
+            <tns:CustomerAccount actionCode="ADD">
+               <cmn:IDs>
+                  <cmn:ID schemeAgencyName="Vodafone" schemeName="Customer Account ID">532867</cmn:ID>
+               </cmn:IDs>
+               <tns:Extension>
+                  <ext:CustomerAccountBalance>
+                     <cmn:IDs>
+                        <cmn:ID schemeAgencyName="Vodafone" schemeName="string">123</cmn:ID>
+                     </cmn:IDs>
+                     <cmn:Name>Customer Account Balance</cmn:Name>
+                     <cmn:Desc>string</cmn:Desc>
+                     <cmn:Type listAgencyName="Vodafone" listName="string">token</cmn:Type>
+                     <cmn:Categories>
+                        <cmn:Category listAgencyName="Vodafone" listName="string"/>
+                     </cmn:Categories>
+                     <cmn:Status listAgencyName="Vodafone" listName="Customer Account Status Code">Active</cmn:Status>
+                     <ext:Amount currencyID="EUR">123.00</ext:Amount>
+                  </ext:CustomerAccountBalance>
+               </tns:Extension>
+            </tns:CustomerAccount>
+         </tns:CustomerAccounts>
+         <tns:CustomerInteractions>
+            <tns:CustomerInteraction actionCode="ADD">
+               <cmn:IDs>
+                  <cmn:ID schemeAgencyName="Vodafone" schemeName="Customer Interaction ID">532867</cmn:ID>
+               </cmn:IDs>
+               <tns:Date>2016-09-13</tns:Date>
+            </tns:CustomerInteraction>
+         </tns:CustomerInteractions>
+         <tns:Notes>
+            <tns:Note>
+               <cmn:IDs>
+                  <cmn:ID schemeAgencyName="Vodafone" schemeName="Note ID">532867</cmn:ID>
+               </cmn:IDs>
+               <tns:Content>Weekly Campaign</tns:Content>
+               <tns:AgentID>562339</tns:AgentID>
+            </tns:Note>
+         </tns:Notes>
+         <tns:Price currencyID="EUR">1000.00</tns:Price>
+         <tns:ServiceAccounts>
+            <tns:ServiceAccount>
+               <cmn:IDs>
+                  <cmn:ID schemeAgencyName="Vodafone" schemeName="Service Account ID">532867</cmn:ID>
+               </cmn:IDs>
+            </tns:ServiceAccount>
+         </tns:ServiceAccounts>
+         <tns:Users>
+            <tns:CustomerSystemUserAccout>
+               <cmn:IDs>
+                  <cmn:ID schemeAgencyName="Vodafone" schemeName="Customer System User Account ID">532867</cmn:ID>
+               </cmn:IDs>
+            </tns:CustomerSystemUserAccout>
+         </tns:Users>
+         <tns:LineItems>
+            <tns:LineItem>
+               <cmn:IDs>
+                  <cmn:ID schemeAgencyName="Vodafone" schemeName="Line Item ID">001</cmn:ID>
+               </cmn:IDs>
+               <cmn:Name>VODAFONE 3G USB DATA CARD</cmn:Name>
+               <cmn:Desc>VODAFONE 3G USB DATA CARD</cmn:Desc>
+               <tns:Price currencyID="EUR">40.00</tns:Price>
+               <tns:TreatmentCode>T123</tns:TreatmentCode>
+               <tns:Quantity unitCode="SMS">100</tns:Quantity>
+               <tns:ShortName>Free SMS</tns:ShortName>
+               <tns:ShortDescription>Description</tns:ShortDescription>
+               <tns:ProductOffer>
+                  <cmn:IDs>
+                     <cmn:ID schemeAgencyName="Vodafone" schemeName="Product Offer ID">12563</cmn:ID>
+                  </cmn:IDs>
+                  <cmn:Name>VODAFONE 3G USB DATA CARD</cmn:Name>
+               </tns:ProductOffer>
+               <tns:Specification>
+                  <cmn:IDs>
+                     <cmn:ID schemeAgencyName="Vodafone" schemeName="Specification ID">123</cmn:ID>
+                  </cmn:IDs>
+                  <cmn:Name>Specification VODAFONE 3G USB DATA CARD</cmn:Name>
+                  <cmn:Desc>Description of Specification VODAFONE 3G USB DATA CARD</cmn:Desc>
+                  <cmn:Type listAgencyName="Vodafone" listName="string">S1</cmn:Type>
+                  <cmn:Categories>
+                     <cmn:Category listAgencyName="Vodafone" listName="string">token</cmn:Category>
+                  </cmn:Categories>
+                  <cmn:Status listAgencyName="Vodafone" listName="string">Active</cmn:Status>
+                  <cmn:CharacteristicsValue characteristicName="char">
+                     <cmn:Value>Char</cmn:Value>
+                     <cmn:Type>1</cmn:Type>
+                     <cmn:Description>characteristic</cmn:Description>
+                     <cmn:CreationTime format="ISO8601">2015-04-01T00:00:00</cmn:CreationTime>
+                     <cmn:ValidityPeriod>
+                        <cmn:FromDate>
+                           <urn:Date>2015-04-01</urn:Date>
+                        </cmn:FromDate>
+                        <cmn:ToDate>
+                           <urn:Date>2015-04-01</urn:Date>
+                        </cmn:ToDate>
+                     </cmn:ValidityPeriod>
+                  </cmn:CharacteristicsValue>
+                  <tns:Extension/>
+               </tns:Specification>
+               <tns:Extension/>
+            </tns:LineItem>
+            <tns:LineItem>
+               <cmn:IDs>
+                  <cmn:ID schemeAgencyName="Vodafone" schemeName="Line Item ID">002</cmn:ID>
+               </cmn:IDs>
+               <cmn:Name>INTERNET</cmn:Name>
+               <cmn:Desc>INTERNET</cmn:Desc>
+               <tns:Price currencyID="EUR">0.00</tns:Price>
+               <tns:ProductOffer>
+                  <cmn:IDs>
+                     <cmn:ID schemeAgencyName="Vodafone" schemeName="Product Offer ID">12563</cmn:ID>
+                  </cmn:IDs>
+                  <cmn:Name>INTERNET 1GB FREE</cmn:Name>
+               </tns:ProductOffer>
+               <tns:Specification>
+                  <cmn:IDs>
+                     <cmn:ID schemeAgencyName="Vodafone" schemeName="Specification ID">1234</cmn:ID>
+                  </cmn:IDs>
+                  <cmn:Name>Specification INTERNET</cmn:Name>
+                  <cmn:Desc>Description of Specification INTERNET</cmn:Desc>
+                  <cmn:Type listAgencyName="Vodafone" listName="string">S1</cmn:Type>
+                  <cmn:Categories>
+                     <cmn:Category listAgencyName="Vodafone" listName="string">token</cmn:Category>
+                  </cmn:Categories>
+                  <cmn:Status listAgencyName="Vodafone" listName="string">Active</cmn:Status>
+                  <cmn:CharacteristicsValue characteristicName="char">
+                     <cmn:Value>Char</cmn:Value>
+                     <cmn:Type>1</cmn:Type>
+                     <cmn:Description>characteristic</cmn:Description>
+                     <cmn:CreationTime format="ISO8601">2015-04-01T00:00:00</cmn:CreationTime>
+                     <cmn:ValidityPeriod>
+                        <cmn:FromDate>
+                           <urn:Date>2015-04-01</urn:Date>
+                        </cmn:FromDate>
+                        <cmn:ToDate>
+                           <urn:Date>2015-04-01</urn:Date>
+                        </cmn:ToDate>
+                     </cmn:ValidityPeriod>
+                  </cmn:CharacteristicsValue>
+                  <tns:Extension/>
+               </tns:Specification>
+               <tns:Extension/>
+            </tns:LineItem>
+            <tns:Extension/>
+         </tns:LineItems>
+         <tns:ExternalReferences>
+            <tns:ExternalReference>
+               <tns:ReferenceID schemeName="External Reference ID" schemeAgencyName="Vodafone">12563</tns:ReferenceID>
+            </tns:ExternalReference>
+         </tns:ExternalReferences>
+         <tns:Subscription actionCode="ADD">
+            <cmn:IDs>
+               <cmn:ID schemeAgencyName="Vodafone" schemeName="Subscription ID">532867</cmn:ID>
+            </cmn:IDs>
+         </tns:Subscription>
+         <tns:CustomerAgreement>
+            <cmn:IDs>
+               <cmn:ID schemeAgencyName="Vodafone" schemeName="Customer Agreement ID">256598</cmn:ID>
+            </cmn:IDs>
+         </tns:CustomerAgreement>
+         <tns:Specification>
+            <cmn:IDs>
+               <cmn:ID schemeAgencyName="Vodafone" schemeName="Specification ID">123</cmn:ID>
+            </cmn:IDs>
+            <cmn:Name>Specification VODAFONE 3G USB DATA CARD</cmn:Name>
+            <cmn:Desc>Description of Specification VODAFONE 3G USB DATA CARD</cmn:Desc>
+            <cmn:Type listAgencyName="Vodafone" listName="string">S1</cmn:Type>
+            <cmn:Categories>
+               <cmn:Category listAgencyName="Vodafone" listName="string">token</cmn:Category>
+            </cmn:Categories>
+            <cmn:Status listAgencyName="Vodafone" listName="string">Active</cmn:Status>
+            <cmn:CharacteristicsValue characteristicName="char">
+               <cmn:Value>Char</cmn:Value>
+               <cmn:Type>1</cmn:Type>
+               <cmn:Description>characteristic</cmn:Description>
+               <cmn:CreationTime format="ISO8601">2015-04-01T00:00:00</cmn:CreationTime>
+               <cmn:ValidityPeriod>
+                  <cmn:FromDate>
+                     <urn:Date>2015-04-01</urn:Date>
+                  </cmn:FromDate>
+                  <cmn:ToDate>
+                     <urn:Date>2015-04-01</urn:Date>
+                  </cmn:ToDate>
+               </cmn:ValidityPeriod>
+            </cmn:CharacteristicsValue>
+            <tns:Extension/>
+         </tns:Specification>
+         <tns:Extension/>
+      </tns:Parts>
+      <tns:Extension/>
+   </vbm:CustomerMarketingProductVBO>
+</vbm:SyncCustomerMarketingProductVBMRequest>

@@ -1,0 +1,22 @@
+<xs:schema xmlns:common_validation="http://www.vodafone.qa/egate/commons/validation/v1_0_0" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.vodafone.qa/egate/commons/validation/v1_0_0"
+	elementFormDefault="unqualified">
+
+	<xs:complexType name="Validation">
+		<xs:sequence>
+			<xs:element name="ValidationErrorList" type="common_validation:ValidationErrorList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ValidationErrorList">
+		<xs:sequence>
+			<xs:element name="ValidationError" type="common_validation:ValidationError"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ValidationError">
+		<xs:sequence>
+			<xs:element name="message" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

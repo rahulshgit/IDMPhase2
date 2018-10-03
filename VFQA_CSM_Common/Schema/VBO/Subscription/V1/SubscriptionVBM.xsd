@@ -1,0 +1,105 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information
+ and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, 
+adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/subscription/subscription/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbm/subscription/subscription/v1" xmlns:vbo="http://group.vodafone.com/schema/vbo/subscription/subscription/v1" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+	<xsd:annotation>
+		<xsd:documentation>
+			<p>Vodafone Business Message Schema Definition for Subscription</p>
+		</xsd:documentation>
+	</xsd:annotation>
+	<!-- ===================== Imports ============================ -->
+	<xsd:import namespace="http://group.vodafone.com/schema/vbo/subscription/subscription/v1" schemaLocation="SubscriptionVBO.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../Meta.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CodeLists.xsd"/>
+	<!-- ===================== Get ============================ -->
+	<xsd:element name="GetSubscriptionListVBMRequest" type="tns:GetSubscriptionListVBMRequestType"/>
+	<xsd:complexType name="GetSubscriptionListVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation>Type definition for the Subscription query type.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:QueryType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="GetSubscriptionListVBMResponse" type="tns:GetSubscriptionListVBMResponseType"/>
+	<xsd:complexType name="GetSubscriptionListVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation>
+				Type definition for Get Subscription Message Response Payload
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SubscriptionVBO" type="vbo:SubscriptionVBOType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- ===================== Notify ============================ -->
+	<xsd:element name="NotifySubscriptionVBMRequest" type="tns:NotifySubscriptionVBMRequestType"/>
+	<xsd:complexType name="NotifySubscriptionVBMRequestType">
+		<xsd:sequence>
+			<xsd:element name="SubscriptionVBO" type="vbo:SubscriptionVBOType"/>
+		</xsd:sequence>
+		<xsd:attribute name="eventCode" type="cmn:EventCodeType"/>
+	</xsd:complexType>
+	<!-- ===================== Sync ============================ -->
+	<xsd:element name="SyncSubscriptionVBMRequest" type="tns:SyncSubscriptionVBMRequestType"/>
+	<xsd:complexType name="SyncSubscriptionVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the Subscription Sync request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SubscriptionVBO" type="vbo:SubscriptionVBOType"/>
+		</xsd:sequence>
+		<xsd:attribute name="eventCode" type="cmn:EventCodeType"/>
+	</xsd:complexType>
+	<xsd:element name="SyncSubscriptionVBMResponse" type="tns:SyncSubscriptionVBMResponseType"/>
+	<xsd:complexType name="SyncSubscriptionVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the Subscription Sync response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SubscriptionVBO" type="vbo:SubscriptionVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- ===================== Update ============================ -->
+	<xsd:element name="UpdateSubscriptionVBMRequest" type="tns:UpdateSubscriptionVBMRequestType"/>
+	<xsd:complexType name="UpdateSubscriptionVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the Subscription Update request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SubscriptionVBO" type="vbo:SubscriptionVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="UpdateSubscriptionVBMResponse" type="tns:UpdateSubscriptionVBMResponseType"/>
+	<xsd:complexType name="UpdateSubscriptionVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the Subscription Update response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SubscriptionVBO" type="vbo:SubscriptionVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GetSubscriptionReportVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetSubscriptionReport request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ReportSpecType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="GetSubscriptionReportVBMRequest" type="tns:GetSubscriptionReportVBMRequestType"/>
+	<xsd:complexType name="GetSubscriptionReportVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetSubscriptionReport response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ReportType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="GetSubscriptionReportVBMResponse" type="tns:GetSubscriptionReportVBMResponseType"/>	
+</xsd:schema>

@@ -1,0 +1,123 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+	This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+	Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+	the prior written consent of Vodafone Group Services Limited.
+	The information in this document is subject to change without notice.
+	All trademarks acknowledged.
+	Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/technical/event/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbm/technical/event/v1" xmlns:vbo="http://group.vodafone.com/schema/vbo/technical/event/v1" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+   <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+         <p>Vodafone Business Message Schema Definition for Event</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   <!--===================== Imports ============================-->
+   <xsd:import namespace="http://group.vodafone.com/schema/vbo/technical/event/v1" schemaLocation="EventVBO.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CodeLists.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../Meta.xsd"/>
+   <!--===================== CREATE ============================-->
+   <xsd:complexType name="CreateEventVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the CreateEvent request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CreateEventVBMRequest" type="tns:CreateEventVBMRequestType"/>
+   <xsd:complexType name="CreateEventVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the CreateEvent response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CreateEventVBMResponse" type="tns:CreateEventVBMResponseType"/>
+   <!--===================== UPDATE ============================-->
+   <xsd:complexType name="UpdateEventVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the UpdateEvent request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UpdateEventVBMRequest" type="tns:UpdateEventVBMRequestType"/>
+   <xsd:complexType name="UpdateEventVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the UpdateEvent response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UpdateEventVBMResponse" type="tns:UpdateEventVBMResponseType"/>
+   <!--===================== DELETE ============================-->
+   <xsd:complexType name="DeleteEventVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the DeleteEvent request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="DeleteEventVBMRequest" type="tns:DeleteEventVBMRequestType"/>
+   <xsd:complexType name="DeleteEventVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the DeleteEvent response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="DeleteEventVBMResponse" type="tns:DeleteEventVBMResponseType"/>
+   <!--===================== GET ============================-->
+   <xsd:complexType name="GetEventListVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation xml:lang="en">Type definition for the GetEventList request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:QueryType"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:element name="GetEventListVBMRequest" type="tns:GetEventListVBMRequestType"/>
+   <xsd:complexType name="GetEventListVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation xml:lang="en">Type definition for the GetEventList response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="GetEventListVBMResponse" type="tns:GetEventListVBMResponseType"/>
+   <!--===================== Sync ============================-->
+   <xsd:complexType name="SyncEventVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation xml:lang="en">Type definition for the Event Sync request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="SyncEventVBMRequest" type="tns:SyncEventVBMRequestType"/>
+   <xsd:complexType name="SyncEventVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation xml:lang="en">Type definition for the Event Sync response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="SyncEventVBMResponse" type="tns:SyncEventVBMResponseType"/>
+   <!--===================== Notify ============================-->
+   <xsd:complexType name="NotifyEventVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation xml:lang="en">Type definition for the NotifyEvent request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="EventVBO" type="vbo:EventVBOType"/>
+      </xsd:sequence>
+      <xsd:attribute name="eventCode" type="cmn:EventCodeType"/>
+   </xsd:complexType>
+   <xsd:element name="NotifyEventVBMRequest" type="tns:NotifyEventVBMRequestType"/>
+</xsd:schema>

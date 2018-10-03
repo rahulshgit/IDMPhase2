@@ -1,0 +1,131 @@
+<!--
+(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential
+--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/service/changerequest/v2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:tns="http://group.vodafone.com/schema/vbm/service/changerequest/v2" xmlns:vbo="http://group.vodafone.com/schema/vbo/service/changerequest/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Vodafone Business Message Schema Definition for ChangeRequest</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   
+   <!--===================== Imports ============================-->
+   <xsd:import namespace="http://group.vodafone.com/schema/vbo/service/changerequest/v2" schemaLocation="ChangeRequestVBO.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CodeLists.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../Meta.xsd"/>
+   
+   <xsd:complexType name="CreateChangeRequestVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the CreateChangeRequest request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ChangeRequestVBO" type="vbo:ChangeRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CreateChangeRequestVBMRequest" type="tns:CreateChangeRequestVBMRequestType"/>
+   
+   <xsd:complexType name="CreateChangeRequestVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the CreateChangeRequest response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ChangeRequestVBO" type="vbo:ChangeRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CreateChangeRequestVBMResponse" type="tns:CreateChangeRequestVBMResponseType"/>
+   
+   <xsd:complexType name="UpdateChangeRequestVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the UpdateChangeRequest request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ChangeRequestVBO" type="vbo:ChangeRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UpdateChangeRequestVBMRequest" type="tns:UpdateChangeRequestVBMRequestType"/>
+   
+   <xsd:complexType name="UpdateChangeRequestVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the UpdateChangeRequest response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ChangeRequestVBO" type="vbo:ChangeRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UpdateChangeRequestVBMResponse" type="tns:UpdateChangeRequestVBMResponseType"/>
+   
+   <xsd:complexType name="GetChangeRequestListVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetChangeRequestList request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:QueryType"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:element name="GetChangeRequestListVBMRequest" type="tns:GetChangeRequestListVBMRequestType"/>
+   
+   <xsd:complexType name="GetChangeRequestListVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetChangeRequestList response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ChangeRequestVBO" type="vbo:ChangeRequestVBOType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="GetChangeRequestListVBMResponse" type="tns:GetChangeRequestListVBMResponseType"/>
+   
+   <xsd:complexType name="SyncChangeRequestVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the SyncChangeRequest request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ChangeRequestVBO" type="vbo:ChangeRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="SyncChangeRequestVBMRequest" type="tns:SyncChangeRequestVBMRequestType"/>
+   
+   <xsd:complexType name="SyncChangeRequestVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the SyncChangeRequest response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ChangeRequestVBO" type="vbo:ChangeRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="SyncChangeRequestVBMResponse" type="tns:SyncChangeRequestVBMResponseType"/>
+   
+   <xsd:complexType name="NotifyChangeRequestVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the NotifyChangeRequest request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ChangeRequestVBO" type="vbo:ChangeRequestVBOType"/>
+      </xsd:sequence>
+      <xsd:attribute name="eventCode" type="cmn:EventCodeType"/>
+   </xsd:complexType>
+   <xsd:element name="NotifyChangeRequestVBMRequest" type="tns:NotifyChangeRequestVBMRequestType"/>
+   
+   <xsd:complexType name="GetChangeRequestReportVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetChangeRequestReport request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:ReportSpecType"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:element name="GetChangeRequestReportVBMRequest" type="tns:GetChangeRequestReportVBMRequestType"/>
+   
+   <xsd:complexType name="GetChangeRequestReportVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetChangeRequestReport response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:ReportType"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:element name="GetChangeRequestReportVBMResponse" type="tns:GetChangeRequestReportVBMResponseType"/>
+</xsd:schema>

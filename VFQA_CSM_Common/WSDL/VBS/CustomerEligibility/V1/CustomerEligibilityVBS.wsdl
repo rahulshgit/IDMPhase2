@@ -1,0 +1,136 @@
+<wsdl:definitions targetNamespace="http://group.vodafone.com/contract/vbs/analytics/customer-eligibility/v1" name="CustomerEligibility" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vbm="http://group.vodafone.com/schema/vbm/analytics/customer-eligibility/v1" xmlns:vbs="http://group.vodafone.com/contract/vbs/analytics/customer-eligibility/v1" xmlns:vfo="http://group.vodafone.com/contract/vfo/fault/v1" xmlns:vho="http://group.vodafone.com/contract/vho/header/v1" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wssem="http://lsdis.cs.uga.edu/projects/meteor-s/wsdl-s/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+   <wsdl:documentation>
+   		The purpose of the Customer Eligibility service is to provide a set of endpoints to query if a customer is eligible for upgrading or downgrading from its current contract to a newer contract
+		Version V1.0	
+	</wsdl:documentation>
+	
+   <!-- Show support for WS-Policy and the attachment of policy assertions -->
+   <wsp:UsingPolicy wsdl:Required="true"/>
+   
+   <!-- The categorisation of the service as defined by the service architecture -->
+   <wssem:category name="EntityService" taxonomyURI="http://group.vodafone.com/iCoE/Taxonomy.owl#"/>
+   
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://group.vodafone.com/contract/vbs/analytics/customer-eligibility/v1" elementFormDefault="qualified">
+         <xsd:import namespace="http://group.vodafone.com/schema/vbm/analytics/customer-eligibility/v1" schemaLocation="../../../../Schema/VBO/CustomerEligibility/CustomerEligibilityVBM.xsd"/>
+         <xsd:import namespace="http://group.vodafone.com/contract/vfo/fault/v1" schemaLocation="../../../../Schema/Fault.xsd"/>
+         <xsd:import namespace="http://group.vodafone.com/contract/vho/header/v1" schemaLocation="../../../../Schema/Header.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   
+   <!--Service Operations Message Structures -->
+   <wsdl:message name="GetCustomerEligibilityReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the GetCustomerEligibility operation</wsdl:documentation>
+      <wsdl:part name="CustomerEligibilityCriteria" element="vbm:GetCustomerEligibilityVBMRequest"/>
+   </wsdl:message>
+   <wsdl:message name="GetCustomerEligibilityRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the GetCustomerEligibility operation</wsdl:documentation>
+      <wsdl:part name="CustomerEligibility" element="vbm:GetCustomerEligibilityVBMResponse"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateCustomerEligibilityReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the UpdateCustomerEligibility operation</wsdl:documentation>
+      <wsdl:part name="CustomerEligibilityDetails" element="vbm:UpdateCustomerEligibilityVBMRequest"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateCustomerEligibilityRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the UpdateCustomerEligibility operation</wsdl:documentation>
+      <wsdl:part name="CustomerEligibilityDetails" element="vbm:UpdateCustomerEligibilityVBMResponse"/>
+   </wsdl:message>
+   
+   <!--Supporting Messages-->
+   <wsdl:message name="VodafoneFault">
+      <wsdl:documentation>This message is used for propagating Error Context and Error Message</wsdl:documentation>
+      <wsdl:part name="VodafoneFault" element="vfo:Fault"/>
+   </wsdl:message>
+   
+   <wsdl:message name="MessageHeaders">
+      <wsdl:documentation>This message is used as the header for SOAP request</wsdl:documentation>
+      <wsdl:part name="Source" element="vho:Source"/>
+      <wsdl:part name="Correlation" element="vho:Correlation"/>
+      <wsdl:part name="Cache" element="vho:Cache"/>
+      <wsdl:part name="ServiceDocumentation" element="vho:ServiceDocumentation"/>
+      <wsdl:part name="ResultStatus" element="vho:ResultStatus"/>
+      <wsdl:part name="Destination" element="vho:Destination"/>
+   </wsdl:message>
+   
+   <wsdl:portType name="CustomerEligibilityInterface">
+      <wsdl:documentation>This interface contains operations for the CustomerEligibility API</wsdl:documentation>
+      <wsdl:operation name="GetCustomerEligibility">
+         <wsdl:documentation>This operation is used to GetCustomerEligibility</wsdl:documentation>
+         <wsdl:input name="GetCustomerEligibilityRequest" message="vbs:GetCustomerEligibilityReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/analytics/customer-eligibility/v1/get"/>
+         <wsdl:output name="GetCustomerEligibilityResponse" message="vbs:GetCustomerEligibilityRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>
+      
+      <wsdl:operation name="UpdateCustomerEligibility">
+         <wsdl:documentation>This operation is used to UpdateCustomerEligibility</wsdl:documentation>
+         <wsdl:input name="UpdateCustomerEligibilityRequest" message="vbs:UpdateCustomerEligibilityReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/analytics/customer-eligibility/v1/Update"/>
+         <wsdl:output name="UpdateCustomerEligibilityResponse" message="vbs:UpdateCustomerEligibilityRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>
+   </wsdl:portType>
+  
+   
+   <wsdl:binding name="CustomerEligibilityInterface-SOAP11-HTTPBinding" type="vbs:CustomerEligibilityInterface">
+      <wsdl:documentation>This binding supports a SOAP 1.1 message over an HTTP/1.1 protocol</wsdl:documentation>
+      <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <!-- Use WS-Addressing v1.0 -->
+      <wsaw:UsingAddressing wsdl:required="true"/>
+      <wsdl:operation name="GetCustomerEligibility">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/analytics/customer-eligibility/v1/get-list" style="document"/>
+         <wsdl:input name="GetCustomerEligibilityRequest">
+            <!--
+ 				Require that messages contain some custom headers for tracking, routing, auditing.
+	 		-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="GetCustomerEligibilityResponse">
+            <!--
+				Require that messages contain some custom headers for tracking, routing, auditing.
+			-->
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>			
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateCustomerEligibility">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/analytics/customer-eligibility/v1/Update" style="document"/>
+         <wsdl:input name="UpdateCustomerEligibilityRequest">
+            <!--
+				Require that messages contain some custom headers for tracking, routing, auditing.
+			-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="UpdateCustomerEligibilityResponse">
+            <!--
+				Require that messages contain some custom headers for tracking, routing, auditing.
+			-->
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+			<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+</wsdl:definitions>

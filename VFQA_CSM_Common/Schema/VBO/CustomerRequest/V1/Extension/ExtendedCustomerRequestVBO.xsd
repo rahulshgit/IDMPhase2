@@ -1,0 +1,45 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/extension/vbo/subscription/customer-request/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/extension/vbo/subscription/customer-request/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Schema Definition for CustomerRequest Extension</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   <xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../../CoreComponentType_2p0.xsd"/>
+   <xsd:complexType name="ExtendedCustomerRequestVBOType"/>
+   <xsd:complexType name="ExtendedCustomerRequestDetailsType"/>
+   <xsd:complexType name="ExtendedRelatedCustomerRequestType"/>
+   <xsd:complexType name="ExtendedCustomerRequestRolesType"/>
+   <xsd:complexType name="ExtendedCustomerRequestPartsType"/>
+   <xsd:complexType name="ExtendedChannelsType"/>
+   <xsd:complexType name="ExtendedCustomerAccountType"/>
+   <xsd:complexType name="ExtendedCustomerAgreementsType"/>
+   <xsd:complexType name="ExtendedSubscriptionType"/>
+   <xsd:complexType name="ExtendedCustomerType"/>
+   <xsd:complexType name="ExtendedInitiatorType"/>
+   <xsd:complexType name="ExtendedRequestorType"/>
+   <xsd:complexType name="ExtendedWorkforceAgentsType"/>
+   <xsd:complexType name="ExtendedCustomerRequestCommonDetailsType"/>
+   <xsd:complexType name="ExtendedNotesType"/>
+   <xsd:complexType name="ExtendedAttachmentsType"/>
+   <xsd:complexType name="ExtendedServiceType"/>
+   <xsd:complexType name="ExtendedResourceType"/>
+   <xsd:complexType name="ExtendedWorkLogInfoType"/>
+   <xsd:complexType name="ExtendedIncidentSupportPersonType"/>
+   <xsd:complexType name="ExtendedAssigneeType"/>
+   <xsd:complexType name="ExtendedAssignedToGroupType"/>
+   <xsd:complexType name="ExtendedContactNameType"/>
+   <xsd:complexType name="ExtendedSubscriberType"/>
+   <xsd:complexType name="ExtendedLocationType"/>
+   <xsd:complexType name="ExtendedEscalationType"/>
+   <xsd:complexType name="ExtendedCustomerRequestSpecificationType"/>
+   <xsd:complexType name="ExtendedCustomerRequestSupportGroupType"/>
+   <xsd:complexType name="ExtendedEscalationHistoryType"/>
+   <xsd:complexType name="ExtendedCustomerRequestSupportPersonType"/>
+</xsd:schema>

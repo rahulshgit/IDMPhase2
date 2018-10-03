@@ -1,0 +1,110 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited. Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without the prior written consent of Vodafone Group Services Limited. The information in this document is subject to change without notice. All trademarks acknowledged. Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/subscription/customer-request/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbm/subscription/customer-request/v1" xmlns:vbo="http://group.vodafone.com/schema/vbo/subscription/customer-request/v1" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Vodafone Business Message Schema Definition for CustomerRequest</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   <!--===================== Imports ============================-->
+   <xsd:import namespace="http://group.vodafone.com/schema/vbo/subscription/customer-request/v1" schemaLocation="CustomerRequestVBO.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CodeLists.xsd"/>
+   <xsd:complexType name="CreateCustomerRequestVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the CreateCustomerRequest request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="CustomerRequestVBO" type="vbo:CustomerRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CreateCustomerRequestVBMRequest" type="tns:CreateCustomerRequestVBMRequestType"/>
+   <xsd:complexType name="CreateCustomerRequestVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the CreateCustomerRequest response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="CustomerRequestVBO" type="vbo:CustomerRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CreateCustomerRequestVBMResponse" type="tns:CreateCustomerRequestVBMResponseType"/>
+   <xsd:complexType name="UpdateCustomerRequestVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the UpdateCustomerRequest request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="CustomerRequestVBO" type="vbo:CustomerRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UpdateCustomerRequestVBMRequest" type="tns:UpdateCustomerRequestVBMRequestType"/>
+   <xsd:complexType name="UpdateCustomerRequestVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the UpdateCustomerRequest response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="CustomerRequestVBO" type="vbo:CustomerRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UpdateCustomerRequestVBMResponse" type="tns:UpdateCustomerRequestVBMResponseType"/>
+   <xsd:complexType name="SyncCustomerRequestVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the SyncCustomerRequest request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="CustomerRequestVBO" type="vbo:CustomerRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="SyncCustomerRequestVBMRequest" type="tns:SyncCustomerRequestVBMRequestType"/>
+   <xsd:complexType name="SyncCustomerRequestVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the SyncCustomerRequest response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="CustomerRequestVBO" type="vbo:CustomerRequestVBOType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="SyncCustomerRequestVBMResponse" type="tns:SyncCustomerRequestVBMResponseType"/>
+   <xsd:complexType name="GetCustomerRequestListVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetCustomerRequestList request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:QueryType"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:element name="GetCustomerRequestListVBMRequest" type="tns:GetCustomerRequestListVBMRequestType"/>
+   <xsd:complexType name="GetCustomerRequestListVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetCustomerRequestList response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="CustomerRequestVBO" type="vbo:CustomerRequestVBOType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="GetCustomerRequestListVBMResponse" type="tns:GetCustomerRequestListVBMResponseType"/>
+   <xsd:complexType name="NotifyCustomerRequestVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the NotifyCustomerRequest request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="CustomerRequestVBO" type="vbo:CustomerRequestVBOType"/>
+      </xsd:sequence>
+      <xsd:attribute name="eventCode" type="cmn:EventCodeType"/>
+   </xsd:complexType>
+   <xsd:element name="NotifyCustomerRequestVBMRequest" type="tns:NotifyCustomerRequestVBMRequestType"/>
+   <xsd:complexType name="GetCustomerRequestReportVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetCustomerRequestReport request payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:ReportSpecType"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:element name="GetCustomerRequestReportVBMRequest" type="tns:GetCustomerRequestReportVBMRequestType"/>
+   <xsd:complexType name="GetCustomerRequestReportVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the GetCustomerRequestReport response payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:ReportType"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:element name="GetCustomerRequestReportVBMResponse" type="tns:GetCustomerRequestReportVBMResponseType"/>
+</xsd:schema>

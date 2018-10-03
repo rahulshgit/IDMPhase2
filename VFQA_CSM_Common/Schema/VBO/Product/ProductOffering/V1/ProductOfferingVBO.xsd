@@ -1,0 +1,288 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbo/product/product-offering/v1" version="1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbo/product/product-offering/v1" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/product/product-offering/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+	<xsd:annotation>
+		<xsd:documentation>Schema definition for ProductOffering.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../CommonComponents.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/extension/vbo/product/product-offering/v1" schemaLocation="Extension/ExtendedProductOfferingVBO.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../../CoreComponentType_2p0.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../Meta.xsd"/>
+	<xsd:complexType name="ProductOfferingVBOType">
+		<xsd:annotation>
+			<xsd:documentation>The Product Offering service is an Entity service that provides capabilities to retrieve the set of records held by an Organisation that it sells or enables Customers to subscribe to.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ExtendedBaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="RelatedProductOfferings" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="RelatedProductOffering" type="tns:RelatedProductOfferingType" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Roles" type="tns:ProductOfferingRolesType" minOccurs="0"/>
+					<xsd:element name="Parts" type="tns:ProductOfferingPartsType" minOccurs="0"/>
+					<xsd:element name="ProductSupports" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="ProductSupport" type="tns:ProductOfferingSupportType" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="ShortDescription" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="URL" type="cct:URIType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingVBOType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProductOfferingDetailsType">
+		<xsd:annotation>
+			<xsd:documentation>A type definition for ProductOffering Details</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingDetailsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductOfferingSupportType">
+		<xsd:annotation>
+			<xsd:documentation>A type definition for ProductOffering Support</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="SupportEmail" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="SupportKnowledgeBasedURL" type="cct:URIType" minOccurs="0"/>
+					<xsd:element name="SupportPhone" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingSupportType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RelatedProductOfferingType">
+		<xsd:annotation>
+			<xsd:documentation>A type definition for Related ProductOffering Type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedRelatedProductOfferingType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProductOfferingPartsType">
+		<xsd:sequence>
+			<xsd:element name="Channels" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Channel" type="tns:ChannelType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="MarketSegments" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="MarketSegment" type="tns:MarketSegmentsType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ProductOfferingRatingSummary" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ProductOfferingRatingSummary" type="tns:ProductOfferingRatingSummaryType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ProductOfferingTerms" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ProductOfferingTerm" type="tns:ProductOfferingTermType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="GeographicalPlaces" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="GeographicalPlace" type="tns:GeographicalLocationType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ProductOfferingCatalogues" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ProductOfferingCatalogue" type="tns:ProductOfferingCataloguesType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Specification" type="tns:SpecificationType" minOccurs="0"/>
+			<xsd:element name="Price" type="tns:PriceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingPartsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductOfferingRolesType">
+		<xsd:sequence>
+			<xsd:element name="Manager" type="tns:ManagerType" minOccurs="0"/>
+			<xsd:element name="Provider" type="tns:ProviderType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingRolesType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ManagerType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:PartyReferenceType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingManagerType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProviderType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:PartyReferenceType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingProviderType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ChannelType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ChannelReferenceType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingChannelType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MarketSegmentsType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingMarketSegmentType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProductOfferingRatingSummaryType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Rating" type="cct:NumericType" minOccurs="0"/>
+					<xsd:element name="NumberOfRating" type="cct:NumericType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingRatingSummaryType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProductOfferingTermType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="PrivacyURL" type="cct:URIType" minOccurs="0"/>
+					<xsd:element name="TermsURL" type="cct:URIType" minOccurs="0"/>
+					<xsd:element name="ReferUrl" type="cct:URIType" minOccurs="0"/>
+					<xsd:element name="Characteristics" type="tns:CharacteristicsListType" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingTermType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GeographicalLocationType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingGeographicalPlaceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProductOfferingCataloguesType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Version" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingCataloguesType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PriceType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="cct:IDType" minOccurs="0"/>
+			<xsd:element name="Type" type="cct:CodeType" minOccurs="0"/>
+			<xsd:element name="Text" type="cct:TextType" minOccurs="0"/>
+			<xsd:element name="ChargeFrequency" type="cct:TextType" minOccurs="0"/>
+			<xsd:element name="UnitOfMeasure" type="cct:CodeType" minOccurs="0"/>
+			<xsd:element name="OriginalPrice" type="cct:AmountType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FinalPrice" type="cct:AmountType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PriceValue" type="tns:PriceValueType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Characteristics" type="tns:CharacteristicsListType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingPriceType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType"/>
+	</xsd:complexType>
+	<xsd:complexType name="PriceValueType">
+		<xsd:annotation>
+			<xsd:documentation>Price Value of the component which includes Tax and Discount details.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TaxRate" type="cct:AmountType" minOccurs="0"/>
+			<xsd:element name="TaxIncludedAmount" type="cct:AmountType" minOccurs="0"/>
+			<xsd:element name="TaxFreeAmount" type="cct:AmountType" minOccurs="0"/>
+			<xsd:element name="Discount" type="tns:DiscountType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedPriceValueType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType"/>
+	</xsd:complexType>
+	<xsd:complexType name="DiscountType">
+		<xsd:sequence>
+			<xsd:element name="Type" type="cct:CodeType" minOccurs="0"/>
+			<xsd:element name="Name" type="cct:TextType" minOccurs="0"/>
+			<xsd:element name="Desc" type="cct:TextType" minOccurs="0"/>
+			<xsd:element name="UnitOfMeasure" type="cct:CodeType" minOccurs="0"/>
+			<xsd:element name="DiscountPrice" type="cct:AmountType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedDiscountType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType"/>
+	</xsd:complexType>
+	<xsd:complexType name="SpecificationType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:SpecificationType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingSpecificationType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CharactersticsValueType">
+		<xsd:annotation>
+			<xsd:documentation>The set of characteristics for the specification.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:CharactersticsValueType">
+				<xsd:attribute name="characteristicName" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation>The name of the characteristic</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation>The @actionCode attribute is used within a modification operation to indicate the action (add, update, delete) intended on a component.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CharacteristicsListType">
+		<xsd:sequence>
+			<xsd:element name="CharacteristicsValue" type="tns:CharactersticsValueType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

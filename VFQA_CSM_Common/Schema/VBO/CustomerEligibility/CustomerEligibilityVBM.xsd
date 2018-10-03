@@ -1,0 +1,59 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/analytics/customer-eligibility/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:tns="http://group.vodafone.com/schema/vbm/analytics/customer-eligibility/v1" xmlns:vbo="http://group.vodafone.com/schema/vbo/analytics/customer-eligibility/v1">
+	<xsd:annotation>
+		<xsd:documentation>
+			<p>Vodafone Business Message Schema Definition for CustomerEligibility</p>
+		</xsd:documentation>
+	</xsd:annotation>
+	<!-- ===================== Imports ============================ -->
+	<xsd:import namespace="http://group.vodafone.com/schema/vbo/analytics/customer-eligibility/v1" schemaLocation="CustomerEligibilityVBO.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../CodeLists.xsd"/>
+
+	<xsd:complexType name="GetCustomerEligibilityVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetCustomerEligibility request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:QueryType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="GetCustomerEligibilityVBMRequest" type="tns:GetCustomerEligibilityVBMRequestType"/>
+
+	<xsd:complexType name="GetCustomerEligibilityVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetCustomerEligibility response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CustomerEligibilityVBO" type="vbo:CustomerEligibilityVBOType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="GetCustomerEligibilityVBMResponse" type="tns:GetCustomerEligibilityVBMResponseType"/>
+
+	<xsd:complexType name="UpdateCustomerEligibilityVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the UpdateCustomerEligibility request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CustomerEligibilityVBO" type="vbo:CustomerEligibilityVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="UpdateCustomerEligibilityVBMRequest" type="tns:UpdateCustomerEligibilityVBMRequestType"/>
+	<xsd:complexType name="UpdateCustomerEligibilityVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the UpdateCustomerEligibility response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CustomerEligibilityVBO" type="vbo:CustomerEligibilityVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="UpdateCustomerEligibilityVBMResponse" type="tns:UpdateCustomerEligibilityVBMResponseType"/>
+
+	
+</xsd:schema>

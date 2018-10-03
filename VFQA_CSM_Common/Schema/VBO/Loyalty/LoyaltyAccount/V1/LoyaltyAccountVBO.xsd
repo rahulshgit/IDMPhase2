@@ -1,0 +1,198 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbo/customer/loyalty-account/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbo/customer/loyalty-account/v1" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/customer/loyalty-account/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+	<xsd:annotation>
+		<xsd:documentation>Schema definition for LoyaltyAccount.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../CommonComponents.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/extension/vbo/customer/loyalty-account/v1" schemaLocation="Extension/ExtendedLoyaltyAccountVBO.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../../CoreComponentType_2p0.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../Meta.xsd"/>
+	<xsd:complexType name="LoyaltyAccountVBOType">
+		<xsd:annotation>
+			<xsd:documentation>
+				The Loyalty Account service is an entity service that provides capabilities to manage Loyalty Accounts. Where a Loyalty Account is the record held by an Organisation about the Loyalty program that a Party has agreed to. The intent behind a Loyalty program and therefore the Account is to retain the participation of the Customer in the selling process.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ExtendedBaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Details" type="tns:LoyaltyAccountDetailsType" minOccurs="0"/>
+					<xsd:element name="RelatedLoyaltyAccounts" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="RelatedLoyaltyAccount" type="tns:RelatedLoyaltyAccountType" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Roles" type="tns:LoyaltyAccountRolesType" minOccurs="0"/>
+					<xsd:element name="Parts" type="tns:LoyaltyAccountPartsType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedLoyaltyAccountVBOType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LoyaltyAccountDetailsType">
+		<xsd:annotation>
+			<xsd:documentation> A type definition for LoyaltyAccount Details</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="LoyaltyAccountBalance" type="cct:QuantityType"/>
+			<xsd:element name="LoyaltyAccountAmount" type="cct:AmountType"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedLoyaltyAccountDetailsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RelatedLoyaltyAccountType">
+		<xsd:annotation>
+			<xsd:documentation>A type definition for Related LoyaltyAccount Type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedRelatedLoyaltyAccountType" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:attribute name="relationshipTypeCode" type="xsd:token" use="optional">
+					<xsd:annotation>
+						<xsd:documentation>An attribute to hold the type of relationship between this Loyalty Account and the referenced target.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LoyaltyAccountPartsType">
+		<xsd:sequence>
+			<xsd:element name="CustomerAccount" type="tns:CustomerAccountType"/>
+			<xsd:element name="Subscriptions" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Subscription" type="tns:SubscriptionsType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="LoyaltyCard" type="tns:LoyaltyCardType" minOccurs="0"/>
+			<xsd:element name="LoyaltyProgram" type="tns:LoyaltyProgramType"/>
+			<xsd:element name="LoyaltyAgreement" type="tns:LoyaltyAgreementType"/>
+			<xsd:element name="Notes" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Note" type="tns:NotesType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Specification" type="tns:SpecificationType" minOccurs="0"/>
+			<xsd:element name="StatusHistory" type="tns:StatusHistoryType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedLoyaltyAccountPartsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LoyaltyAccountRolesType">
+		<xsd:sequence>
+			<xsd:element name="Holder" type="tns:HolderType"/>
+			<xsd:element name="Manager" type="tns:ManagerType" minOccurs="0"/>
+			<xsd:element name="Owner" type="tns:OwnerType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedLoyaltyAccountRolesType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="HolderType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedHolderType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ManagerType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedManagerType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OwnerType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedOwnerType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CustomerAccountType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerAccountType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SubscriptionsType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionsType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LoyaltyCardType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedLoyaltyCardType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LoyaltyProgramType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedLoyaltyProgramType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LoyaltyAgreementType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedLoyaltyAgreementType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="NotesType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:NoteType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedNotesType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SpecificationType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:SpecificationType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedSpecificationType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="StatusHistoryType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:StatusHistoryType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedStatusHistoryType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

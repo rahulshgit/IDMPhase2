@@ -1,0 +1,921 @@
+<!--Created with Liquid XML 2016 Designer Edition 14.1.4.6649 (https://www.liquid-technologies.com)--><!--Created with Liquid XML 2016 Designer Edition 14.1.4.6649 (https://www.liquid-technologies.com)--><!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://group.vodafone.com/schema/vbo/subscription/customer-request/v1" version="1.0" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:tns="http://group.vodafone.com/schema/vbo/subscription/customer-request/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/subscription/customer-request/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:import schemaLocation="../../../CommonComponents.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+   <xsd:import schemaLocation="Extension/ExtendedCustomerRequestVBO.xsd" namespace="http://group.vodafone.com/schema/extension/vbo/subscription/customer-request/v1"/>
+   <xsd:import schemaLocation="../../../CoreComponentType_2p0.xsd" namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2"/>
+   <xsd:import schemaLocation="../../../Meta.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+   <xsd:annotation>
+      <xsd:documentation>Schema definition for CustomerRequest.</xsd:documentation>
+   </xsd:annotation>
+   <xsd:complexType name="CustomerRequestVBOType">
+      <xsd:annotation>
+         <xsd:documentation>A Customer Request is a type of Business
+				Interaction where the Customer is making a Request that Vodafone
+				does something. A Customer Request will usually be completed by some
+				sort of activity and a Response from Vodafone. The scope of Customer
+				Request includes all frequent, lower risk, no cost request made by a
+				customer, his contact or user of a product that are received by
+				Vodafone over any channel.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:ExtendedBaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Details" type="tns:CustomerRequestDetailsType" minOccurs="0"/>
+               <xsd:element name="RelatedCustomerRequests" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="RelatedCustomerRequest" type="tns:RelatedCustomerRequestType" maxOccurs="unbounded"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="Roles" type="tns:CustomerRequestRolesType" minOccurs="0"/>
+               <xsd:element name="Parts" type="tns:CustomerRequestPartsType" minOccurs="0"/>
+               <xsd:element name="Extension" type="extvbo:ExtendedCustomerRequestVBOType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerRequestDetailsType">
+      <xsd:annotation>
+         <xsd:documentation>A type definition for CustomerRequest Details</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="tns:CustomerRequestCommonDetailsType">
+            <xsd:sequence>
+               <xsd:element name="CustomerResolutionAcceptanceIndicator" type="cct:IndicatorType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>Indicates the if the Customer is happy with
+								the resolution of the Customer Request</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedCustomerRequestCommonDetailsType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerRequestCommonDetailsType">
+      <xsd:sequence>
+         <xsd:element name="PriorityCode" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The priority that should be given to the
+						Customer Request from Vodafone perspective</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="SeverityCode" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The Severity that should be given to the
+						Customer Request from Vodafone perspective</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="UrgencyCode" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The Urgency that should be given to the Customer
+						Request from customer's perspective</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="InstantResolutionIndicator" type="cct:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Indicates if the Service Request was resolved in
+						the first call from the Customer.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="AlertRequestorIndicator" type="cct:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>If the user would like to get alerted when there
+						is any update on the Service Request, this flag should be checked</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="RootCauseCode" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Root Cause Analysis Code</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="RequestedResolveDateTime" type="cct:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Date and time customer expects resolution by.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="RequestedRespondDateTime" type="cct:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Date and time customer expects response by</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ActualResponseDateTime" type="cct:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Date and time of response</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ActualResolutionDateTime" type="cct:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The date and Time on which the service was
+						brought back to its original condition.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="CloseRequestDateTime" type="cct:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Date on which the service request was closed.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ExpectedCloseDateTime" type="cct:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Target Close Date Time</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="PromisedResponseDate" type="cct:DateType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Response Date agreed upon on the contract
+						document.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ExternalReferenceID" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Customer external reference number.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="SubReasonCode" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Customer Friendly Status based on Main Status
+						and Sub reason of the Customer request</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="RelatedCustomerRequestType">
+      <xsd:annotation>
+         <xsd:documentation>A type definition for Related CustomerRequest Type</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedRelatedCustomerRequestType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerRequestPartsType">
+      <xsd:sequence>
+         <xsd:element name="Attachments" minOccurs="0">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Attachment" type="tns:AttachmentsType" maxOccurs="unbounded"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Channels" minOccurs="0">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Channel" type="tns:ChannelsType" maxOccurs="unbounded"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="CustomerAccount" type="tns:CustomerAccountType" minOccurs="0"/>
+         <xsd:element name="CustomerAgreement" type="tns:CustomerAgreementsType" minOccurs="0"/>
+         <xsd:element name="Notes" minOccurs="0">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Note" type="tns:NotesType" maxOccurs="unbounded"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Subscriptions" minOccurs="0">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Subscription" type="tns:SubscriptionType" maxOccurs="unbounded"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Services" minOccurs="0">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Service" type="tns:ServiceType" maxOccurs="unbounded"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Resources" minOccurs="0">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Resource" type="tns:ResourceType" maxOccurs="unbounded"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="WorkLog" minOccurs="0">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="WorkInfo" type="tns:WorkLogInfoType" maxOccurs="unbounded"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Locations" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The set of locations associated with Customer
+						Request.</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Location" type="tns:LocationType" maxOccurs="unbounded">
+                     <xsd:annotation>
+                        <xsd:documentation>The location which is associated to Customer
+									Request.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Specification" type="tns:CustomerRequestSpecificationType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A specification of the characteristics
+						associated with a Customer Request.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EscalationPlan" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>When a Incident is escalated to someone, this
+						information is captured in this element.</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Escalation" type="tns:EscalationType" maxOccurs="unbounded">
+                     <xsd:annotation>
+                        <xsd:documentation>Capture the escalation information for the
+									customer request.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="EscalationHistory" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>This component will capture the history of escalations that have been made for the Customer Request.</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Escalation" type="tns:EscalationHistoryType" maxOccurs="unbounded">
+                     <xsd:annotation>
+                        <xsd:documentation>When an change request breaks one of its service levels then it is escalated to an appropriate party role.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedCustomerRequestPartsType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerRequestRolesType">
+      <xsd:sequence>
+         <xsd:element name="Customer" type="tns:CustomerType" minOccurs="0"/>
+         <xsd:element name="Initiator" type="tns:InitiatorType" minOccurs="0"/>
+         <xsd:element name="Requestor" type="tns:RequestorType"/>
+         <xsd:element name="Assignee" type="tns:AssigneeType" minOccurs="0"/>
+         <xsd:element name="WorkforceAgents" minOccurs="0">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="WorkforceAgent" type="tns:WorkforceAgentsType" maxOccurs="unbounded"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedCustomerRequestRolesType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:IndividualOrOrganisationPartyRoleReferenceType">
+            <xsd:sequence>
+               <xsd:element name="ContactPoints" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation xml:lang="en">The set of contact
+								points for the Customer</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="ContactPoint" type="cmn:ContactPointType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation xml:lang="en">A specific
+											contact point for the Customer.</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedCustomerType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="InitiatorType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedInitiatorType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="RequestorType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:IndividualOrOrganisationPartyRoleReferenceType">
+            <xsd:sequence>
+               <xsd:element name="ContactName" type="tns:ContactNameType" minOccurs="0"/>
+               <xsd:element name="Extension" type="extvbo:ExtendedRequestorType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="AssigneeType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:IndividualOrOrganisationPartyRoleReferenceType">
+            <xsd:sequence>
+               <xsd:element name="AssignedToGroup" type="tns:AssignedToGroupType" minOccurs="0"/>
+               <xsd:element name="ContactPoints" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation xml:lang="en">The set of contact
+								points for the Assignee</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="ContactPoint" type="cmn:ContactPointType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation xml:lang="en">A specific
+											contact point for the Assignee.</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedAssigneeType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="WorkforceAgentsType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedWorkforceAgentsType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="ChannelsType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedChannelsType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerAccountType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedCustomerAccountType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerAgreementsType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedCustomerAgreementsType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="SubscriptionType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Subscriber" type="tns:SubscriberType" minOccurs="0"/>
+               <xsd:element name="Extension" type="extvbo:ExtendedSubscriptionType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="NotesType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:NoteType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedNotesType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="AttachmentsType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:AttachmentType">
+            <xsd:sequence>
+               <xsd:element name="CreatedDate" type="cct:DateTimeType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The fields has been deprecated</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="CreatedBy" type="cct:IDType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The fields has been deprecated</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Owner" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The fields has been deprecated</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="ModifiedDate" type="cct:DateTimeType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The fields has been deprecated</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="ModifiedBy" type="cct:IDType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The fields has been deprecated</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedAttachmentsType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="ServiceType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedServiceType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="ResourceType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedResourceType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="WorkLogInfoType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Text" type="cct:TextType" minOccurs="0"/>
+               <xsd:element name="LoggedDateTime" type="cct:DateTimeType" minOccurs="0"/>
+               <xsd:element name="LockedInd" type="cct:IndicatorType" minOccurs="0"/>
+               <xsd:element name="ViewAccessCode" type="cct:CodeType" minOccurs="0"/>
+               <xsd:element name="Submitter" type="tns:IncidentSupportPersonType" minOccurs="0"/>
+               <xsd:element name="Attachments" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="Attachment" type="tns:WorkInfoAttachmentType" minOccurs="1" maxOccurs="unbounded"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedWorkLogInfoType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="IncidentSupportPersonType">
+      <xsd:sequence>
+         <xsd:element name="ID" type="cct:IDType" minOccurs="0"/>
+         <xsd:element name="NameText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="DescText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="ShiftNameText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="OrganisationID" type="cct:IDType" minOccurs="0"/>
+         <xsd:element name="OrganisationNameText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="ParentOrganisationID" type="cct:IDType" minOccurs="0"/>
+         <xsd:element name="ParentOrganisationNameText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="Extension" type="extvbo:ExtendedIncidentSupportPersonType" minOccurs="0"/>
+      </xsd:sequence>
+      <xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional"/>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerRequestSupportGroupType">
+      <xsd:annotation>
+         <xsd:documentation>The details of the support group an assignee,
+				owner or initiator belongs to.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ID" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The identifier of the Support Group</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="NameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The name of the Support Group</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="DescText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The description of the Support Group</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ShiftNameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The name of the Support Group Shift</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="OrganisationID" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The identifier of the Support Group organisation</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="OrganisationNameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The name of the organisation the Support Group
+						belongs to</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ParentOrganisationID" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The identifier of the Support Group parent
+						organisation</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ParentOrganisationNameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The name of the parent organisation the Support
+						Group belongs to</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedCustomerRequestSupportGroupType" minOccurs="0"/>
+      </xsd:sequence>
+      <xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+         <xsd:annotation>
+            <xsd:documentation>The @actionCode attribute is used within a
+					modification operation to indicate the action (add, update, delete)
+					intended on a component.</xsd:documentation>
+         </xsd:annotation>
+      </xsd:attribute>
+   </xsd:complexType>
+   <xsd:complexType name="AssignedToGroupType">
+      <xsd:sequence>
+         <xsd:element name="ID" type="cct:IDType" minOccurs="0"/>
+         <xsd:element name="NameText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="DescText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="ShiftNameText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="OrganisationID" type="cct:IDType" minOccurs="0"/>
+         <xsd:element name="OrganisationNameText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="ParentOrganisationID" type="cct:IDType" minOccurs="0"/>
+         <xsd:element name="ParentOrganisationNameText" type="cct:TextType" minOccurs="0"/>
+         <xsd:element name="Extension" type="extvbo:ExtendedAssignedToGroupType" minOccurs="0"/>
+      </xsd:sequence>
+      <xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional"/>
+   </xsd:complexType>
+   <xsd:complexType name="ContactNameType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="MiddleName" type="cct:TextType" minOccurs="0"/>
+               <xsd:element name="FamilyName" type="cct:TextType" minOccurs="0"/>
+               <xsd:element name="ContactPoints" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The set of contact points for the requester
+								role. These may be e-mail, postal address, telephone number,
+								etc.</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="ContactPoint" type="cmn:ContactPointType" minOccurs="1" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>A specific contact point for the requester.
+											These may be e-mail, postal address, telephone number, etc.
+											And may be differentiated as business, home, etc.</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedContactNameType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="LocationType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="AccessInfoText" type="cct:TextType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>A free text description of the access
+								information required to obtain access to the Location.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="ContactPoints" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The set of contact points for the location</xsd:documentation>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="ContactPoint" type="cmn:ContactPointType" maxOccurs="unbounded">
+                           <xsd:annotation>
+                              <xsd:documentation>A specific contact point for the location.</xsd:documentation>
+                           </xsd:annotation>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="ContactName" type="tns:ContactNameType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The name of the contact for the Location.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="GeographicLocation" type="cmn:GeographicLocationType" minOccurs="0">
+                  <xsd:annotation>
+                     <xsd:documentation>The geographic location in latitude and
+								longitude.</xsd:documentation>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="Extension" type="extvbo:ExtendedLocationType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerRequestSpecificationType">
+      <xsd:annotation>
+         <xsd:documentation>A type definition for Customer Request
+				Specification Type</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:SpecificationType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedCustomerRequestSpecificationType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="EscalationType">
+      <xsd:annotation>
+         <xsd:documentation>An escalation of the incident. Each records the
+				date and time and the person who is being escalated to.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ID" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>An identifier or name for the escalation
+						transition.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="NameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A name assigned to the escalation of the
+						incident.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="DescText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A description of the escalation transition.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Type" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A classification of the business object or
+						component. This identifies the sub-type of the instance of object
+						or component.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Categories" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The set of classifications for the business
+						object or component.</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Category" maxOccurs="unbounded">
+                     <xsd:annotation>
+                        <xsd:documentation>A classification applied to the business
+									object or component. More than one classification scheme can be
+									applied using the @listName attribute to identify the type of
+									code list being used. The classification scheme can be used to
+									group instances of the object or component.</xsd:documentation>
+                     </xsd:annotation>
+                     <xsd:complexType>
+                        <xsd:simpleContent>
+                           <xsd:extension base="cct:CodeType">
+                              <xsd:attribute name="listHierarchyID" type="xsd:string" use="optional">
+                                 <xsd:annotation>
+                                    <xsd:documentation>An indication of the hierarchy level of
+													the category when involved in a hierarchical
+													classification, e.g. level 1 ->
+													Category/@listHierarchyID=1, level 2 ->
+													Category/@listHierarchyID=2. In this case the listName
+													should be the same for each level to show their
+													relationship.</xsd:documentation>
+                                 </xsd:annotation>
+                              </xsd:attribute>
+                           </xsd:extension>
+                        </xsd:simpleContent>
+                     </xsd:complexType>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Status" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The lifecycle state of the business object or
+						component. This field is used to track the specific state an
+						instance of an object or component is in, e.g. the Customer Bill
+						is Active or the Customer Request has been Cancelled.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EscalationIndicator" type="cct:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Indicates if the Incident was escalated or not.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EscalatedToPerson" type="tns:CustomerRequestSupportGroupType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The target escalation group/person ID of the
+						transition.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EscalatedToGroup" type="tns:CustomerRequestSupportGroupType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The organisation that the incident has been
+						escalated to.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EscalatedTypeCode" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The type of escalation being performed in
+						response to the service level.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EffectiveDateTime" type="cct:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The date and time of the transition, i.e. the
+						timestamp of when the target group/person ID was entered.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ReasonCode" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The code describing why the transition occured.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Level" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A description to show the various escalation
+						levels</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ContactPoint" type="cmn:ContactPointType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Anonymous Party reference</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedEscalationType" minOccurs="0"/>
+      </xsd:sequence>
+      <xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+         <xsd:annotation>
+            <xsd:documentation>The @actionCode attribute is used within a
+					modification operation to indicate the action (add, update, delete)
+					intended on a component.</xsd:documentation>
+         </xsd:annotation>
+      </xsd:attribute>
+   </xsd:complexType>
+   <xsd:complexType name="SubscriberType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="FirstName" type="cct:TextType" minOccurs="0"/>
+               <xsd:element name="LastName" type="cct:TextType" minOccurs="0"/>
+               <xsd:element name="ContactPoints" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="ContactPoint" type="cmn:ContactPointType" minOccurs="0" maxOccurs="unbounded"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="CostCentre" type="cct:TextType" minOccurs="0"/>
+               <xsd:element name="BusinessUnit" type="cct:TextType" minOccurs="0"/>
+               <xsd:element name="Extension" type="extvbo:ExtendedSubscriberType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="WorkInfoAttachmentType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:AttachmentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedAttachmentsType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="EscalationHistoryType">
+      <xsd:annotation>
+         <xsd:documentation>An escalation of the change request. Each records the date and time and the person who is being escalated to.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ID" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>An identifier or name for the escalation transition.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="NameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A name assigned to the escalation of the change request.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="DescText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A description of the escalation transition.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EscalationIndicator" type="cct:IndicatorType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Indicates if the change request was escalated or not.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EscalatedToPerson" type="tns:CustomerRequestSupportPersonType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The target escalation group/person ID of the transition.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EscalatedToGroup" type="tns:CustomerRequestSupportGroupType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The organisation that the change request has been escalated to.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EscalatedTypeCode" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The type of escalation being performed in response to the service level.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="EffectiveDateTime" type="cct:DateTimeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The date and time of the transition, i.e. the timestamp of when the target group/person ID was entered.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ReasonCode" type="cct:CodeType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The code describing why the transition occured.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedEscalationHistoryType" minOccurs="0"/>
+      </xsd:sequence>
+      <xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+         <xsd:annotation>
+            <xsd:documentation>The @actionCode attribute is used within a modification operation to change request the action (add, update, delete) intended on a component.</xsd:documentation>
+         </xsd:annotation>
+      </xsd:attribute>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerRequestSupportPersonType">
+      <xsd:annotation>
+         <xsd:documentation>A component holding a description of a support person.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="ID" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The identifier of the Support Person</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="NameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The name of the Support Person</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="DescText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The description of the Support Person</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ShiftNameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The name of the Support Person Shift</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="OrganisationID" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The identifier of the Support Person organisation</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="OrganisationNameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The name of the organisation the Support Person belongs to</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ParentOrganisationID" type="cct:IDType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The identifier of the Support Person parent organisation</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ParentOrganisationNameText" type="cct:TextType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>The name of the parent organisation the Support Person belongs to</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Extension" type="extvbo:ExtendedCustomerRequestSupportPersonType" minOccurs="0"/>
+      </xsd:sequence>
+      <xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+         <xsd:annotation>
+            <xsd:documentation>The @actionCode attribute is used within a modification operation to change request the action (add, update, delete) intended on a component.</xsd:documentation>
+         </xsd:annotation>
+      </xsd:attribute>
+   </xsd:complexType>
+</xsd:schema>

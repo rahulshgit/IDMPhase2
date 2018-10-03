@@ -1,0 +1,37 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential --><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/technical/check-system-status/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbm/technical/check-system-status/v1" xmlns:vbo="http://group.vodafone.com/schema/vbo/technical/check-system-status/v1" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Vodafone Business Message Schema Definition for Subscription</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   <!--===================== Imports ============================-->
+   <xsd:import namespace="http://group.vodafone.com/schema/vbo/technical/check-system-status/v1" schemaLocation="SystemStatusVBO.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../Meta.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CodeLists.xsd"/>
+   <!--===================== Check ============================-->
+   <xsd:element name="CheckSystemStatusVBMRequest" type="tns:SystemStatusVBMRequestType"/>
+   <xsd:complexType name="SystemStatusVBMRequestType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for the SystemStatus query type.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="SystemStatusVBO" type="vbo:SystemStatusVBOType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CheckSystemStatusVBMResponse" type="tns:SystemStatusVBMResponseType"/>
+   <xsd:complexType name="SystemStatusVBMResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Type definition for SystemStatus Message Response Payload.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="SystemStatusVBO" type="vbo:SystemStatusVBOType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

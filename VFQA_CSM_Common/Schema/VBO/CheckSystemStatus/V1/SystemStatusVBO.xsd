@@ -1,0 +1,274 @@
+<!--© Vodafone Group Services Limited. All rights reserved.This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited.Other than as permitted by law, 
+	no part of this document may be reproduced, adapted, or distributed, in any 
+	form or by any means, without the prior written consent of Vodafone Group 
+	Services Limited.The information in this document is subject to change without 
+	notice.All trademarks acknowledged. Vodafone Group Services Limited - Confidential--><!--======================================================================--><!--===== Vodafone VBO CheckSystemStatus Schema Module =====--><!--======================================================================--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbo/technical/check-system-status/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbo/technical/check-system-status/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/technical/check-system-status/v1">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Schema Definition for CheckSystemStatus</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   <!--======================= Imports =============================-->
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CommonComponents.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../Meta.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/extension/vbo/technical/check-system-status/v1" schemaLocation="Extension/ExtendedSystemStatusVBO.xsd"/>
+   <xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../CoreComponentType_2p0.xsd"/>
+   <xsd:complexType name="SystemStatusVBOType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:ExtendedBaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Details" type="tns:SystemStatusDetailsType" minOccurs="0"/>
+               <xsd:element name="RelatedSystemStatus" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="RelatedSystemStatus" type="tns:RelatedSystemStatusType" maxOccurs="unbounded"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="Roles" type="tns:SystemStatusRoleType" minOccurs="0"/>
+               <xsd:element name="Parts" type="tns:SystemStatusPartType" minOccurs="0"/>
+               <xsd:element name="Extension" type="extvbo:ExtendedSystemStatusVBOType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="RelatedSystemStatusType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedRelatedSystemStatusType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="SystemStatusRoleType">
+      <xsd:sequence>
+         <xsd:element name="Requestor" type="tns:SystemStatusRequestorType" minOccurs="0"/>
+         <xsd:element name="Owner" type="tns:SystemStatusOwnerType" minOccurs="0"/>
+         <xsd:element name="Extension" type="extvbo:ExtendedSystemStatusRoleType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="SystemStatusRequestorType">
+      <xsd:complexContent>
+			<xsd:extension base="cmn:IndividualOrOrganisationPartyRoleReferenceType">
+				<xsd:sequence>
+					<xsd:element name="ContactPoints" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The set of contact points for the requester</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="ContactPoint" type="cmn:ContactPointType" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>A specific contact point for the requester.</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="ContactName" type="tns:ContactNameType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The name of the contact for the requester</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Extension" type="extvbo:ExtendedRequesterType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="SystemStatusOwnerType">
+      <xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="OwnerGroup" type="tns:SystemStatusSupportGroupType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The support group the owner belongs to.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Extension" type="extvbo:ExtendedOwnerType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="SystemStatusType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence/>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="CustomerAccountReferenceType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedCustomerAccountReferenceType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="ServiceType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedServiceReferenceType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="SystemStatusPartType">
+      <xsd:sequence>
+         <xsd:element name="Notes" minOccurs="0" maxOccurs="1">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="Note" type="tns:CheckSystemStatusNoteType" minOccurs="1" maxOccurs="unbounded"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="SystemStatusSpecification" type="tns:SystemStatusSpecificationType" minOccurs="0"/>
+         <xsd:element name="Extension" type="extvbo:ExtendedSystemStatusPartsType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="CheckSystemStatusNoteType">
+      <xsd:annotation>
+         <xsd:documentation>A comment or note about the Service Feasibility.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:NoteType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedSystemStatusNoteType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="ResourceType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:BaseComponentType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedResourceType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="SystemStatusDetailsType">
+      <xsd:annotation>
+         <xsd:documentation>A type definition for CustomerServiceUsage Details</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="DiscoveredDateTime" type="cct:DateTimeType" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="SystemResponseDateTime" type="cct:DateTimeType" minOccurs="0" maxOccurs="1"/>        
+         <xsd:element name="Extension" type="extvbo:ExtendedSystemStatusDetailsType" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+    <xsd:complexType name="SystemStatusSpecificationType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:SpecificationType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="extvbo:ExtendedSystemStatusSpecificationType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>   
+   <xsd:complexType name="CharactersticsValueType">
+      <xsd:annotation>
+         <xsd:documentation>The set of characteristics for the specification.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="cmn:CharactersticsValueType">
+            <xsd:attribute name="characteristicName" type="xsd:string" use="optional">
+               <xsd:annotation>
+                  <xsd:documentation>The name of the characteristic</xsd:documentation>
+               </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+               <xsd:annotation>
+                  <xsd:documentation>The @actionCode attribute is used within a modification operation to indicate the action (add, update, delete) intended on a component.</xsd:documentation>
+               </xsd:annotation>
+            </xsd:attribute>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:simpleType name="StatusType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Alive"/>
+         <xsd:enumeration value="System down for maintenance"/>
+         <xsd:enumeration value="System out of reach"/>
+         <xsd:enumeration value="System Overload"/>
+         <xsd:enumeration value="System delay in response "/>
+         <xsd:enumeration value="System in protection mode"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:complexType name="ContactNameType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="MiddleName" type="cct:TextType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The person middle name</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FamilyName" type="cct:TextType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>The person family name</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+                    <xsd:element name="Extension" type="extvbo:ExtendedContactNameType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SystemStatusSupportGroupType">
+		<xsd:annotation>
+			<xsd:documentation>The details of the support group an assignee, owner or initiator belongs to.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ID" type="cct:IDType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The identifier of the Support Group</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NameText" type="cct:TextType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The name of the Support Group</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DescText" type="cct:TextType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The description of the Support Group</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ShiftNameText" type="cct:TextType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The name of the Support Group Shift</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OrganisationID" type="cct:IDType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The identifier of the Support Group organisation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OrganisationNameText" type="cct:TextType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The name of the organisation the Support Group belongs to</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ParentOrganisationID" type="cct:IDType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The identifier of the Support Group parent organisation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ParentOrganisationNameText" type="cct:TextType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The name of the parent organisation the Support Group belongs to</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedSystemStatusSupportGroupType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The @actionCode attribute is used within a modification operation to indicate the action (add, update, delete) intended on a component.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+</xsd:schema>

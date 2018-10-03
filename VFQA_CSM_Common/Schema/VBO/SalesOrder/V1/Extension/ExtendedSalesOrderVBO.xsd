@@ -1,0 +1,302 @@
+<!--Created with Liquid XML 2016 Designer Edition 14.1.5.6733 (https://www.liquid-technologies.com)--><!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential --><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://group.vodafone.com/schema/extension/vbo/order/sales-order/v2" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:tns="http://group.vodafone.com/schema/extension/vbo/order/sales-order/v2" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!--	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../Meta.xsd"/> -->
+    <xsd:import schemaLocation="../../../../CommonComponents.xsd" namespace="http://group.vodafone.com/schema/common/v1"/>
+    <xsd:import schemaLocation="../../../../CoreComponentType_2p0.xsd" namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2"/>
+    <xsd:annotation>
+        <xsd:documentation>
+			<p>Schema Definition for SalesOrder Extension</p>
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType name="ExtendedSalesOrderVBOType"/>
+    <xsd:complexType name="ExtendedSalesOrderDetailsType">
+        <xsd:sequence>
+            <xsd:element name="ConfirmationChecksApproved" type="cct:IndicatorType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Indicates whether confirmation messages are confirmed.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="EligibilityCheck" type="cct:IndicatorType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Indicates whether to activate product catalog eligibility rules on the products.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedRelatedSalesOrderType"/>
+    <xsd:complexType name="ExtendedSalesOrderRolesType"/>
+    <xsd:complexType name="ExtendedSalesOrderPartsType">
+        <xsd:sequence>
+            <xsd:element name="OneOffPrices" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="OneOffPrice" type="cmn:OneOffPriceType" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>
+								One-off price for this sales order.
+							</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="TotalOneOffPrice" type="cmn:OneOffPriceType" minOccurs="0"/>
+            <xsd:element name="RecurringPrices" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="RecurringPrice" type="cmn:RecurringPriceType" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>
+								Recurring price for this sales order.
+							</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Specification" type="tns:SpecificationType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>A reference from this Sales Order to the Customer Agreement governing/ to be signed by both Vodafone and the Prospect/Customer as part of the prerequisites to raising Sales Orders.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="StatusHistory" type="cmn:StatusHistoryType" minOccurs="0"/>
+            <xsd:element name="ExternalReferences" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The set of references to external entities and resources outside of the CSM services.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ExternalReference" type="tns:ExternalReferenceType" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>An external reference to an entity or resource external to the abstraction.</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CustomerCreditRating" type="tns:CustomerCreditRatingType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">A list of Conditions associated to the Credit Rating</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="RelatedObjects" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="EN">Collection of generic entities representing a logical, data object of significance within Vodafone that can be identified by a unique id or number.  Examples include Payment IDs, Deposit IDs.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="RelatedObject" type="tns:RelatedObjectType" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="EN">A generic entity representing a logical, data object of significance within Vodafone that can be identified by a unique id or number.  Examples include Payment IDs, Deposit IDs</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Vouchers" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Voucher" type="tns:VoucherType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="MarketingCampaigns" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="MarketingCampaign" type="tns:MarketingCampaignType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedCustomerAccountType"/>
+    <xsd:complexType name="ExtendedCustomerAgreementType"/>
+    <xsd:complexType name="ExtendedSalesQuoteType"/>
+    <xsd:complexType name="ExtendedPriceType"/>
+    <xsd:complexType name="ExtendedLineItemPriceType"/>
+    <xsd:complexType name="ExtendedLineItemType">
+        <xsd:sequence>
+            <xsd:element name="TotalOneOffPrice" type="cmn:OneOffPriceType" minOccurs="0"/>
+            <xsd:element name="Specification" type="tns:SpecificationType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>A reference from this Sales Quote to the Customer Agreement governing/ to be signed by both Vodafone and the Prospect/Customer as part of the prerequisites to raising Sales Orders.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="WorkforceAppointmentSlot" type="tns:WorkforceAppointmentSlotType" minOccurs="0"/>
+            <xsd:element name="Subscriber" type="tns:SubscriberType" minOccurs="0"/>
+            <xsd:element name="Vouchers" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Voucher" type="tns:VoucherType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedAgentType"/>
+    <xsd:complexType name="ExtendedBillToType"/>
+    <xsd:complexType name="ExtendedCustomerType">
+        <xsd:sequence>
+            <xsd:element name="ContactPeople" type="cmn:ContactPeopleType" minOccurs="0"/>
+            <xsd:element name="CountryCode" type="cct:TextType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedRequestorType">
+        <xsd:sequence>
+            <xsd:element name="ContactPoints" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ContactPoint" type="cmn:ContactPointType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedSalesOrderContactPointType">
+        <xsd:sequence>
+            <xsd:element name="GeographicLocation" type="cmn:GeographicLocationType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedProductOfferingType"/>
+    <xsd:complexType name="ExtendedSubscriptionType"/>
+    <xsd:complexType name="ExtendedContactPointType"/>
+    <xsd:complexType name="ExtendedContactPersonType"/>
+    <xsd:complexType name="ExtendedRelatedLineItemType"/>
+    <xsd:complexType name="ExtendedChannelType"/>
+    <xsd:complexType name="ExtendedSalesQuoteLineItemType"/>
+    <xsd:complexType name="ExtendedFulfilmentOrderType"/>
+    <xsd:complexType name="ExtendedCommonPartyType"/>
+    <xsd:complexType name="ExtendedOrganisationType"/>
+    <xsd:complexType name="ExtendedIndividualType"/>
+    <xsd:complexType name="ExtendedPreferencesType"/>
+    <xsd:complexType name="ExtendedOneOffPriceType"/>
+    <xsd:complexType name="ExtendedRecurringPriceType"/>
+    <xsd:complexType name="ExtendedCustomerCreditRatingType"/>
+    <xsd:complexType name="SpecificationType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:SpecificationType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WorkforceAppointmentSlotType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="ProposedTime" type="cmn:TimePeriodType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ExternalReferenceType">
+        <xsd:annotation>
+            <xsd:documentation>An external reference to an entity or resource external to the abstraction.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="TypeCode" type="cct:CodeType">
+                <xsd:annotation>
+                    <xsd:documentation>The type of external reference being made. This not the type of the object being referenced.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ReferenceID" type="cct:IDType">
+                <xsd:annotation>
+                    <xsd:documentation>The reference Identifier to the external resource.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Name" type="cct:TextType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The Name of external reference being made.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Type" type="cct:CodeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The Type of the reference Identifier to the external resource.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedPaymentType"/>
+    <xsd:complexType name="ExtendedSubscriberType"/>
+    <xsd:complexType name="ExtendedConditionType"/>
+    <xsd:complexType name="ExtendedRelatedObjectType"/>
+    <xsd:complexType name="SubscriberType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="tns:ExtendedSubscriberRoleType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedSubscriberRoleType">
+        <xsd:sequence>
+            <xsd:element name="ContactPeople" type="cmn:ContactPeopleType" minOccurs="0"/>
+            <xsd:element name="CostCentre" type="cct:TextType" minOccurs="0"/>
+            <xsd:element name="BusinessUnit" type="cct:TextType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerCreditRatingType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="CreditRatingConditions" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="Condition" type="tns:ConditionType" maxOccurs="unbounded"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Extension" type="tns:ExtendedCustomerCreditRatingType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ConditionType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Characteristics" type="cmn:CharacteristicsType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="tns:ExtendedConditionType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="RelatedObjectType">
+        <xsd:annotation>
+            <xsd:documentation>A type definition for Extended Business Object Reference</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Extension" type="tns:ExtendedRelatedObjectType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="VoucherType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Specification" type="cmn:SpecificationType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="tns:ExtendedVoucherType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedVoucherType"/>
+    <xsd:complexType name="MarketingCampaignType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:BaseComponentType">
+                <xsd:sequence>
+                    <xsd:element name="Specification" type="cmn:SpecificationType" minOccurs="0"/>
+                    <xsd:element name="Extension" type="tns:ExtendedMarketingCampaignType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ExtendedMarketingCampaignType"/>
+</xsd:schema>

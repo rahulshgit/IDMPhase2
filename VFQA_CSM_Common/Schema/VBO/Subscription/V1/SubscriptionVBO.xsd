@@ -1,0 +1,423 @@
+<!-- edited with XMLSpy v2014 rel. 2 (x64) (http://www.altova.com) by Lorenzo Dal Rio (Reply Ltd) --><!--© Vodafone Group Services Limited. All rights reserved.This document
+ comprises proprietary and confidential information and copyright material 
+ belonging to Vodafone Group Services Limited.Other than as permitted by 
+ law, no part of this document may be reproduced, adapted, or distributed, 
+ in any form or by any means, without the prior written consent of Vodafone 
+ Group Services Limited.The information in this document is subject to 
+ change without notice.All trademarks acknowledged.
+ Vodafone Group Services Limited - Confidential --><!-- ====================================================================== --><!-- ===== Vodafone VBO Subscription Schema Module ===== --><!-- ====================================================================== --><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbo/subscription/subscription/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbo/subscription/subscription/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/subscription/subscription/v1">
+	<xsd:annotation>
+		<xsd:documentation>
+			<p>Schema Definition for Subscription</p>
+		</xsd:documentation>
+	</xsd:annotation>
+	<!-- ======================= Imports ============================= -->
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CommonComponents.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../Meta.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/extension/vbo/subscription/subscription/v1" schemaLocation="ExtendedSubscriptionVBO.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../CoreComponentType_2p0.xsd"/>
+	<xsd:complexType name="DetailsType">
+		<xsd:sequence>
+			<xsd:element name="MSISDN" type="cct:TextType" minOccurs="0"/>
+			<xsd:element name="CancellationDate" type="cct:DateTimeType" minOccurs="0"/>
+			<xsd:element name="ProlongationDate" type="cct:DateTimeType" minOccurs="0"/>
+			<xsd:element name="RemainingDuration" type="cct:QuantityType" minOccurs="0"/>
+			<xsd:element name="LastCancellationDate" type="cct:DateTimeType" minOccurs="0"/>
+			<xsd:element name="ActivationPeriod" type="cmn:ValidityPeriodType" minOccurs="0"/>
+			<xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionDetailsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RelatedSubscriptionType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedRelatedSubscriptionType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RoleType">
+		<xsd:sequence>
+			<xsd:element name="CustomerParty" type="tns:CustomerPartyReferenceType" minOccurs="0"/>
+			<xsd:element name="Agent" type="tns:AgentReferenceType" minOccurs="0"/>
+			<xsd:element name="Subscriber" type="tns:SubscriberReferenceType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionRoleType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductOfferReferenceType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CustomerAccountReferenceType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerAccountReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ServiceAccountReferenceType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedServiceAccountReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SalesOrderReferenceType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedSalesOrderReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OptionMeansType">
+		<xsd:sequence>
+			<xsd:element name="TypeCode" type="cct:CodeType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OptionMethodType">
+		<xsd:sequence>
+			<xsd:element name="TypeCode" type="cct:CodeType" minOccurs="0"/>
+			<xsd:element name="IDs" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ID" type="cct:IDType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OptionType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0"/>
+					<xsd:element name="Means" type="tns:OptionMeansType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="Amount" type="cct:AmountType" minOccurs="0"/>
+					<xsd:element name="Threshold" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="CreationDateTime" type="cct:DateTimeType" minOccurs="0"/>
+					<xsd:element name="Method" type="tns:OptionMethodType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedOptionType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="TopupType">
+		<xsd:sequence>
+			<xsd:element name="Options" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Option" type="tns:OptionType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedTopupType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PaymentTermsType">
+		<xsd:sequence>
+			<xsd:element name="Topup" type="tns:TopupType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedPaymentTermsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SubscriptionTermType">
+		<xsd:sequence>
+			<xsd:element name="SpendLimit" type="cct:QuantityType" minOccurs="0"/>
+			<xsd:element name="PaymentTerms" type="tns:PaymentTermsType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionTermType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartType">
+		<xsd:sequence>
+			<xsd:element name="ProductOffers" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ProductOffer" type="tns:ProductOfferReferenceType" minOccurs="1" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CustomerAccounts" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CustomerAccount" type="tns:CustomerAccountReferenceType" minOccurs="1" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ServiceAccounts" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ServiceAccount" type="tns:ServiceAccountReferenceType" minOccurs="1" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Users" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="UserAccount" type="tns:UserAccountReferenceType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SalesOrders" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SalesOrder" type="tns:SalesOrderReferenceType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ContactPeople" type="cmn:ContactPeopleType" minOccurs="0"/>
+			<xsd:element name="Balance" type="cct:QuantityType" minOccurs="0"/>
+			<xsd:element name="Price" type="cct:AmountType" minOccurs="0"/>
+			<xsd:element name="Prices" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Price" type="tns:PriceType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SubscriptionTerm" type="tns:SubscriptionTermType" minOccurs="0"/>
+			<xsd:element name="NetPrice" type="cct:AmountType" minOccurs="0"/>
+			         <xsd:element name="StatusHistory" type="tns:StatusHistoryType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>A history of the lifecycle state transistions of a VBO. Each transition records the date and time and should record the target lifecycle status.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionPartsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AgentReferenceType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionAgentReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SubscriberReferenceType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="BirthDate" type="cct:DateType" minOccurs="0"/>
+					<xsd:element name="Gender" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="Alias" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="JobFunctions" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="JobFunction" type="cmn:JobFunctionType" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionSubscriberReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CustomerPartyReferenceType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionCustomerPartyReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PINSType">
+		<xsd:sequence>
+			<xsd:element name="PIN" type="cmn:PINType" maxOccurs="unbounded"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedPINType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RelationshipType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="ChangePasswordAllowedInd" type="cct:IndicatorType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedRelationshipType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UserAccountReferenceType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="PINS" type="tns:PINSType" minOccurs="0"/>
+					<xsd:element name="Relationship" type="tns:RelationshipType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedUserAccountReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RelatedLineItemReferenceType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedRelatedLineItemReferenceType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CustomerProductType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0"/>
+					<xsd:element name="CancellationDate" type="cct:DateType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerProductType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProductElementType">
+		<xsd:sequence>
+			<xsd:element name="CustomerProduct" type="tns:CustomerProductType" minOccurs="0"/>
+			<xsd:element name="Users" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="UserAccount" type="tns:UserAccountReferenceType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Security" type="tns:SecurityType" minOccurs="0"/>
+			<xsd:element name="Specifications" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Specification" type="tns:ProductElementSpecificationType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedProductElementType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductElementSpecificationType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:SpecificationType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductElementSpecificationType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SecurityType">
+		<xsd:sequence>
+			<xsd:element name="PINS" type="tns:PINSType" minOccurs="0"/>
+			<xsd:element name="PUKS" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PUK" type="tns:PUKType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedSecurityType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PUKType">
+		<xsd:sequence>
+			<xsd:element name="Type" type="cct:CodeType" minOccurs="0"/>
+			<xsd:element name="Value" type="cct:TextType" minOccurs="0"/>
+			<xsd:element name="CreationTime" type="cct:DateTimeType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedPUKType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LineItemType">
+		<xsd:sequence>
+			<xsd:element name="ProductElement" type="tns:ProductElementType" minOccurs="0"/>
+			<xsd:element name="Price" type="cct:AmountType" minOccurs="0"/>
+			<xsd:element name="Prices" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Price" type="tns:PriceType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Allowance" type="cct:QuantityType" minOccurs="0"/>
+			<xsd:element name="NetPrice" type="cct:AmountType" minOccurs="0"/>
+			<xsd:element name="Balance" type="cct:QuantityType" minOccurs="0"/>
+			<xsd:element name="Usage" type="cct:QuantityType" minOccurs="0"/>
+			<xsd:element name="RelatedLineItems" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="RelatedLineItem" type="tns:RelatedLineItemReferenceType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedLineItemType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LineItemsType">
+		<xsd:sequence>
+			<xsd:element name="LineItem" type="tns:LineItemType" maxOccurs="unbounded"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedLineItemsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SubscriptionVBOType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ExtendedBaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Details" type="tns:DetailsType" minOccurs="0"/>
+					<xsd:element name="RelatedSubscriptions" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="RelatedSubscription" type="tns:RelatedSubscriptionType" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Roles" type="tns:RoleType" minOccurs="0"/>
+					<xsd:element name="Parts" type="tns:PartType" minOccurs="0"/>
+					<xsd:element name="LineItems" type="tns:LineItemsType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionVBOType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="PriceType">
+		<xsd:sequence>
+			<xsd:element name="IDs" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ID" type="cct:IDType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Desc" type="cct:TextType" minOccurs="0"/>
+			<xsd:element name="Type" type="cct:CodeType" minOccurs="0"/>
+			<xsd:element name="Amount" type="cct:AmountType" minOccurs="0"/>
+			<xsd:element name="Frequency" type="cct:TextType" minOccurs="0"/>
+			<xsd:element name="ValidityPeriod" type="cmn:ValidityPeriodType" minOccurs="0"/>
+			<xsd:element name="CharacteristicsValue" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="cmn:CharactersticsValueType">
+							<xsd:attribute name="characteristicName" type="xsd:string" use="optional"/>
+							<xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedPriceType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	   <xsd:complexType name="StatusHistoryType">
+      <xsd:complexContent>
+         <xsd:extension base="cmn:StatusHistoryType">
+            <xsd:sequence>
+               <xsd:element name="Extension" type="extvbo:ExtendedStatusHistoryType" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+	
+</xsd:schema>

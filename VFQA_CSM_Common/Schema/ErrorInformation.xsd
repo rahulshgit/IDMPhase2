@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.vodafone.qa/ErrorInformation"
+		xmlns:tns="http://www.vodafone.qa/ErrorInformation"
+		elementFormDefault="qualified">
+	<xsd:element name="ErrorInformation">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="TransactionID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="MSISDN" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="ErrorCode" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="ErrorDescription" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="SystemName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Severity" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Category" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="ErrorDetail" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

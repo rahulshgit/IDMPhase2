@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright (c) 2006, Oracle. All rights reserved.  -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://xmlns.oracle.com/dvm"
+                  xmlns:tns="http://xmlns.oracle.com/dvm"
+                  elementFormDefault="qualified"
+                  attributeFormDefault="unqualified">
+
+<xsd:element name="dvm">
+    <xsd:annotation>
+      <xsd:documentation>The Top Level Element
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="description" minOccurs="0" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>The DVM Description.  This is optional
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="columns">
+          <xsd:annotation>
+            <xsd:documentation>This element holds DVM's column List.
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="column" minOccurs="2" maxOccurs="unbounded">
+                <xsd:annotation>
+                  <xsd:documentation>This represents a DVM Column
+                  </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:attribute name="name" use="required" type="xsd:string"/>
+                  <xsd:attribute name="qualifier" default="false" type="xsd:boolean" use="optional"/>
+                  <xsd:attribute name="order" use="optional" type="xsd:positiveInteger"/>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="rows" minOccurs="0">
+          <xsd:annotation>
+            <xsd:documentation>This represents all the DVM Rows.
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="row" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                  <xsd:documentation>
+                    Each DVM row of values
+                  </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="cell" minOccurs="2" maxOccurs="unbounded" 
+                       type="xsd:string">
+                      <xsd:annotation>
+                        <xsd:documentation>This is the value for this row and for
+ each column in the same order as defined in Columns.
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="name" use="required" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:annotation>
+    <xsd:documentation>This Schema is used to validate the DVM Document got for
+ creation and
+ update of a DVM.
+    </xsd:documentation>
+  </xsd:annotation>
+</xsd:schema>

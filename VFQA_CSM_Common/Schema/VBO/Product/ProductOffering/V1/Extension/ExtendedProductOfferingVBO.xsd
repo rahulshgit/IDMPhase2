@@ -1,0 +1,101 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/extension/vbo/product/product-offering/v1" version="1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/extension/vbo/product/product-offering/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+   <xsd:annotation>
+      <xsd:documentation>
+         <p>Schema Definition for ProductOffering Extension</p>
+      </xsd:documentation>
+   </xsd:annotation>
+   <xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../../../CoreComponentType_2p0.xsd"/>
+   <xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../../CommonComponents.xsd"/>
+   <xsd:complexType name="ExtendedProductOfferingVBOType">
+      <xsd:sequence>
+         <xsd:element name="Hierarchy" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>This collection describes the hierarchy to identify the parent and child of a product offering.</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="ID" type="cct:IDType" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation>This field represent the ID of the current hierarchy item.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Name" type="cct:TextType" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation>This field describes  the name of the current hierarchy item.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Desc" type="cct:TextType" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation>This field holds the description of a current hierarchy item.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="ParentID" type="cct:IDType" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation>If the current element is a child, this element will contain the ID of the parent element. Otherwise, if current element is a root element, it will be empty or not present.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Type" type="cct:CodeType" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation>A classification of the business object or component. This identifies the sub-type of the instance of object or component.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Categories" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation>The set of classifications for the business object or component.</xsd:documentation>
+                     </xsd:annotation>
+                     <xsd:complexType>
+                        <xsd:sequence>
+                           <xsd:element name="Category" maxOccurs="unbounded">
+                              <xsd:annotation>
+                                 <xsd:documentation>A classification applied to the business object or component. More than one classification scheme can be applied using the @listName attribute to identify the type of code list being used. The classification scheme can be used to group instances of the object or component.</xsd:documentation>
+                              </xsd:annotation>
+                              <xsd:complexType>
+                                 <xsd:simpleContent>
+                                    <xsd:extension base="cct:CodeType">
+                                       <xsd:attribute name="listHierarchyID" type="xsd:string" use="optional">
+                                          <xsd:annotation>
+                                             <xsd:documentation>An indication of the hierarchy level of the category when involved in a hierarchical classification, e.g. level 1 -> Category/@listHierarchyID=1, level 2 -> Category/@listHierarchyID=2. In this case the listName should be the same for each level to show their relationship.</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:attribute>
+                                    </xsd:extension>
+                                 </xsd:simpleContent>
+                              </xsd:complexType>
+                           </xsd:element>
+                        </xsd:sequence>
+                     </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="Status" type="cct:CodeType" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation>The lifecycle state of the business object or component. This field is used to track the specific state an instance of an object or component is in, e.g. the Customer Bill is Active or the Customer Request has been Cancelled.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ExtendedProductOfferingDetailsType"/>
+   <xsd:complexType name="ExtendedRelatedProductOfferingType"/>
+   <xsd:complexType name="ExtendedProductOfferingRolesType"/>
+   <xsd:complexType name="ExtendedProductOfferingManagerType"/>
+   <xsd:complexType name="ExtendedProductOfferingPartsType"/>
+   <xsd:complexType name="ExtendedProductOfferingChannelType"/>
+   <xsd:complexType name="ExtendedProductOfferingGeographicalPlaceType"/>
+   <xsd:complexType name="ExtendedProductOfferingPriceType"/>
+   <xsd:complexType name="ExtendedProductOfferingCataloguesType"/>
+   <xsd:complexType name="ExtendedProductOfferingMarketSegmentType"/>
+   <xsd:complexType name="ExtendedProductOfferingSpecificationType"/>
+   <xsd:complexType name="ExtendedProductOfferingProviderType"/>
+   <xsd:complexType name="ExtendedProductOfferingSupportType"/>
+   <xsd:complexType name="ExtendedProductOfferingRatingSummaryType"/>
+   <xsd:complexType name="ExtendedProductOfferingTermType"/>
+   <xsd:complexType name="ExtendedPriceValueType"/>
+   <xsd:complexType name="ExtendedDiscountType"/>
+</xsd:schema>

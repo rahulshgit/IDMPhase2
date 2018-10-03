@@ -1,0 +1,152 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/payment/customer-bill/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbm/payment/customer-bill/v1" xmlns:vbo="http://group.vodafone.com/schema/vbo/payment/customer-bill/v1" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+
+	<xsd:annotation>
+		<xsd:documentation>
+			<p>Vodafone Business Message Schema Definition for Customer Bill</p>
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	<!-- ===================== Imports ============================ -->
+	<xsd:import namespace="http://group.vodafone.com/schema/vbo/payment/customer-bill/v1" schemaLocation="CustomerBillVBO.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../Meta.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../CodeLists.xsd"/>
+
+	
+	<!-- ===================== Get List ============================ -->
+
+	<xsd:complexType name="GetCustomerBillListVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetCustomerBillList request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:QueryType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="GetCustomerBillListVBMRequest" type="tns:GetCustomerBillListVBMRequestType"/>
+
+
+	<xsd:complexType name="GetCustomerBillListVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetCustomerBillList response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CustomerBillVBO" type="vbo:CustomerBillVBOType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="GetCustomerBillListVBMResponse" type="tns:GetCustomerBillListVBMResponseType"/>
+
+	<!-- ===================== Get List Summary ============================ -->
+
+	<xsd:complexType name="GetCustomerBillSummaryListVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetCustomerBillSummaryList request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:QueryType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="GetCustomerBillSummaryListVBMRequest" type="tns:GetCustomerBillSummaryListVBMRequestType"/>
+
+	<xsd:complexType name="GetCustomerBillSummaryListVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetCustomerBillSummaryList response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CustomerBillSummaryVBO" type="vbo:CustomerBillSummaryVBOType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="GetCustomerBillSummaryListVBMResponse" type="tns:GetCustomerBillSummaryListVBMResponseType"/>
+
+
+	<!-- ===================== Get List Line Items ============================ -->
+
+	<xsd:complexType name="GetCustomerBillLineItemListVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetCustomerBillLineItemList request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:QueryType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="GetCustomerBillLineItemListVBMRequest" type="tns:GetCustomerBillLineItemListVBMRequestType"/>
+
+	<xsd:complexType name="GetCustomerBillLineItemListVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the GetCustomerBillLineItemList response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CustomerBillLineItemVBO" type="vbo:CustomerBillLineItemVBOType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="GetCustomerBillLineItemListVBMResponse" type="tns:GetCustomerBillLineItemListVBMResponseType"/>				
+				
+	<!-- ===================== Notify ============================ -->
+
+	<xsd:complexType name="NotifyCustomerBillVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the NotifyCustomerBill request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CustomerBillVBO" type="vbo:CustomerBillVBOType"/>
+		</xsd:sequence>
+		<xsd:attribute name="eventCode" type="cmn:EventCodeType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>A value representing the event that occurred on the publishing system to generate this notify event.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="businessEventCode" type="xsd:token" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>A value representing the business event that occurred on the publishing system to generate this notify event.</xsd:documentation>
+			</xsd:annotation>	
+		</xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:element name="NotifyCustomerBillVBMRequest" type="tns:NotifyCustomerBillVBMRequestType"/>
+				
+				
+	<!-- ===================== Sync ============================ -->
+
+	<xsd:complexType name="SyncCustomerBillVBMRequestType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the SyncCustomerBill request payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CustomerBillVBO" type="vbo:CustomerBillVBOType"/>
+		</xsd:sequence>
+		<xsd:attribute name="eventCode" type="cmn:EventCodeType">
+			<xsd:annotation>
+				<xsd:documentation>A value representing the event that occurred on the publishing system to generate this notify event.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="businessEventCode" type="xsd:token" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>A value representing the business event that occurred on the publishing system to generate this notify event.</xsd:documentation>
+			</xsd:annotation>	
+		</xsd:attribute>			
+	</xsd:complexType>
+
+	<xsd:element name="SyncCustomerBillVBMRequest" type="tns:SyncCustomerBillVBMRequestType"/>
+
+	<xsd:complexType name="SyncCustomerBillVBMResponseType">
+		<xsd:annotation>
+			<xsd:documentation> Type definition for the SyncCustomerBill response payload.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CustomerBillVBO" type="vbo:CustomerBillVBOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="SyncCustomerBillVBMResponse" type="tns:SyncCustomerBillVBMResponseType"/>
+</xsd:schema>

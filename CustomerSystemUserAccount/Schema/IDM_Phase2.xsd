@@ -1,0 +1,341 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xs:schema xmlns:tns="http://vodafoneqatar.qa/vfqa/IDM_Phase2" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+     version="1.0" targetNamespace="http://vodafoneqatar.qa/vfqa/IDM_Phase2">
+    <xs:element name="CRM_CHANGE_PASSWORD" type="tns:CRM_CHANGE_PASSWORD"/>
+    <xs:element name="CRM_CHANGE_PASSWORDResponse" type="tns:CRM_CHANGE_PASSWORDResponse"/>
+    <xs:element name="CRM_CREATE_USER" type="tns:CRM_CREATE_USER"/>
+    <xs:element name="CRM_CREATE_USERResponse" type="tns:CRM_CREATE_USERResponse"/>
+    <xs:element name="CRM_RESET_PASSWORD" type="tns:CRM_RESET_PASSWORD"/>
+    <xs:element name="CRM_RESET_PASSWORDResponse" type="tns:CRM_RESET_PASSWORDResponse"/>
+    <xs:element name="CRM_SEARCH_ALL_USER" type="tns:CRM_SEARCH_ALL_USER"/>
+    <xs:element name="CRM_SEARCH_ALL_USERResponse" type="tns:CRM_SEARCH_ALL_USERResponse"/>
+    <xs:element name="CRM_SEARCH_USER" type="tns:CRM_SEARCH_USER"/>
+    <xs:element name="CRM_SEARCH_USERResponse" type="tns:CRM_SEARCH_USERResponse"/>
+    <xs:element name="CRM_SYNC_ACCOUNT" type="tns:CRM_SYNC_ACCOUNT"/>
+    <xs:element name="CRM_SYNC_ACCOUNTResponse" type="tns:CRM_SYNC_ACCOUNTResponse"/>
+    <xs:element name="CRM_UNLOCK_USER" type="tns:CRM_UNLOCK_USER"/>
+    <xs:element name="CRM_UNLOCK_USERResponse" type="tns:CRM_UNLOCK_USERResponse"/>
+    <xs:element name="CRM_UPDATE_USER" type="tns:CRM_UPDATE_USER"/>
+    <xs:element name="CRM_UPDATE_USERResponse" type="tns:CRM_UPDATE_USERResponse"/>
+    <xs:element name="GET_ALL_SEC_QUESTIONS" type="tns:GET_ALL_SEC_QUESTIONS"/>
+    <xs:element name="GET_ALL_SEC_QUESTIONSResponse" type="tns:GET_ALL_SEC_QUESTIONSResponse"/>
+    <xs:element name="GetAdditionalFormAttributes" type="tns:GetAdditionalFormAttributes"/>
+    <xs:element name="GetAdditionalFormAttributesResponse" type="tns:GetAdditionalFormAttributesResponse"/>
+    <xs:element name="IVR_PIN_VALIDATION" type="tns:IVR_PIN_VALIDATION"/>
+    <xs:element name="IVR_PIN_VALIDATIONResponse" type="tns:IVR_PIN_VALIDATIONResponse"/>
+    <xs:element name="IVR_VERIFY_CALLER" type="tns:IVR_VERIFY_CALLER"/>
+    <xs:element name="IVR_VERIFY_CALLERResponse" type="tns:IVR_VERIFY_CALLERResponse"/>
+    <xs:element name="LINK_MSISDN" type="tns:LINK_MSISDN"/>
+    <xs:element name="LINK_MSISDNResponse" type="tns:LINK_MSISDNResponse"/>
+    <xs:element name="MODIFY_PIN" type="tns:MODIFY_PIN"/>
+    <xs:element name="MODIFY_PINResponse" type="tns:MODIFY_PINResponse"/>
+    <xs:element name="RETRIEVE_CHILD_DATA" type="tns:RETRIEVE_CHILD_DATA"/>
+    <xs:element name="RETRIEVE_CHILD_DATAResponse" type="tns:RETRIEVE_CHILD_DATAResponse"/>
+    <xs:element name="SET_CHALLENGE_QA" type="tns:SET_CHALLENGE_QA"/>
+    <xs:element name="SET_CHALLENGE_QAResponse" type="tns:SET_CHALLENGE_QAResponse"/>
+    <xs:element name="UNLINK_MSISDN" type="tns:UNLINK_MSISDN"/>
+    <xs:element name="UNLINK_MSISDNResponse" type="tns:UNLINK_MSISDNResponse"/>
+    <xs:element name="connectOIM" type="tns:connectOIM"/>
+    <xs:element name="connectOIMResponse" type="tns:connectOIMResponse"/>
+    <xs:element name="getChildProcessFormData" type="tns:getChildProcessFormData"/>
+    <xs:element name="getChildProcessFormDataResponse" type="tns:getChildProcessFormDataResponse"/>
+    <xs:complexType name="CRM_SEARCH_USER">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_SEARCH_USERResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="response">
+        <xs:sequence>
+            <xs:element name="accountStatus" type="xs:string" minOccurs="0"/>
+            <xs:element name="act_key" type="xs:string" minOccurs="0"/>
+            <xs:element name="auth_Status" type="xs:string" minOccurs="0"/>
+            <xs:element name="code" type="xs:string" minOccurs="0"/>
+            <xs:element name="date_of_Birth" type="xs:string" minOccurs="0"/>
+            <xs:element name="EMail" type="xs:string" minOccurs="0"/>
+            <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+            <xs:element name="IDMAccountId" type="xs:string" minOccurs="0"/>
+            <xs:element name="ID_Number" type="xs:string" minOccurs="0"/>
+            <xs:element name="ID_Type" type="xs:string" minOccurs="0"/>
+            <xs:element name="IVR_Pin" type="xs:string" minOccurs="0"/>
+            <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+            <xs:element name="MSISDN" type="xs:string" minOccurs="0"/>
+            <xs:element name="message" type="xs:string" minOccurs="0"/>
+            <xs:element name="password" type="xs:string" minOccurs="0"/>
+            <xs:element name="role" type="xs:string" minOccurs="0"/>
+            <xs:element name="secQuestions" type="tns:securityQADetails" nillable="true" minOccurs="0"
+                 maxOccurs="unbounded"/>
+            <xs:element name="secondaryEMail" type="xs:string" minOccurs="0"/>
+            <xs:element name="transaction_id" type="xs:string" minOccurs="0"/>
+            <xs:element name="user_Key" type="xs:string" minOccurs="0"/>
+            <xs:element name="user_Login" type="xs:string" minOccurs="0"/>
+            <xs:element name="xellarate_Type" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="securityQADetails">
+        <xs:sequence>
+            <xs:element name="answer" type="xs:string" minOccurs="0"/>
+            <xs:element name="code" type="xs:string" minOccurs="0"/>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="message" type="xs:string" minOccurs="0"/>
+            <xs:element name="question" type="xs:string" minOccurs="0"/>
+            <xs:element name="transaction_id" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="IVR_VERIFY_CALLER">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="IVR_VERIFY_CALLERResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RETRIEVE_CHILD_DATA">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RETRIEVE_CHILD_DATAResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_CHANGE_PASSWORD">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_CHANGE_PASSWORDResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GET_ALL_SEC_QUESTIONS">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GET_ALL_SEC_QUESTIONSResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_UPDATE_USER">
+        <xs:sequence>
+            <xs:element name="arg0" type="tns:request" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="request">
+        <xs:sequence>
+            <xs:element name="accountStatus" type="xs:string" minOccurs="0"/>
+            <xs:element name="act_key" type="xs:string" minOccurs="0"/>
+            <xs:element name="auth_Status" type="xs:string" minOccurs="0"/>
+            <xs:element name="code" type="xs:string" minOccurs="0"/>
+            <xs:element name="date_of_Birth" type="xs:string" minOccurs="0"/>
+            <xs:element name="EMail" type="xs:string" minOccurs="0"/>
+            <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+            <xs:element name="IDMAccountId" type="xs:string" minOccurs="0"/>
+            <xs:element name="ID_Number" type="xs:string" minOccurs="0"/>
+            <xs:element name="ID_Type" type="xs:string" minOccurs="0"/>
+            <xs:element name="IVR_Pin" type="xs:string" minOccurs="0"/>
+            <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+            <xs:element name="MSISDN" type="xs:string" minOccurs="0"/>
+            <xs:element name="message" type="xs:string" minOccurs="0"/>
+            <xs:element name="password" type="xs:string" minOccurs="0"/>
+            <xs:element name="role" type="xs:string" minOccurs="0"/>
+            <xs:element name="secondaryEMail" type="xs:string" minOccurs="0"/>
+            <xs:element name="transaction_id" type="xs:string" minOccurs="0"/>
+            <xs:element name="user_Key" type="xs:string" minOccurs="0"/>
+            <xs:element name="user_Login" type="xs:string" minOccurs="0"/>
+            <xs:element name="xellarate_Type" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_UPDATE_USERResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetAdditionalFormAttributes">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetAdditionalFormAttributesResponse">
+        <xs:sequence>
+            <xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="IVR_PIN_VALIDATION">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="IVR_PIN_VALIDATIONResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="connectOIM">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="connectOIMResponse">
+        <xs:sequence>
+            <xs:element name="return" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_SEARCH_ALL_USER">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg3" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_SEARCH_ALL_USERResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UNLINK_MSISDN">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg3" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UNLINK_MSISDNResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_SYNC_ACCOUNT">
+        <xs:sequence>
+            <xs:element name="arg0" type="tns:request" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_SYNC_ACCOUNTResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_CREATE_USER">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg3" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg4" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg5" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg6" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg7" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg8" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg9" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg10" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg11" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg12" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg13" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_CREATE_USERResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_RESET_PASSWORD">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_RESET_PASSWORDResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MODIFY_PIN">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MODIFY_PINResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_UNLOCK_USER">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CRM_UNLOCK_USERResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="getChildProcessFormData">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="getChildProcessFormDataResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:msisdnDetails" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="msisdnDetails">
+        <xs:sequence>
+            <xs:element name="authstatus" type="xs:string" minOccurs="0"/>
+            <xs:element name="code" type="xs:string" minOccurs="0"/>
+            <xs:element name="message" type="xs:string" minOccurs="0"/>
+            <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+            <xs:element name="transaction_id" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SET_CHALLENGE_QA">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="tns:securityQADetails" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SET_CHALLENGE_QAResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LINK_MSISDN">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg3" type="xs:string" minOccurs="0"/>
+            <xs:element name="arg4" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LINK_MSISDNResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:response" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+<!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. -->

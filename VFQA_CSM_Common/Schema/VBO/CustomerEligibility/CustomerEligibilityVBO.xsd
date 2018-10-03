@@ -1,0 +1,172 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbo/analytics/customer-eligibility/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbo/analytics/customer-eligibility/v1" xmlns:extvbo="http://group.vodafone.com/schema/extension/vbo/analytics/customer-eligibility/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+	<xsd:annotation>
+		<xsd:documentation>Schema definition for CustomerEligibility.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../CommonComponents.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/extension/vbo/analytics/customer-eligibility/v1" schemaLocation="Extension/ExtendedCustomerEligibilityVBO.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../CoreComponentType_2p0.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../Meta.xsd"/>
+	<xsd:complexType name="CustomerEligibilityVBOType">
+		<xsd:annotation>
+			<xsd:documentation>
+				The Customer Eligibility Service is an entity service that provides capabilities to check if a customer is eligible for upgrading or downgrading from an existing contract to a different contract.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:ExtendedBaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="RelatedCustomerEligibility" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerEligibility" type="tns:RelatedCustomerEligibilityType" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Roles" type="tns:CustomerEligibilityRolesType" minOccurs="0"/>
+					<xsd:element name="Parts" type="tns:CustomerEligibilityPartsType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerEligibilityVBOType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RelatedCustomerEligibilityType">
+		<xsd:annotation>
+			<xsd:documentation>A type definition for Related CustomerEligibility Type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedRelatedCustomerEligibilityType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CustomerEligibilityRolesType">
+		<xsd:sequence>
+			<xsd:element name="Agent" type="tns:AgentType" minOccurs="0"/>
+			<xsd:element name="Customer" type="tns:CustomerType" minOccurs="0"/>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerEligibilityRolesType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustomerEligibilityPartsType">
+		<xsd:sequence>
+			<xsd:element name="CustomerAccount" type="tns:CustomerAccountType" minOccurs="0"/>
+			<xsd:element name="Subscriptions" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Subscription" type="tns:SubscriptionType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ProductOffering" type="tns:ProductOfferingType" minOccurs="0"/>
+			<xsd:element name="Channel" type="tns:ChannelType" minOccurs="0"/>
+			<xsd:element name="Notes" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Note" type="tns:NoteType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Extension" type="extvbo:ExtendedCustomerEligibilityPartsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AgentType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedAgentType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CustomerType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CustomerAccountType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedCustomerAccountType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ChannelType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedChannelType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SubscriptionType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="EligibilitySpecification" type="tns:EligibilitySpecificationType" minOccurs="0"/>
+					<xsd:element name="Extension" type="extvbo:ExtendedSubscriptionType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="EligibilitySpecificationType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="EligibilityIndicator" type="cct:IndicatorType" minOccurs="0"/>
+					<xsd:element name="EligibilityReason" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="ExpiryContractDate" type="cct:DateType" minOccurs="0"/>
+					<xsd:element name="EligibilityPrice" type="cct:AmountType" minOccurs="0"/>
+					<xsd:element name="NextEligibletDate" type="cct:DateType" minOccurs="0"/>
+					<xsd:element name="Tier" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="OverrideReason" type="cct:TextType" minOccurs="0"/>
+					<xsd:element name="Characteristics" type="tns:CharacteristicsListType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	 <xsd:complexType name="CharacteristicsListType">
+		<xsd:sequence>
+			<xsd:element name="CharacteristicsValue" type="tns:CharactersticsValueType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CharactersticsValueType">
+        <xsd:complexContent>
+            <xsd:extension base="cmn:CharactersticsValueType">
+                <xsd:attribute name="characteristicName" type="xsd:string" use="optional"/>
+                <xsd:attribute name="actionCode" type="cmn:ActionCodeType" use="optional"/>
+            </xsd:extension>
+        </xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProductOfferingType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:BaseComponentType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedProductOfferingType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="NoteType">
+		<xsd:complexContent>
+			<xsd:extension base="cmn:NoteType">
+				<xsd:sequence>
+					<xsd:element name="Extension" type="extvbo:ExtendedNoteType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

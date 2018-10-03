@@ -1,0 +1,94 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+the prior written consent of Vodafone Group Services Limited.
+The information in this document is subject to change without notice.
+All trademarks acknowledged.
+Vodafone Group Services Limited - Confidential--><xsd:schema targetNamespace="http://group.vodafone.com/schema/vbm/customer/loyalty-account/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/vbm/customer/loyalty-account/v1" xmlns:vbo="http://group.vodafone.com/schema/vbo/customer/loyalty-account/v1" xmlns:cmn="http://group.vodafone.com/schema/common/v1">
+	<xsd:annotation>
+		<xsd:documentation>
+			<p>Vodafone Business Message Schema Definition for LoyaltyAccount</p>
+		</xsd:documentation>
+	</xsd:annotation>
+	<!-- ===================== Imports ============================ -->
+	<xsd:import namespace="http://group.vodafone.com/schema/vbo/customer/loyalty-account/v1" schemaLocation="LoyaltyAccountVBO.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../CodeLists.xsd"/>
+	<xsd:import namespace="http://group.vodafone.com/schema/common/v1" schemaLocation="../../../../Meta.xsd"/>
+	
+	<xsd:complexType name="UpdateLoyaltyAccountVBMRequestType">
+	<xsd:annotation>
+		<xsd:documentation> Type definition for the UpdateLoyaltyAccount request payload.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:sequence>
+		<xsd:element name="LoyaltyAccountVBO" type="vbo:LoyaltyAccountVBOType"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="UpdateLoyaltyAccountVBMRequest" type="tns:UpdateLoyaltyAccountVBMRequestType"/>
+<xsd:complexType name="UpdateLoyaltyAccountVBMResponseType">
+	<xsd:annotation>
+		<xsd:documentation> Type definition for the UpdateLoyaltyAccount response payload.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:sequence>
+		<xsd:element name="LoyaltyAccountVBO" type="vbo:LoyaltyAccountVBOType"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="UpdateLoyaltyAccountVBMResponse" type="tns:UpdateLoyaltyAccountVBMResponseType"/>
+
+<xsd:complexType name="GetLoyaltyAccountListVBMRequestType">
+	<xsd:annotation>
+		<xsd:documentation> Type definition for the GetLoyaltyAccountList request payload.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexContent>
+		<xsd:extension base="cmn:QueryType"/>
+	</xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="GetLoyaltyAccountListVBMRequest" type="tns:GetLoyaltyAccountListVBMRequestType"/>
+<xsd:complexType name="GetLoyaltyAccountListVBMResponseType">
+	<xsd:annotation>
+		<xsd:documentation> Type definition for the GetLoyaltyAccountList response payload.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:sequence>
+		<xsd:element name="LoyaltyAccountVBO" type="vbo:LoyaltyAccountVBOType" minOccurs="0" maxOccurs="unbounded"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="GetLoyaltyAccountListVBMResponse" type="tns:GetLoyaltyAccountListVBMResponseType"/>
+
+<xsd:complexType name="SyncLoyaltyAccountVBMRequestType">
+	<xsd:annotation>
+		<xsd:documentation> Type definition for the SyncLoyaltyAccount request payload.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:sequence>
+		<xsd:element name="LoyaltyAccountVBO" type="vbo:LoyaltyAccountVBOType"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="SyncLoyaltyAccountVBMRequest" type="tns:SyncLoyaltyAccountVBMRequestType"/>
+<xsd:complexType name="SyncLoyaltyAccountVBMResponseType">
+	<xsd:annotation>
+		<xsd:documentation> Type definition for the SyncLoyaltyAccount response payload.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:sequence>
+		<xsd:element name="LoyaltyAccountVBO" type="vbo:LoyaltyAccountVBOType"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="SyncLoyaltyAccountVBMResponse" type="tns:SyncLoyaltyAccountVBMResponseType"/>
+
+<xsd:complexType name="NotifyLoyaltyAccountVBMRequestType">
+	<xsd:annotation>
+		<xsd:documentation> Type definition for the NotifyLoyaltyAccount request payload.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:sequence>
+		<xsd:element name="LoyaltyAccountVBO" type="vbo:LoyaltyAccountVBOType"/>
+	</xsd:sequence>
+	<xsd:attribute name="eventCode" type="cmn:EventCodeType"/>
+</xsd:complexType>
+
+<xsd:element name="NotifyLoyaltyAccountVBMRequest" type="tns:NotifyLoyaltyAccountVBMRequestType"/>
+
+
+</xsd:schema>

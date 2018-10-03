@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:xsdLocal1="http://www.siebel.com/xml/VFQ%20IDM%20Sync"
+ targetNamespace="http://siebel.com/CustomUI"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="http://siebel.com/CustomUI"
+><types
+><xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ xmlns:xsdLocal1="http://www.siebel.com/xml/VFQ%20IDM%20Sync"
+ targetNamespace="http://www.siebel.com/xml/VFQ%20IDM%20Sync"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+><xsd:annotation
+><xsd:documentation
+>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation
+></xsd:annotation
+><xsd:element
+ name="ListOfVfqIdmSync"
+ type="xsdLocal1:ListOfVfqIdmSync"
+></xsd:element
+><xsd:complexType
+ name="ListOfVfqIdmSyncTopElmt"
+><xsd:sequence
+><xsd:element
+ name="ListOfVfqIdmSync"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsdLocal1:ListOfVfqIdmSync"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ListOfVfqIdmSync"
+><xsd:sequence
+><xsd:element
+ name="VfqIdmManagement"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:VfqIdmManagement"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="VfqIdmManagement"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DateofBirth"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Email"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="FirstName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="IdNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="IdType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="LastName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="Operation"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+></xsd:schema
+><xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ targetNamespace="http://siebel.com/CustomUI"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+><xsd:import
+ namespace="http://www.siebel.com/xml/VFQ%20IDM%20Sync"
+></xsd:import
+><xsd:element
+ name="Sync_1_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ name="Status_spcCode"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ ref="xsdLocal1:ListOfVfqIdmSync"
+></xsd:element
+><xsd:element
+ name="Status_spcMsg"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="Sync_1_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ name="Error_spcCode"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Error_spcMessage"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Status_spcCode"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Status_spcMsg"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+></xsd:schema
+></types
+><message
+ name="Sync_1_Input"
+><part
+ name="Sync_1_Input"
+ element="tns:Sync_1_Input"
+></part
+></message
+><message
+ name="Sync_1_Output"
+><part
+ name="Sync_1_Output"
+ element="tns:Sync_1_Output"
+></part
+></message
+><portType
+ name="VFQA_spcIDM_spcSiebel_spcSync"
+><operation
+ name="Sync_1"
+><input
+ message="tns:Sync_1_Input"
+></input
+><output
+ message="tns:Sync_1_Output"
+></output
+></operation
+></portType
+><binding
+ name="VFQA_spcIDM_spcSiebel_spcSync"
+ type="tns:VFQA_spcIDM_spcSiebel_spcSync"
+><soap:binding
+ transport="http://schemas.xmlsoap.org/soap/http"
+ style="document"
+></soap:binding
+><operation
+ name="Sync_1"
+><soap:operation
+ soapAction="document/http://siebel.com/CustomUI:Sync_1"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+></binding
+><service
+ name="VFQA_spcIDM_spcSiebel_spcSync"
+><port
+ binding="tns:VFQA_spcIDM_spcSiebel_spcSync"
+ name="VFQA_spcIDM_spcSiebel_spcSync"
+><soap:address
+ location="http://&lt;webserver&gt;/eai_anon_&lt;lang&gt;/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute"
+></soap:address
+></port
+></service
+></definitions
+>

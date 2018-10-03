@@ -1,0 +1,290 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved.
+	This document comprises proprietary and confidential information and copyright material belonging to Vodafone Group Services Limited.
+	Other than as permitted by law, no part of this document may be reproduced, adapted, or distributed, in any form or by any means, without
+	the prior written consent of Vodafone Group Services Limited.
+	The information in this document is subject to change without notice.
+	All trademarks acknowledged.
+	Vodafone Group Services Limited - Confidential--><wsdl:definitions name="Event" targetNamespace="http://group.vodafone.com/contract/vbs/technical/event/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wssem="http://lsdis.cs.uga.edu/projects/meteor-s/wsdl-s/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vbm="http://group.vodafone.com/schema/vbm/technical/event/v1" xmlns:vbs="http://group.vodafone.com/contract/vbs/technical/event/v1" xmlns:vfo="http://group.vodafone.com/contract/vfo/fault/v1" xmlns:vho="http://group.vodafone.com/contract/vho/header/v1">
+   <wsdl:documentation>version:1.1.0</wsdl:documentation>
+   <!--Show support for WS-Policy and the attachment of policy assertions-->
+   <wsp:UsingPolicy wsdl:Required="true"/>
+   <!--The categorisation of the service as defined by the service architecture-->
+   <wssem:category name="UtilityService" taxonomyURI="http://group.vodafone.com/iCoE/Taxonomy.owl#"/>
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://group.vodafone.com/contract/vbs/technical/event/v1" elementFormDefault="qualified">
+         <xsd:import namespace="http://group.vodafone.com/schema/vbm/technical/event/v1" schemaLocation="../../../../Schema/VBO/Event/V1/EventVBM.xsd"/>
+         <xsd:import namespace="http://group.vodafone.com/contract/vfo/fault/v1" schemaLocation="../../../../Schema/Fault.xsd"/>
+         <xsd:import namespace="http://group.vodafone.com/contract/vho/header/v1" schemaLocation="../../../../Schema/Header.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <!--Service Operations Message Structures-->
+   <!--Create Messages-->
+   <wsdl:message name="CreateEventReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the CreateEvent operation</wsdl:documentation>
+      <wsdl:part name="EventDetails" element="vbm:CreateEventVBMRequest"/>
+   </wsdl:message>
+   <wsdl:message name="CreateEventRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the CreateEvent operation</wsdl:documentation>
+      <wsdl:part name="EventDetails" element="vbm:CreateEventVBMResponse"/>
+   </wsdl:message>
+   <!--Update Messages-->
+   <wsdl:message name="UpdateEventReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the UpdateEvent operation</wsdl:documentation>
+      <wsdl:part name="EventDetails" element="vbm:UpdateEventVBMRequest"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateEventRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the UpdateEvent operation</wsdl:documentation>
+      <wsdl:part name="EventDetails" element="vbm:UpdateEventVBMResponse"/>
+   </wsdl:message>
+   <!--Delete Messages-->
+   <wsdl:message name="DeleteEventReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the DeleteEvent operation</wsdl:documentation>
+      <wsdl:part name="EventDetails" element="vbm:DeleteEventVBMRequest"/>
+   </wsdl:message>
+   <wsdl:message name="DeleteEventRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the DeleteEvent operation</wsdl:documentation>
+      <wsdl:part name="EventDetails" element="vbm:DeleteEventVBMResponse"/>
+   </wsdl:message>
+   <!--Get Messages-->
+   <wsdl:message name="GetEventListReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the GetEventList operation</wsdl:documentation>
+      <wsdl:part name="EventCriteria" element="vbm:GetEventListVBMRequest"/>
+   </wsdl:message>
+   <wsdl:message name="GetEventListRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the GetEventList operation</wsdl:documentation>
+      <wsdl:part name="EventList" element="vbm:GetEventListVBMResponse"/>
+   </wsdl:message>
+   <!--Sync Messages-->
+   <wsdl:message name="SyncEventReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the SyncEvent operation</wsdl:documentation>
+      <wsdl:part name="EventDetails" element="vbm:SyncEventVBMRequest"/>
+   </wsdl:message>
+   <wsdl:message name="SyncEventRespMessage">
+      <wsdl:documentation>This message is used as the response payload to the SyncEvent operation</wsdl:documentation>
+      <wsdl:part name="EventDetails" element="vbm:SyncEventVBMResponse"/>
+   </wsdl:message>
+   <!--Notify Messages-->
+   <wsdl:message name="NotifyEventReqMessage">
+      <wsdl:documentation>This message is used as the request payload to the NotifyEvent operation</wsdl:documentation>
+      <wsdl:part name="EventCriteria" element="vbm:NotifyEventVBMRequest"/>
+   </wsdl:message>
+   <!--Supporting Messages-->
+   <wsdl:message name="VodafoneFault">
+      <wsdl:documentation>This message is used for propagating Error Context and Error Message</wsdl:documentation>
+      <wsdl:part name="VodafoneFault" element="vfo:Fault"/>
+   </wsdl:message>
+   <wsdl:message name="MessageHeaders">
+      <wsdl:documentation>This message is used as the header for SOAP request</wsdl:documentation>
+      <wsdl:part name="Source" element="vho:Source"/>
+      <wsdl:part name="Correlation" element="vho:Correlation"/>
+      <wsdl:part name="Cache" element="vho:Cache"/>
+      <wsdl:part name="ServiceDocumentation" element="vho:ServiceDocumentation"/>
+      <wsdl:part name="ResultStatus" element="vho:ResultStatus"/>
+      <wsdl:part name="Destination" element="vho:Destination"/>
+      <wsdl:part name="RouteInfo" element="vho:RouteInfo"/>
+      <wsdl:part name="QueryResult" element="vho:QueryResult"/>
+   </wsdl:message>
+   <wsdl:portType name="EventInterface">
+      <wsdl:documentation>This interface contains operations for the Article API</wsdl:documentation>
+      <!--Create Operation-->
+      <wsdl:operation name="CreateEvent">
+         <wsdl:documentation>This operation is used to CreateEvent</wsdl:documentation>
+         <wsdl:input name="CreateEventRequest" message="vbs:CreateEventReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/technical/event/v1/create"/>
+         <wsdl:output name="CreateEventResponse" message="vbs:CreateEventRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>
+      <!--Update Operation-->
+      <wsdl:operation name="UpdateEvent">
+         <wsdl:documentation>This operation is used to UpdateEvent</wsdl:documentation>
+         <wsdl:input name="UpdateEventRequest" message="vbs:UpdateEventReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/technical/event/v1/update"/>
+         <wsdl:output name="UpdateEventResponse" message="vbs:UpdateEventRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>
+      <!--Delete Operation-->
+      <wsdl:operation name="DeleteEvent">
+         <wsdl:documentation>This operation is used to DeleteEvent</wsdl:documentation>
+         <wsdl:input name="DeleteEventRequest" message="vbs:DeleteEventReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/technical/event/v1/delete"/>
+         <wsdl:output name="DeleteEventResponse" message="vbs:DeleteEventRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>
+      <!--Get Operation-->
+      <wsdl:operation name="GetEventList">
+         <wsdl:documentation>This operation is used to GetEventList</wsdl:documentation>
+         <wsdl:input name="GetEventListRequest" message="vbs:GetEventListReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/technical/event/v1/get-list"/>
+         <wsdl:output name="GetEventListResponse" message="vbs:GetEventListRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>
+      <!--Sync Operation-->
+      <wsdl:operation name="SyncEvent">
+         <wsdl:documentation>This operation is used to Synchronize Event details to the subscribed systems</wsdl:documentation>
+         <wsdl:input name="SyncEventRequest" message="vbs:SyncEventReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/technical/event/v1/sync"/>
+         <wsdl:output name="SyncEventResponse" message="vbs:SyncEventRespMessage"/>
+         <wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:portType name="EventEventInterface">
+      <wsdl:documentation>This interface contains operations for the Article Event API</wsdl:documentation>
+      <!--Notify Operation-->
+      <wsdl:operation name="NotifyEvent">
+         <wsdl:documentation>This operation is used to NotifyEvent</wsdl:documentation>
+         <wsdl:input name="NotifyEventRequest" message="vbs:NotifyEventReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/technical/event/v1/notify"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="EventInterface-SOAP11-HTTPBinding" type="vbs:EventInterface">
+      <wsdl:documentation>This binding supports a SOAP 1.1 message over an HTTP/1.1 protocol</wsdl:documentation>
+      <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <!--Use WS-Addressing v1.0-->
+      <wsaw:UsingAddressing wsdl:required="true"/>
+      <!--Create Binding-->
+      <wsdl:operation name="CreateEvent">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/technical/event/v1/create" style="document"/>
+         <wsdl:input name="CreateEventRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="CreateEventResponse">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <!--Update Binding-->
+      <wsdl:operation name="UpdateEvent">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/technical/event/v1/update" style="document"/>
+         <wsdl:input name="UpdateEventRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="UpdateEventResponse">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <!--Delete Binding-->
+      <wsdl:operation name="DeleteEvent">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/technical/event/v1/delete" style="document"/>
+         <wsdl:input name="DeleteEventRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="DeleteEventResponse">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <!--Get Binding-->
+      <wsdl:operation name="GetEventList">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/technical/event/v1/get-list" style="document"/>
+         <wsdl:input name="GetEventListRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="GetEventListResponse">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="QueryResult" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <!--Sync Binding-->
+      <wsdl:operation name="SyncEvent">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/technical/event/v1/sync" style="document"/>
+         <wsdl:input name="SyncEventRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="SyncEventResponse">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="VodafoneFault">
+            <soap11:fault name="VodafoneFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   <!--Binding definition for Notify event-->
+   <wsdl:binding name="EventEventInterface-SOAP11-HTTPBinding" type="vbs:EventEventInterface">
+      <wsdl:documentation>This binding supports a SOAP 1.1 message over an HTTP/1.1 protocol</wsdl:documentation>
+      <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <!--Use WS-Addressing v1.0-->
+      <wsaw:UsingAddressing wsdl:required="true"/>
+      <!--Notify Binding-->
+      <wsdl:operation name="NotifyEvent">
+         <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/technical/event/v1/notify" style="document"/>
+         <wsdl:input name="NotifyEventRequest">
+            <!--Require that messages contain some custom headers for tracking, routing, auditing.-->
+            <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+            <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+            <soap11:body use="literal"/>
+         </wsdl:input>
+      </wsdl:operation>
+   </wsdl:binding>
+</wsdl:definitions>

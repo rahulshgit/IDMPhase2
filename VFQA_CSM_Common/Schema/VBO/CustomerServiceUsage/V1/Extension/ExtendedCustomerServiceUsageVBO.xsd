@@ -1,0 +1,34 @@
+<!--(c) Vodafone Group Services Limited. All rights reserved. This document 
+	comprises proprietary and confidential information and copyright material 
+	belonging to Vodafone Group Services Limited. Other than as permitted by 
+	law, no part of this document may be reproduced, adapted, or distributed, 
+	in any form or by any means, without the prior written consent of Vodafone 
+	Group Services Limited. The information in this document is subject to change 
+	without notice. All trademarks acknowledged. Vodafone Group Services Limited 
+	- Confidential --><xsd:schema targetNamespace="http://group.vodafone.com/schema/extension/vbo/customer/customer-service-usage/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://group.vodafone.com/schema/extension/vbo/customer/customer-service-usage/v1" xmlns:cct="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2">
+	<xsd:annotation>
+		<xsd:documentation>
+			<p>Schema Definition for CustomerServiceUsage Extension</p>
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn:un:unece:uncefact:documentation:standard:CoreComponentType:2" schemaLocation="../../../../CoreComponentType_2p0.xsd"/>
+	<xsd:complexType name="ExtendedCustomerServiceUsageVBOType"/>
+	<xsd:complexType name="ExtendedCustomerServiceUsageDetailsType"/>
+	<xsd:complexType name="ExtendedRelatedCustomerServiceUsageType"/>
+	<xsd:complexType name="ExtendedCustomerServiceUsageRolesType"/>
+	<xsd:complexType name="ExtendedCustomerServiceUsagePartsType"/>
+	<xsd:complexType name="ExtendedChannelType"/>
+	<xsd:complexType name="ExtendedServiceAccountType"/>
+	<xsd:complexType name="ExtendedCustomerAccountType"/>
+	<xsd:complexType name="ExtendedCustomerBillingAccountType"/>
+	<xsd:complexType name="ExtendedProductType"/>
+	<xsd:complexType name="ExtendedServiceType"/>
+	<xsd:complexType name="ExtendedResourceType"/>
+	<xsd:complexType name="ExtendedCustomerType"/>
+	<xsd:complexType name="ExtendedCustomerServiceRepresentativeType"/>
+	<xsd:complexType name="ExtendedRetailAgentType"/>
+	<xsd:complexType name="ExtendedSubscriptionType"/>
+	<xsd:complexType name="ExtendedUsageSpecification"/>
+	<xsd:complexType name="ExtendedCharactersticsValueType"/>
+	<xsd:complexType name="ExtendedSpecificationType"/>
+</xsd:schema>

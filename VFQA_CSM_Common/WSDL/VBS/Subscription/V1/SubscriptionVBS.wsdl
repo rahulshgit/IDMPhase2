@@ -1,0 +1,309 @@
+<!--© Vodafone Group Services Limited. All rights reserved.This document
+ comprises proprietary and confidential information and copyright material 
+ belonging to Vodafone Group Services Limited.Other than as permitted by 
+ law, no part of this document may be reproduced, adapted, or distributed, 
+ in any form or by any means, without the prior written consent of Vodafone 
+ Group Services Limited.The information in this document is subject to 
+ change without notice.All trademarks acknowledged.
+ Vodafone Group Services Limited - Confidential --><wsdl:definitions name="Subscription" targetNamespace="http://group.vodafone.com/contract/vbs/subscription/subscription/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wssem="http://lsdis.cs.uga.edu/projects/meteor-s/wsdl-s/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:vbm="http://group.vodafone.com/schema/vbm/subscription/subscription/v1" xmlns:vbs="http://group.vodafone.com/contract/vbs/subscription/subscription/v1" xmlns:vfo="http://group.vodafone.com/contract/vfo/fault/v1" xmlns:vho="http://group.vodafone.com/contract/vho/header/v1">
+	<wsdl:documentation>
+  	Version 1.0
+  </wsdl:documentation>
+	<!-- Show support for WS-Policy and the attachment of policy assertions -->
+	<wsp:UsingPolicy wsdl:Required="true"/>
+	<!-- The categorisation of the service as defined by the service architecture -->
+	<wssem:category name="EntityService" taxonomyURI="http://group.vodafone.com/iCoE/Taxonomy.owl#"/>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://group.vodafone.com/contract/vbs/subscription/subscription/v1" elementFormDefault="qualified">
+			<xsd:import namespace="http://group.vodafone.com/schema/vbm/subscription/subscription/v1" schemaLocation="../../../../Schema/VBO/Subscription/V1/SubscriptionVBM.xsd"/>
+			<xsd:import namespace="http://group.vodafone.com/contract/vfo/fault/v1" schemaLocation="../../../../Schema/Fault.xsd"/>
+			<xsd:import namespace="http://group.vodafone.com/contract/vho/header/v1" schemaLocation="../../../../Schema/Header.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<!--Get Messages-->
+	<wsdl:message name="GetSubscriptionListReqMessage">
+		<wsdl:documentation>This mesage is used as the request payload to the GetSubscriptionOperation.</wsdl:documentation>
+		<wsdl:part name="SubscriptionCriteria" element="vbm:GetSubscriptionListVBMRequest"/>
+	</wsdl:message>
+	<wsdl:message name="GetSubscriptionListRespMessage">
+		<wsdl:documentation>This mesage is used as the response payload to the GetSubscriptionOperation.</wsdl:documentation>
+		<wsdl:part name="SubscriptionList" element="vbm:GetSubscriptionListVBMResponse"/>
+	</wsdl:message>
+	<!--Notify Messages-->
+	<wsdl:message name="NotifySubscriptionReqMessage">
+		<wsdl:documentation>
+      This message is used as the request payload to the Notify Subscription details and no response message is expected for this operation
+    </wsdl:documentation>
+		<wsdl:part name="SubscriptionDetails" element="vbm:NotifySubscriptionVBMRequest"/>
+	</wsdl:message>
+	<!--Sync Messages-->
+	<wsdl:message name="SyncSubscriptionReqMessage">
+		<wsdl:documentation>
+			This message is used as the request payload to the SyncSubscription operation
+		</wsdl:documentation>
+		<wsdl:part name="SubscriptionDetails" element="vbm:SyncSubscriptionVBMRequest"/>
+	</wsdl:message>
+	<wsdl:message name="SyncSubscriptionRespMessage">
+		<wsdl:documentation>
+			This message is used as the response payload to the SyncSubscription operation
+		</wsdl:documentation>
+		<wsdl:part name="SubscriptionDetails" element="vbm:SyncSubscriptionVBMResponse"/>
+	</wsdl:message>
+		<!--Update Messages-->
+	<wsdl:message name="UpdateSubscriptionReqMessage">
+		<wsdl:documentation>
+			This message is used as the request payload to the UpdateSubscription operation
+		</wsdl:documentation>
+		<wsdl:part name="SubscriptionDetails" element="vbm:UpdateSubscriptionVBMRequest"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateSubscriptionRespMessage">
+		<wsdl:documentation>
+			This message is used as the response payload to the UpdateSubscription operation
+		</wsdl:documentation>
+		<wsdl:part name="SubscriptionDetails" element="vbm:UpdateSubscriptionVBMResponse"/>
+	</wsdl:message>
+	
+<!--Supporting Messages-->
+	<wsdl:message name="VodafoneFault">
+		<wsdl:documentation>
+		This message is used for propagating Error Context and Error Message
+    </wsdl:documentation>
+		<wsdl:part name="VodafoneFault" element="vfo:Fault"/>
+	</wsdl:message>
+	<wsdl:message name="MessageHeaders">
+		<wsdl:documentation>
+			This message is used as the header for SOAP request			
+		</wsdl:documentation>
+		<wsdl:part name="Source" element="vho:Source"/>
+		<wsdl:part name="Correlation" element="vho:Correlation"/>
+		<wsdl:part name="Cache" element="vho:Cache"/>
+		<wsdl:part name="ServiceDocumentation" element="vho:ServiceDocumentation"/>
+		<wsdl:part name="ResultStatus" element="vho:ResultStatus"/>
+		<wsdl:part name="Destination" element="vho:Destination"/>
+		<wsdl:part name="RouteInfo" element="vho:RouteInfo"/>
+		<wsdl:part name="QueryResult" element="vho:QueryResult"/>
+	</wsdl:message>
+	
+    <wsdl:message name="GetSubscriptionReportReqMessage">
+        <wsdl:documentation>This message is used as the request payload to the GetSubscriptionReport operation</wsdl:documentation>
+        <wsdl:part element="vbm:GetSubscriptionReportVBMRequest" name="SubscriptionReportSpec"/>
+    </wsdl:message>
+    <wsdl:message name="GetSubscriptionReportRespMessage">
+        <wsdl:documentation>This message is used as the response payload to the GetSubscriptionReport operation</wsdl:documentation>
+        <wsdl:part element="vbm:GetSubscriptionReportVBMResponse" name="SubscriptionReport"/>
+    </wsdl:message>		
+	
+	<wsdl:portType name="SubscriptionInterface">
+		<wsdl:documentation>
+        This interface contains operations for the Subscription API
+    </wsdl:documentation>
+		<!--Get Operations-->
+		<wsdl:operation name="GetSubscriptionList">
+			<wsdl:documentation>    	
+          This operation is used to Get a Subscription list
+      </wsdl:documentation>
+			<wsdl:input name="GetSubscriptionListRequest" message="vbs:GetSubscriptionListReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/get-list"/>
+			<wsdl:output name="GetSubscriptionListResponse" message="vbs:GetSubscriptionListRespMessage"/>
+			<wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+		</wsdl:operation>
+		<!--Sync Operation-->
+		<wsdl:operation name="SyncSubscription">
+			<wsdl:documentation>
+				This operation is used to Sync Subscription details to the subscribed systems
+			</wsdl:documentation>
+			<wsdl:input name="SyncSubscriptionRequest" message="vbs:SyncSubscriptionReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/sync"/>
+			<wsdl:output name="SyncSubscriptionResponse" message="vbs:SyncSubscriptionRespMessage"/>
+			<wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+		</wsdl:operation>
+		<!--Update Operation-->
+		<wsdl:operation name="UpdateSubscription">
+			<wsdl:documentation>
+				This operation is used to Update Subscription contact details to the subscribed systems.
+			</wsdl:documentation>
+			<wsdl:input name="UpdateSubscriptionRequest" message="vbs:UpdateSubscriptionReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/update"/>
+			<wsdl:output name="UpdateSubscriptionResponse" message="vbs:UpdateSubscriptionRespMessage"/>
+			<wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+		</wsdl:operation>
+		<!--Get Report Operation-->
+		<wsdl:operation name="GetSubscriptionReport">
+			<wsdl:documentation>
+				This operation is used to Update Subscription contact details to the subscribed systems.
+			</wsdl:documentation>
+			<wsdl:input name="GetSubscriptionReportRequest" message="vbs:GetSubscriptionReportReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/get-report"/>
+			<wsdl:output name="GetSubscriptionReportResponse" message="vbs:GetSubscriptionReportRespMessage"/>
+			<wsdl:fault name="VodafoneFault" message="vbs:VodafoneFault"/>
+		</wsdl:operation>			
+	</wsdl:portType>
+	
+<!-- Port type definition for Subscription Notify event -->
+	<wsdl:portType name="SubscriptionEventInterface">
+		<wsdl:documentation>
+        This interface contains notification for the Notify Subscription API
+    </wsdl:documentation>
+		<!--Notify Operation-->
+		<wsdl:operation name="NotifySubscription">
+			<wsdl:documentation>    	
+          		This operation is used to Notify Subscription details to the subscribed systems
+     		</wsdl:documentation>
+			<wsdl:input name="NotifySubscriptionRequest" message="vbs:NotifySubscriptionReqMessage" wsaw:Action="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/notify"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	
+	<wsdl:binding name="SubscriptionInterface-SOAP11-HTTPBinding" type="vbs:SubscriptionInterface">
+		<wsdl:documentation>
+        This binding supports a SOAP 1.1 message over an HTTP/1.1 protocol
+		</wsdl:documentation>
+		<soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- Use WS-Addressing v1.0 -->
+		<wsaw:UsingAddressing wsdl:required="true"/>
+		
+		<!--Get Binding-->
+		<wsdl:operation name="GetSubscriptionList">
+			<soap11:operation soapAction="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/get-list" style="document"/>
+			<wsdl:input name="GetSubscriptionListRequest">
+				<!--
+				Require that messages contain some custom headers for
+				tracking, routing, auditing.
+				-->
+				<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="GetSubscriptionListResponse">
+				<!--
+				Require that messages contain some custom headers for tracking, routing, auditing.
+				-->
+				<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="QueryResult" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="VodafoneFault">
+				<soap11:fault name="VodafoneFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<!--Sync Binding-->
+		<wsdl:operation name="SyncSubscription">
+			<soap11:operation soapAction="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/sync" style="document"/>
+			<wsdl:input name="SyncSubscriptionRequest">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+					-->
+				<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="SyncSubscriptionResponse">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+				-->
+				<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="VodafoneFault">
+				<soap11:fault name="VodafoneFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+	<!--Update Binding-->
+		<wsdl:operation name="UpdateSubscription">
+			<soap11:operation soapAction="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/update" style="document"/>
+			<wsdl:input name="UpdateSubscriptionRequest">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+					-->
+				<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="UpdateSubscriptionResponse">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+				-->
+				<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="VodafoneFault">
+				<soap11:fault name="VodafoneFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetSubscriptionReport">
+            <soap11:operation soapAction="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/get-report" style="document"/>
+            <wsdl:input name="GetSubscriptionReportRequest">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+				-->
+                <soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+                <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+                <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+                <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+                <soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+                <soap11:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetSubscriptionReportResponse">
+				<!--
+					Require that messages contain some custom headers for tracking, routing, auditing.
+				-->
+                <soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+                <soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+                <soap11:header message="vbs:MessageHeaders" part="ServiceDocumentation" use="literal"/>
+                <soap11:header message="vbs:MessageHeaders" part="ResultStatus" use="literal"/>
+                <soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+                <soap11:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="VodafoneFault">
+                <soap11:fault name="VodafoneFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>		
+	</wsdl:binding>
+	
+<!-- Binding definition for Subscription Notify event -->
+	<wsdl:binding name="SubscriptionEventInterface-SOAP11-HTTPBinding" type="vbs:SubscriptionEventInterface">
+		<wsdl:documentation>
+        This binding supports a SOAP 1.1 message over an HTTP/1.1 protocol
+    </wsdl:documentation>
+		<soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- Use WS-Addressing v1.0 -->
+		<wsaw:UsingAddressing wsdl:required="true"/>
+		<!--Notify Binding-->
+		<wsdl:operation name="NotifySubscription">
+			<soap11:operation soapAction="http://group.vodafone.com/contract/vbs/subscription/subscription/v1/notify" style="document"/>
+			<wsdl:input name="NotifySubscriptionRequest">
+				<!--
+				Require that messages contain some custom headers for
+				tracking, routing, auditing.
+				-->
+				<soap11:header message="vbs:MessageHeaders" part="Source" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Destination" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Correlation" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="Cache" use="literal"/>
+				<soap11:header message="vbs:MessageHeaders" part="RouteInfo" use="literal"/>
+				<soap11:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+</wsdl:definitions>

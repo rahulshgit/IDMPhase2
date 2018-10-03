@@ -49,5 +49,7 @@
         <http:session-sctikiness enabled="false" session-id-name="JSESSIONID"/>
       </http:outbound-properties>
     </tran:provider-specific>
+	<a>455555555555ertfgggggggggggggggggggg</a>
+	
   </ser:endpointConfig>
 </xml-fragment>
